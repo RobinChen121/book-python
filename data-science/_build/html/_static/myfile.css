@@ -1,0 +1,227 @@
+p {
+    text-align: justify;
+}
+
+/*调整主内容区域的最大宽度，这个内容是也包含边栏的 */
+/*.bd-container {*/
+/*    width: 1300px; !* !* 或者你可以设置为 1200px、1400px 等 *!*!*/
+/*}*/
+
+
+/* 优化标题，增加字重和呼吸感，段落间距 */
+h2, h3 {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    margin-top: 1.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+/* 侧边栏当前活动项的样式 */
+/*.current > .reference {*/
+/*    color: #7c6488 !important;*/
+/*    !*border-left: 1px solid #7c6488 !important; !* 增加左侧指示条 *!*!*/
+/*    background-color: #f4f1f5;*/
+/*    font-weight: 600;*/
+/*}*/
+
+
+/* 右侧边栏整体容器微调，右侧边栏多出的空白与浏览器的大小有关 */
+@media (min-width: 960px) {
+    .bd-page-width {
+        max-width: 100rem !important;
+    }
+}
+
+
+/*图片居中、加边框和阴影*/
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 1. 针对 Pandas DataFrame 的表头底边线 */
+.dataframe thead tr:last-child th {
+    border-bottom: 2px solid #afa2b6 !important; /* 使用你的主色调紫色 */
+    /* 如果觉得太深，可以改用 rgba(124, 100, 136, 0.3) 这种半透明紫 */
+}
+
+/* 2. 针对 标准 Markdown 表格的表头底边线 */
+table.table thead th,
+table.docutils thead th {
+    border-bottom: 2px solid #afa2b6 !important;
+    text-align: center !important;
+}
+
+/* 4. 鼠标悬停：保持你要求的淡紫色 */
+.dataframe tbody tr:hover, table tbody tr:hover {
+    background-color: #e0a7f4 !important;
+    transition: background-color 0.2s ease;
+}
+
+[data-theme='dark'] .dataframe tbody tr:hover, [data-theme='dark'] table tbody tr:hover {
+    background-color: #958d97 !important;
+    transition: background-color 0.2s ease;
+}
+
+/* 设置所有表格单元格的最小宽度 */
+.dataframe td, .dataframe th,
+table td, table th {
+    min-width: 100px !important; /* 你可以根据需求改为 80px 或 120px */
+    word-wrap: break-word; /* 防止长内容撑破单元格 */
+    vertical-align: middle !important; /* 垂直也居中，防止长短不一 */
+}
+
+/* 1. 强制统一 DataFrame 所有的单元格间距 */
+.dataframe thead th,
+.dataframe tbody th,
+.dataframe tbody td {
+    padding: 8px 12px !important; /* 统一上下左右内边距 */
+    line-height: 1.5 !important; /* 统一行高 */
+    vertical-align: middle !important; /* 确保垂直居中 */
+    height: auto !important; /* 消除可能存在的最小高度限制 */
+}
+
+/* 针对特定的 Pandas DataFrame 表头 */
+.dataframe thead th {
+    text-align: center !important;
+}
+
+/*markdow 单元格首行内容居中*/
+.text-center {
+    text-align: center;
+}
+
+/* 如果 p 标签导致了额外的间距，可以加上这个 */
+.head p {
+    margin: 0;
+    display: inline-block; /* 或者使用 block */
+}
+
+
+/*google*/
+.goog-te-gadget {
+    font-family: Roboto, "Open Sans", sans-serif !important;
+    /*text-transform: uppercase;*/
+}
+
+.goog-te-gadget-simple {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(237, 230, 230, 0.5) !important;
+    padding: 8px !important;
+    border-radius: 4px !important;
+    font-size: 0.8rem !important;
+    line-height: 1rem !important;
+    display: inline-block;
+    cursor: pointer;
+    zoom: 1;
+}
+
+
+#google_translate_element .goog-te-gadget {
+    display: inline-flex !important;
+    margin-right: 20px;
+}
+
+.goog-te-gadget-icon {
+/ / 更改谷歌翻译框外观 background-image: url(myst start) !important;
+    background-position: 0 0;
+    height: 0 !important;
+    width: 0 !important;
+    margin-right: 8px !important;
+    display: none;
+}
+
+
+/*不让翻译后显示谷歌的其他弹出框*/
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none;
+/ / add !important if required
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
+
+/* 主弹框 */
+#goog-gt-vt {
+    display: none !important;
+}
+
+/* 备用：隐藏内部结构（防止重绘） */
+.VIpgJd-yAWNEb-hvhgNd {
+    display: none !important;
+}
+
+/* 控制翻译框显示文字颜色，旨在jupyter book 中有必要使用 */
+.VIpgJd-ZVi9od-xl07Ob-lTBxed span {
+    color: var(--pst-color-text-base);
+}
+
+/* 不要用 Google 这个 span，自己画分隔线，从而把里面的白点去掉（因为字体渲染的原因） */
+.goog-te-gadget-simple span[style*="border-left"] {
+    display: none !important;
+}
+
+.goog-te-gadget-simple a span:first-child::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    background: currentColor;
+    opacity: 0.4;
+    margin: 0 7px; /* 分割线与上下左右间距 */
+}
+
+img[src="https://www.google.com/images/cleardot.gif"] {
+    display: none;
+}
+
+/* 让网页右上面的一些按钮对齐 */
+.article-header-buttons {
+    display: flex !important;
+    justify-content: center !important; /* 🔥 水平居中 */
+    align-items: center !important; /* 🔥 垂直居中 */
+    gap: 10px; /* 元素间距 */
+    flex-wrap: wrap; /* 小屏自动换行 */
+
+}
+
+
+/*!* 当系统处于深色模式时，隐藏默认 logo，显示深色专用 logo *!*/
+/* 强制让深色模式下的 logo 反色变白 */
+.logo__image.only-dark {
+    /*颜色反转，亮度提升*/
+    /*filter 属性允许对图像进行像素级的色彩处理*/
+    filter: invert(1); /*brightness(2);*/
+    /* 1. 先把紫色变成灰色 */
+    /* 2. 再根据需要反转明暗（如果是深灰变浅灰） */
+    /* 3. 最后调整亮度 */
+    /*filter: grayscale(1) invert(1) brightness(1.5);*/
+}
+
+/*> > symbol is called the Child Combinator. > .admonition-title
+It is used to select elements that are direct children of a specific parent*/
+[data-theme='dark'] .admonition.tip, [data-theme='dark'] .admonition.note,
+/*div this linetells the browser: "Only target this if it is specifically a <div>*/
+[data-theme='dark'] div.admonition.tip, [data-theme='dark'] div.admonition.note{
+    filter: invert(1);
+    /*background-color: #afa2b6 !important;*/
+}
+
+/*!*黑色背景下反转 logo*!*/
+/*[data-theme='dark'] .theme-aware-logo {*/
+/*    filter: invert(1);*/
+/*}*/
+/*!* 默认不反转（浅色模式） *!*/
+/*.theme-aware-logo {*/
+/*    filter: none;*/
+/*}*/

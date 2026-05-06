@@ -1,0 +1,1584 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Output, read and write files &#8212; Python Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=868d26e2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'print-read-files';</script>
+    <script src="_static/myfile.js?v=550dacb2"></script>
+    <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Introduction to Numpy" href="introduction-to-numpy.html" />
+    <link rel="prev" title="2. Data types in Python" href="basic-data-type.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Python Data Science - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Python Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A-first-look-of-Python.html">1. Getting started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-data-type.html">2. Data types in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Output, read and write files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-numpy.html">4. Introduction to Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pandas.html">5. Introduction to Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="define-function.html">6. Define functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draw-pictures.html">7. Draw graphs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Data cleaning about Excel files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/RobinChen121/book-python/main?urlpath=lab/tree/data-science/print-read-files.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/RobinChen121/book-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/RobinChen121/book-python/issues/new?title=Issue%20on%20page%20%2Fprint-read-files.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/print-read-files.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Output, read and write files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-function">3.1. <code class="docutils literal notranslate"><span class="pre">print</span></code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-f-string">3.2. Using <code class="docutils literal notranslate"><span class="pre">f-string</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-format-1">3.3. Using <code class="docutils literal notranslate"><span class="pre">format</span></code>*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-output">3.4. Using <code class="docutils literal notranslate"><span class="pre">%</span></code> for output*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-files">3.5. Read and write files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.6. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.6.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.6.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="output-read-and-write-files">
+<h1><span class="section-number">3. </span>Output, read and write files<a class="headerlink" href="#output-read-and-write-files" title="Link to this heading">#</a></h1>
+<hr><div class="tip admonition">
+<p class="admonition-title">Goals and prerequisites</p>
+<p><strong>Goals</strong>:</p>
+<ul class="simple">
+<li><p>Learn how to input and output some data or files.</p></li>
+</ul>
+<p><strong>Prerequisites</strong>:</p>
+<ul class="simple">
+<li><p>Familiar with common Python data types and their usage.</p></li>
+</ul>
+</div>
+<section id="print-function">
+<h2><span class="section-number">3.1. </span><code class="docutils literal notranslate"><span class="pre">print</span></code> function<a class="headerlink" href="#print-function" title="Link to this heading">#</a></h2>
+<hr>
+<p>In Python, outputting content is very straightforward using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. Inside the parentheses, you can pass various data types such as numbers, strings, lists, dictionaries, and more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">69</span><span class="p">])</span>  <span class="c1"># list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12, 45, 69]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;chen&quot;</span><span class="p">,</span> <span class="s2">&quot;mark&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>  <span class="c1"># dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;chen&#39;, &#39;mark&#39;: 85}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also <strong>output strings and variables together</strong> inside the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a =&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;, b =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3] , b = 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function adds a newline character at the end of the output, moving the cursor to the next line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;zhang&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my name is&quot;</span><span class="p">,</span>  <span class="n">a</span><span class="p">)</span>  <span class="c1"># the cursor is moving to the next line</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;age is&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my name is zhang
+age is 25
+</pre></div>
+</div>
+</div>
+</div>
+<p>To modify the ending behavior of the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function’s cursor, you can use the <code class="docutils literal notranslate"><span class="pre">end</span></code> argument, which defaults to a newline character <code class="docutils literal notranslate"><span class="pre">\n</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;zhang&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;age is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my name is zhang-age is 25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-f-string">
+<h2><span class="section-number">3.2. </span>Using <code class="docutils literal notranslate"><span class="pre">f-string</span></code><a class="headerlink" href="#using-f-string" title="Link to this heading">#</a></h2>
+<hr><p>We can use <code class="docutils literal notranslate"><span class="pre">f-string</span></code> for more flexible outputs of strings. The variable is in the curly braces <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the array is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># output a list variable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the array is [1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">3.2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the array is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, the numer is </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># output several variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the array is [1, 2, 3], the numer is 3.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the numbers are </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are 3.141592653589793 and 4.56
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use colons <code class="docutils literal notranslate"><span class="pre">:</span></code> to specify variable alignment, width, precision, and type in the f-string.</p>
+<p>The format after the colons <code class="docutils literal notranslate"><span class="pre">:</span></code> is：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>: &lt;fill&gt; &lt;alignment&gt;&lt;width&gt;&lt;<code class="docutils literal notranslate"><span class="pre">.</span></code>&gt;&lt;presition&gt;&lt;type&gt;</p></th>
+</tr>
+</thead>
+</table>
+</div>
+<p>The notations for alignment are：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Align right (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>Align left</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>Align center</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The notations for varaible types are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Example (value=42.5)</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>String format (default)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{'text':s}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'text'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>Decimal integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{42:d}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">42</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
+<td><p>Fixed-point float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{42.5:.2f}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">42.50</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">e</span></code></p></td>
+<td><p>Scientific notation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{42.5:.2e}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4.25e+01</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Percentage format</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{0.425:.1%}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">42.5%</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="c1"># The first number is a floating-point number rounded to 3 decimals</span>
+<span class="c1"># The second number is right-aligned with a width of 20, rounded to 2 decimals, and displayed as a percentage</span>
+<span class="sa">f</span><span class="s2">&quot;the numbers are </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">b</span><span class="w"> </span><span class="si">= :</span><span class="s2">&gt;20.2%</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the numbers are 1.000 and b =              456.00%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="w"> </span><span class="si">= :</span><span class="s2">+^10.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># fill with +, align center, width is 10, rounded to 2 decimals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = +++5.60+++
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-format-1">
+<h2><span class="section-number">3.3. </span>Using <code class="docutils literal notranslate"><span class="pre">format</span></code>*<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#using-format-1" title="Link to this heading">#</a></h2>
+<hr>
+<p>We can also achieve different formats of output using <code class="docutils literal notranslate"><span class="pre">format</span></code>. The syntax is:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-center"><p>string with curly braces <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>.format(value1, value2…)</p></th>
+</tr>
+</thead>
+</table>
+</div>
+<p>In the string, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> is the location of the variable, and the values of the varaibles are in <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">{}</span><span class="s2"> and </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are 3 and 4.560
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can add the location index of the variable inside the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">{1}</span><span class="s2"> and </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>  <span class="c1"># specify the variable index indside {}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">{0}</span><span class="s2"> and </span><span class="si">{1}</span><span class="s2"> and </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are 4.56 and 3
+the numbers are 3 and 4.56
+the numbers are 3 and 4.56 and 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>To output a curly brace, use double curly braces: <code class="docutils literal notranslate"><span class="pre">{{</span></code>, <code class="docutils literal notranslate"><span class="pre">}}</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are {{ </span><span class="si">{0}</span><span class="s2"> }} and {{ </span><span class="si">{1}</span><span class="s2"> }}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are { 3 } and { 4.56 }
+</pre></div>
+</div>
+</div>
+</div>
+<p>When using the format() method, you can achieve formatted output by including a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> and additional arguments within the curly braces {}, similar to how f-strings work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">{0:10.2f}</span><span class="s2"> and </span><span class="si">{0:.3%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are       3.00 and 300.000%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">123456</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numer is </span><span class="si">{:e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numer is 1.234560e+05
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = </span><span class="si">{:0&gt;5d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># align left, fill with 0, width 5, type integer</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 00005
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = </span><span class="si">{:+^10.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># align center, fill with +, width 10, round to 2 decimals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = +++5.60+++
+</pre></div>
+</div>
+</div>
+</div>
+<p>As f-string, the width and precision values can be passed as variables using curly braces {} with argument assignment, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = {:^</span><span class="si">{width}</span><span class="s2">.</span><span class="si">{precision}</span><span class="s2">f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># width and precision as variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =   5.600   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.6</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">^</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># width and precision as variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =   5.600   
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-for-output">
+<h2><span class="section-number">3.4. </span>Using <code class="docutils literal notranslate"><span class="pre">%</span></code> for output*<a class="headerlink" href="#using-for-output" title="Link to this heading">#</a></h2>
+<hr>
+<p>The percent sign <code class="docutils literal notranslate"><span class="pre">%</span></code> can also achieve various formatted outputs, with syntax rules similar to C language. Here are some specific examples for reference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the number is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># output a float to integer format</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the number is 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the number is </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># output a float rouding to 2 decimals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the number is 3.14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the number is </span><span class="si">%.2f</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># \n indicates a line break after print(), moving the cursor to the next line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the number is 3.14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">4.56</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the numbers are </span><span class="si">%.2f</span><span class="s2"> and </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>  <span class="c1"># output multi variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the numbers are 3.14 and 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the number is </span><span class="si">%5.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># output a float rounding to 2 decimals with width 5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the number is  3.14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the number is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="mi">321</span><span class="p">)</span>  <span class="c1"># output in a string format</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the number is 321
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.1f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># output in a percentage format</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.6%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-and-write-files">
+<h2><span class="section-number">3.5. </span>Read and write files<a class="headerlink" href="#read-and-write-files" title="Link to this heading">#</a></h2>
+<hr>
+<p>Python operates on text files following the steps: <strong>open → operate → close</strong>. It opens a file from the computer’s storage location, performs some read or write operations, and then closes the file. While the file is open, it is in a <strong>“locked”</strong> state, meaning other processes on the computer cannot access it. Once the file is closed, it becomes accessible to other processes.</p>
+<p>Python uses the function <code class="docutils literal notranslate"><span class="pre">open()</span></code> to open a file object and the syntax is:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>open(filename, mode)</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>filename</p></td>
+<td><p>An string with address and file name;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>the default address is the current file folder</p></td>
+</tr>
+<tr class="row-even"><td><p>mode</p></td>
+<td><p>Read/write mode and the default is read-only model (<code class="docutils literal notranslate"><span class="pre">r</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The read/write modes include:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>File Pointer</p></th>
+<th class="head"><p>File Existence</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'r'</span></code></p></td>
+<td><p><strong>Read-only</strong> (default)</p></td>
+<td><p>Starts at beginning</p></td>
+<td><p>File must exist</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'w'</span></code></p></td>
+<td><p><strong>Write</strong> (overwrites existing file)</p></td>
+<td><p>Starts at beginning</p></td>
+<td><p>Creates file if missing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'a'</span></code></p></td>
+<td><p><strong>Append</strong> (adds to end of file)</p></td>
+<td><p>Starts at end</p></td>
+<td><p>Creates file if missing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'r+'</span></code></p></td>
+<td><p><strong>Read + Write</strong></p></td>
+<td><p>Starts at beginning</p></td>
+<td><p>File must exist</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'w+'</span></code></p></td>
+<td><p><strong>Write + Read</strong> (overwrites)</p></td>
+<td><p>Starts at beginning</p></td>
+<td><p>Creates file if missing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'a+'</span></code></p></td>
+<td><p><strong>Append + Read</strong></p></td>
+<td><p>Starts at end</p></td>
+<td><p>Creates file if missing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Comparisions between different modes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">r+</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">w+</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">a+</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Read</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>Write</p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>Create</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>Overwrite</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Start at begining</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Start at end</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+    <span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span>
+<span class="p">)</span>  <span class="c1"># creat a file in the current folder; if creating the file under the E drive:  f = open(&#39;E:\\files\\test.txt&#39;, &#39;r&#39;)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;My name is Tim Cook</span><span class="se">\n</span><span class="s2">His name is Elon Musk&quot;</span><span class="p">)</span>  <span class="c1"># write the contents and use \n for line break</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close the opened file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above program creates a new .txt file in the current directory. It writes content to the file using the write() method, where \n represents a newline.</p>
+<ul class="simple">
+<li><p>To create or modify a file at a specific location, you can further include a <strong>file path string in the filename</strong>.</p></li>
+</ul>
+<p>The following codes read all the contents from the file through the method <code class="docutils literal notranslate"><span class="pre">read()</span></code> and return a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># read the contents and return a string</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="c1"># print the string</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close the opened file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Tim Cook
+His name is Elon Musk
+</pre></div>
+</div>
+</div>
+</div>
+<p>To read just one line, you can use the <code class="docutils literal notranslate"><span class="pre">readline()</span></code> method. Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method to read all lines, which returns a <strong>list</strong> where each element is a line from the file.</p>
+<ul class="simple">
+<li><p>In practical Python file reading and writing, the <code class="docutils literal notranslate"><span class="pre">with-open</span></code> statement is often used. Since file operations may raise an IOError, if an error occurs, the <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> statement may not be executed, leaving the file open in the background. Using the <code class="docutils literal notranslate"><span class="pre">with-open</span></code> statement allows you to <strong>omit the f.close()</strong> call safely.</p></li>
+</ul>
+<p>The above reading and writing code can also be rewritten as:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write contents</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;My name is Tim Cook</span><span class="se">\n</span><span class="s2">His name is Elon Musk&quot;</span><span class="p">)</span>
+
+<span class="c1"># read contents</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Tim Cook
+His name is Elon Musk
+</pre></div>
+</div>
+</div>
+</div>
+<p>To read and write data format files such as .txt, .xls, .xlsx, and .csv, it is common to use the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> library to read files and process data. Readers can refer to the Pandas chapter in this book for more details.</p>
+<p>To read and write Word format files, libraries such as <code class="docutils literal notranslate"><span class="pre">textract</span></code> and <code class="docutils literal notranslate"><span class="pre">docx2txt</span></code> can be used. This book does not go into further detail on this topic—interested readers can look up relevant information online.</p>
+</section>
+<section id="os-sys-library">
+<h2><span class="section-number">3.6. </span><code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*<a class="headerlink" href="#os-sys-library" title="Link to this heading">#</a></h2>
+<hr><section id="os-library">
+<h3><span class="section-number">3.6.1. </span><code class="docutils literal notranslate"><span class="pre">os</span></code> library<a class="headerlink" href="#os-library" title="Link to this heading">#</a></h3>
+<hr>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> in Python is a standard library for interacting with the operating system, providing functionalities for handling files, directories, processes, and environment variables.</p>
+<p>Below are some usages of the <code class="docutils literal notranslate"><span class="pre">os</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># get the name of the current computer system: &#39;posix&#39; (Linux/macOS) or &#39;nt&#39; (Windows)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>  <span class="c1"># get current working directory</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>  <span class="c1"># get a list of all the files under the current working directory</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change working directory</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/path/to/directory&#39;</span><span class="p">)</span>  <span class="c1"># change current working directory to new address: &#39;/path/to/directory&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create or delete a directory</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;new_dir&#39;</span><span class="p">)</span>  <span class="c1"># create a new directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;parent/child/grandchild&#39;</span><span class="p">)</span>  <span class="c1"># create hierarchy directories</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s1">&#39;new_dir&#39;</span><span class="p">)</span>  <span class="c1"># delete an empty</span>
+<span class="n">os</span><span class="o">.</span><span class="n">removedirs</span><span class="p">(</span><span class="s1">&#39;parent/child/grandchild&#39;</span><span class="p">)</span> <span class="c1"># remove hierarchy directories</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>File renaming <code class="docutils literal notranslate"><span class="pre">rename</span></code> or deletion <code class="docutils literal notranslate"><span class="pre">remove</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;new_file.txt&quot;</span>  
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello, this is a new file!&quot;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;new_file2.txt&#39;</span><span class="p">)</span>  <span class="c1"># rename the file</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;new_file2.txt&#39;</span><span class="p">)</span>  <span class="c1"># remove the file</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Get environment variable</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>  <span class="c1"># get all the environment variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;specific&#39;</span><span class="p">))</span>  <span class="c1"># get a specific environment variable &#39;specific&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NEW_VAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>  <span class="c1"># set value for an enviroment variable</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Path operations</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># get the absolute path of the file &#39;file.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># get the directory of the file &#39;file.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># concatenate the path strings &#39;dir&#39; with &#39;file.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># check whether the path &#39;file.txt&#39; exists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># check whether the string &#39;file.txt&#39; is a file or not</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;dir&#39;</span><span class="p">))</span>  <span class="c1"># check whether the string &#39;dir&#39; is a directory or not</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">))</span>  <span class="c1"># split the pathname into a pair (root, ext), where root is the part of the path before the file extension and ext is the file extension.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/path/to/file.txt&#39;</span><span class="p">))</span>  <span class="c1"># get the file name from the string inside the ()</span>
+</pre></div>
+</div>
+<p>The following example gets the file name of the current file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># __file__ can get the full path of the current file</span>
+<span class="n">current_file_path</span> <span class="o">=</span> <span class="vm">__file__</span> 
+
+<span class="c1"># get the current file name</span>
+<span class="n">current_file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">current_file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Process management</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># get the id of the current process</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">())</span>  <span class="c1"># get the id of the parent process</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8160
+13852
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sys-library">
+<h3><span class="section-number">3.6.2. </span><code class="docutils literal notranslate"><span class="pre">sys</span></code> library<a class="headerlink" href="#sys-library" title="Link to this heading">#</a></h3>
+<hr>
+<p>The <code class="docutils literal notranslate"><span class="pre">sys</span></code>  provides variables and functions that are related to the Python interpreter and its environment. It is useful for handling command-line arguments, runtime environment settings, and standard input and output operations.</p>
+<ul class="simple">
+<li><p>Get the version of current Python using <code class="docutils literal notranslate"><span class="pre">sys.version</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the name of current computer system using <code class="docutils literal notranslate"><span class="pre">sys.platform</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">)</span>  <span class="c1"># get current computer system such as  &#39;win32&#39;, &#39;linux&#39;, &#39;darwin&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>win32
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the seaching paths by <code class="docutils literal notranslate"><span class="pre">sys.path</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># get all the searching paths</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/my/custom/path&quot;</span><span class="p">)</span>  <span class="c1"># append a searching path</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">3.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<hr><div class="exercise admonition" id="read-content">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.1 </span></p>
+<section id="exercise-content">
+<p>Which method is used to read the entire content of a file as a string?</p>
+<p>A.    read()</p>
+<p>B.    readline()</p>
+<p>C.    readlines()</p>
+<p>D.    read_file()</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#read-content"> Exercise 3.1</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="output-number2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.2 </span></p>
+<section id="exercise-content">
+<p>What is the output of the following program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A.    0.33</p>
+<p>B.    33.33%</p>
+<p>C.    0.33%</p>
+<p>D.    33%</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#output-number2"> Exercise 3.2</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+<div class="exercise admonition" id="default-read">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
+<section id="exercise-content">
+<p>The default opening mode when opening a file with the open() function is ‘r’ for ‘reading’.</p>
+<p>A.    True</p>
+<p>B.    False</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#default-read"> Exercise 3.3</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="with">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
+<section id="exercise-content">
+<p>What is the purpose of the ‘with’ statement in file handling?</p>
+<p>A.    create a new file</p>
+<p>B.    open a file</p>
+<p>C.    automatically close the file</p>
+<p>D.    save a file</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#with"> Exercise 3.4</a></p>
+<section id="solution-content">
+<p>C</p>
+</section>
+</div>
+<div class="exercise admonition" id="write-w">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.5 </span></p>
+<section id="exercise-content">
+<p>What happens to the original file content if you open a file like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A.    The original content will be overwritten</p>
+<p>B.    Any new content will be added after the original content</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#write-w"> Exercise 3.5</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="write-a">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.6 </span></p>
+<section id="exercise-content">
+<p>What does the following code do?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+   <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A.    read the content  of ‘file.txt’</p>
+<p>B.    append “data” to “file.txt”</p>
+<p>C.    create a new file “file.txt”</p>
+<p>D.    replace the content of “file.txt” with “data”</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-11">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#write-a"> Exercise 3.6</a></p>
+<section id="solution-content">
+<p>C</p>
+</section>
+</div>
+<div class="exercise admonition" id="output-number">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.7 </span></p>
+<section id="exercise-content">
+<p>Formatted output of 0.0003278 in scientific notation, rouding to 4 decimal places as percentage</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-13">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#output-number"> Exercise 3.7</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.4%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.0003278</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.0003278</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.4%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="tesla">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.8 </span></p>
+<section id="exercise-content">
+<p>Write the following txts to a file ‘tesla.txt’, read it and output the contents.</p>
+<p>Tesla, Inc. is an American multinational automotive and clean energy company. Headquartered in Austin, Texas, it designs, manufactures and sells battery electric vehicles (BEVs), stationary battery energy storage devices from home to grid-scale, solar panels and solar shingles, and related products and services.</p>
+<p>Tesla was incorporated in July 2003 by Martin Eberhard and Marc Tarpenning as Tesla Motors. Its name is a tribute to inventor and electrical engineer Nikola Tesla. In 2008, the company began production of its first car model, the Roadster sports car, followed by the Model S sedan in 2012, the Model X SUV in 2015, the Model 3 sedan in 2017, the Model Y crossover in 2020, the Tesla Semi truck in 2022 and the Cybertruck pickup truck in 2023.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="print-read-files-solution-15">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#tesla"> Exercise 3.8</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tesla.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tesla, Inc. is an American multinational automotive and clean energy company. Headquartered in Austin, Texas, it designs, manufactures and sells battery electric vehicles (BEVs), stationary battery energy storage devices from home to grid-scale, solar panels and solar shingles, and related products and services.</span>
+<span class="sd">        </span>
+<span class="sd">Tesla was incorporated in July 2003 by Martin Eberhard and Marc Tarpenning as Tesla Motors. Its name is a tribute to inventor and electrical engineer Nikola Tesla. In 2008, the company began production of its first car model, the Roadster sports car, followed by the Model S sedan in 2012, the Model X SUV in 2015, the Model 3 sedan in 2017, the Model Y crossover in 2020, the Tesla Semi truck in 2022 and the Cybertruck pickup truck in 2023.&quot;&quot;&quot;</span>
+    <span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tesla.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  
+</pre></div>
+</div>
+</section>
+</div>
+<script src="https://giscus.app/client.js"
+        data-repo="RobinChen121/book-python"
+        data-repo-id="R_kgDOOt-49A"
+        data-category="General"
+        data-category-id="DIC_kwDOOt-49M4C2R1O"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light_protanopia"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Toogle google translation -->
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en',
+                  includedLanguages: 'en,zh-CN,zh-TW,ja,ko,de,ru,fr,es,it,pt,hi,ar,fa',
+layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+      }
+</script>
+<script type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
+<br><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>* means this section may not be delived in class.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="basic-data-type.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Data types in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="introduction-to-numpy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Introduction to Numpy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-function">3.1. <code class="docutils literal notranslate"><span class="pre">print</span></code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-f-string">3.2. Using <code class="docutils literal notranslate"><span class="pre">f-string</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-format-1">3.3. Using <code class="docutils literal notranslate"><span class="pre">format</span></code>*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-output">3.4. Using <code class="docutils literal notranslate"><span class="pre">%</span></code> for output*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-files">3.5. Read and write files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.6. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.6.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.6.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zhen Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

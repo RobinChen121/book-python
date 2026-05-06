@@ -1,0 +1,3119 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Python statistics &#8212; Python Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=868d26e2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'statistics';</script>
+    <script src="_static/myfile.js?v=550dacb2"></script>
+    <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Python machine learning" href="machine-learning.html" />
+    <link rel="prev" title="7. Draw graphs" href="draw-pictures.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Python Data Science - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Python Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A-first-look-of-Python.html">1. Getting started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-data-type.html">2. Data types in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print-read-files.html">3. Output, read and write files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-numpy.html">4. Introduction to Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pandas.html">5. Introduction to Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="define-function.html">6. Define functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="draw-pictures.html">7. Draw graphs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Data cleaning about Excel files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/RobinChen121/book-python/main?urlpath=lab/tree/data-science/statistics.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/RobinChen121/book-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/RobinChen121/book-python/issues/new?title=Issue%20on%20page%20%2Fstatistics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/statistics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">8.1. Mean, Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">8.2. Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">8.2.1. Uniform distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">8.2.2. Normal distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">8.3. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">8.3.1. Pearson correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">8.3.2. Spearman correlation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">8.4. *Hypothesis test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">8.4.1. t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">8.4.2. One sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">8.4.3. Two sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">8.4.4. Anova</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests">8.4.5. <span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">8.4.6. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">8.5. *Factor analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">8.6. *Structural equation model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">8.6.1. An example of using SEM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">8.6.1.1. Research question, assumptions and variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.6.1.2. Data collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">8.6.1.3. Pre-test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-statistics">
+<h1><span class="section-number">8. </span>Python statistics<a class="headerlink" href="#python-statistics" title="Link to this heading">#</a></h1>
+<hr>
+<div class="tip admonition">
+<p class="admonition-title">Goals and prerequisites</p>
+<p><strong>Goals</strong>:</p>
+<ul class="simple">
+<li><p>Learn how to perform some common statistical analysis using Python.</p></li>
+</ul>
+<p><strong>Prerequisites</strong>:</p>
+<ul class="simple">
+<li><p>Familiar with common Python data types and their usage.</p></li>
+<li><p>Familiar with Numpy and Pandas.</p></li>
+</ul>
+<p><strong>Python libraries used in this chapter</strong>:</p>
+<ul class="simple">
+<li><p>Matplotlib</p></li>
+<li><p>Numpy</p></li>
+<li><p>Pandas</p></li>
+<li><p>Seaborn*</p></li>
+<li><p>Pingouin*</p></li>
+<li><p>Scipy*</p></li>
+<li><p>Semopy*</p></li>
+</ul>
+</div>
+<p>In this chapter, we explain how to perform statistical analysis on data using Python. Rather than delving into the theoretical and computational details of the statistical concepts and methods, we aim to provide intuitive, visual explanations that are easy to understand.</p>
+<section id="mean-variance">
+<h2><span class="section-number">8.1. </span>Mean, Variance<a class="headerlink" href="#mean-variance" title="Link to this heading">#</a></h2>
+<hr><p>The <code class="docutils literal notranslate"><span class="pre">mean</span></code> value is the <code class="docutils literal notranslate"><span class="pre">average</span></code> value of a number of numeric data. To calculate the mean, find the sum of all numeric values, and divide the sum by the number of values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Variance</span></code> is the squared deviation of a variable from its mean.</p>
+<ul class="simple">
+<li><p>A large variance indicates that the data is spread out, while a small variance indicates that the data is clustered closely around the mean.</p></li>
+</ul>
+<p>We use the dataset “tips” as an example from the <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
+<span class="n">tips</span>                       
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>29.03</td>
+      <td>5.92</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>27.18</td>
+      <td>2.00</td>
+      <td>Female</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Male</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>244 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>The following codes draw a graph of the data in the column “tip”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span> <span class="c1"># axhline can draw a horizonal line parallel to the axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/98c2da5b983236848e6f3df0e51dd3d84c49bf65280edcc6210fd8e0263b6b60.png" src="_images/98c2da5b983236848e6f3df0e51dd3d84c49bf65280edcc6210fd8e0263b6b60.png" />
+</div>
+</div>
+<p>To compute the mean, we can use the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code> from <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>.</p>
+<ul class="simple">
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">mean</span></code> in <code class="docutils literal notranslate"><span class="pre">Numpy</span></code>can computer the average value of an array such as a list, Numpy’s ndarray or Pandas’s series.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.99827868852459)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since “tips” is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> type, we can directly use the methods of Pandas to it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.99827868852459)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To compute the variance, we can use the method <code class="docutils literal notranslate"><span class="pre">var()</span></code> from <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.9066085124966412)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.914454638062471)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The square root of the variance is called <code class="docutils literal notranslate"><span class="pre">standard</span> <span class="pre">deviation</span></code>.</p></li>
+</ul>
+</section>
+<section id="distribution">
+<h2><span class="section-number">8.2. </span>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
+<hr><p>In data analysis, the columns of a dataset represent random variables—quantities that fluctuate due to randomness. A <code class="docutils literal notranslate"><span class="pre">probability</span> <span class="pre">distribution</span></code> characterizes the likelihood of different values these variables may assume.</p>
+<section id="uniform-distribution">
+<h3><span class="section-number">8.2.1. </span>Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h3>
+<hr><p>The uniform distribution is a probability distribution where each value within a certain range is <strong>equally likely to occur</strong> and values outside of the range never occur.</p>
+<p>For the visualization of the distribution of data, we can draw the histogram graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="c1"># generate 10000 random datas uniformally distributed between 50 and 100</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span> <span class="c1"># use the histplot of seaborn to draw the histogram graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/fed3117c664e1b82abed1063b8649085ecc64c341a448acef7793f1b712c5010.png" src="_images/fed3117c664e1b82abed1063b8649085ecc64c341a448acef7793f1b712c5010.png" />
+</div>
+</div>
+<p>For uniformly distributed data, the histogram typically displays bars of approximately equal height, resulting in a <strong>flat</strong> or level appearance.</p>
+</section>
+<section id="normal-distribution">
+<h3><span class="section-number">8.2.2. </span>Normal distribution<a class="headerlink" href="#normal-distribution" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Normal</span> <span class="pre">distribution</span></code>, also known as the Gaussian distribution, is a probability distribution that appears as a <strong>“bell curve”</strong> when graphed. The normal distribution describes a symmetrical plot of data around its mean value, where the width of the curve is related to the standard deviation. <strong>The data near the mean are more frequent in occurrence than data far from the mean</strong>.</p>
+<p>The normal distribution is perhaps <strong>the most important distribution</strong>. Many real world phenomena, like IQ test scores and human heights/weights, roughly follow a normal distribution. Many common statistical tests also assume distributions are normal.</p>
+<p>The central limit theorem says that the <strong>sampling distribution of the mean will always be normally distributed</strong>, as long as the <strong>sample size is large enough</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="c1"># generate 10000 random data normall distributed between 50 and 100</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span> <span class="c1"># use the histplot of seaborn to draw the histogram graph</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/0e2545cd7274d286b1485c28726d421735787d9a0cac30088c5e7674418bd333.png" src="_images/0e2545cd7274d286b1485c28726d421735787d9a0cac30088c5e7674418bd333.png" />
+</div>
+</div>
+<p>For uniformly distributed data, the histogram typically displays a <strong>bell</strong> shape.</p>
+</section>
+</section>
+<section id="correlation">
+<h2><span class="section-number">8.3. </span>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
+<hr><p>There are three types of correlation coefficients that can be computed by the <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.corr()</span></code> method: <code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span> <span class="pre">(default)</span></code>, <code class="docutils literal notranslate"><span class="pre">Spearman</span> <span class="pre">Rank</span> <span class="pre">Correlation</span></code>, <code class="docutils literal notranslate"><span class="pre">Kendall</span> <span class="pre">Tau</span> <span class="pre">Correlation</span></code>.</p>
+<p>The value of all three correlation coefficients ranges from -1 to +1.  What is a good correlation? It depends on the use, usually <strong>at least 0.6 (or -0.6)</strong> to call it a good correlation.</p>
+<section id="pearson-correlation">
+<h3><span class="section-number">8.3.1. </span>Pearson correlation<a class="headerlink" href="#pearson-correlation" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span></code> measures how strongly and in which direction two numerical variables are related in a <strong>linear</strong> fashion.</p>
+<p>Its value ranges from -1 to +1. When its value is positive, it signifies a direct (positive) relationship; when its value is negative, it signifies an inverse (negative) relationship.</p>
+<ul class="simple">
+<li><p>Values of correlation closer to +1 or -1 suggest that the data points align more closely along a straight line, indicating a stronger linear relationship.</p></li>
+<li><p>Conversely, when correlation is near 0, the linear relationship is weak.</p></li>
+</ul>
+<p>We usually first draw a graph to visulize the relationship of two variables before computing the correaltion values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/e933174d0e6e384ae539b19c8b4947f1277c86943a4f55d9a9db4d3227e82cc5.png" src="_images/e933174d0e6e384ae539b19c8b4947f1277c86943a4f55d9a9db4d3227e82cc5.png" />
+</div>
+</div>
+<p>If the data is stored in a Pandas DataFrame, it is very convenient to compute the correlation between two columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">])</span> <span class="c1"># compute the Pearson correlation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.6757341092113645)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way is to use</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span></code> is <strong>most common</strong> of all the correlation measures.</p></li>
+<li><p>`Pearson Correlation is suitable when variables are <strong>normally distributed and linearly related</strong>.</p></li>
+</ul>
+</section>
+<section id="spearman-correlation">
+<h3><span class="section-number">8.3.2. </span>Spearman correlation<a class="headerlink" href="#spearman-correlation" title="Link to this heading">#</a></h3>
+<hr><p>The <code class="docutils literal notranslate"><span class="pre">Spearman</span> <span class="pre">correlation</span></code> coefficient is a measure of the <strong>monotonicity</strong> of the relationship between two <strong>ranked/ordered datasets</strong>. Its value varies between -1 and +1 with 0 implying no correlation. Correlations close to -1 or +1 imply a strong monotonic relationship. Positive correlations imply that as x increases, so does y. Negative correlations imply that as x increases, y decreases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> 
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;size&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/484711dc6aeab4dbee9a656e41ec5e6207a8c94cf821d99cc9432f9ff4db334e.png" src="_images/484711dc6aeab4dbee9a656e41ec5e6207a8c94cf821d99cc9432f9ff4db334e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">)</span> <span class="c1"># compute the spearman correlation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.46826792926211475)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> 
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;tip&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/814c4f7d2d46248d80d386b3ef04bf6a0ef8c40266405e59992c8840ced1d906.png" src="_images/814c4f7d2d46248d80d386b3ef04bf6a0ef8c40266405e59992c8840ced1d906.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Use Pandas’ <code class="docutils literal notranslate"><span class="pre">factorize(</span> <span class="pre">)</span></code> method to obtain a numeric representation of catogorical data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day_numeric&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># [1] is the orginal catogorical data</span>
+<span class="n">tips</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>day_numeric</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>29.03</td>
+      <td>5.92</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>27.18</td>
+      <td>2.00</td>
+      <td>Female</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Male</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>244 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;day_numeric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">)</span> <span class="c1"># compute the spearman correlation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.17434544550231088)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Kendall</span> <span class="pre">Tau</span> <span class="pre">correlation</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">Spearman</span> <span class="pre">correlation</span></code> but more focused on <strong>pairwise disagreements between two ranking lists</strong> and are more suitable for the data with many tied ranks. Due to space limitation, we omit its introduction.</p>
+<p>The following table summerizes the differences of the three correlation measures.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p><strong>Pearson</strong></p></th>
+<th class="head"><p><strong>Spearman</strong></p></th>
+<th class="head"><p><strong>Kendall Tau</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Relationship Measured</p></td>
+<td><p>Linear</p></td>
+<td><p>Monotonic (can be non-linear)</p></td>
+<td><p>Monotonic (based on ranks)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sensitivity to Outliers</p></td>
+<td><p>High</p></td>
+<td><p>Low</p></td>
+<td><p>Lower</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Type Requirement</p></td>
+<td><p>Continuous, Normally Distributed</p></td>
+<td><p>Ranked or Ordinal</p></td>
+<td><p>Ranked or Ordinal</p></td>
+</tr>
+<tr class="row-odd"><td><p>Distribution Assumption</p></td>
+<td><p>Assumes normality</p></td>
+<td><p>No distribution assumption</p></td>
+<td><p>No distribution assumption</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="hypothesis-test">
+<h2><span class="section-number">8.4. </span>*Hypothesis test<a class="headerlink" href="#hypothesis-test" title="Link to this heading">#</a></h2>
+<hr><p>Hypothesis testing enables data scientists to determine whether their findings, theories, or assumptions are the result of random chance or supported by statistical evidence.</p>
+<ul class="simple">
+<li><p>A hypothesis is a proposed explanation or prediction derived from prior knowledge or observation.</p></li>
+</ul>
+<p>Examples of a hypothesis: (1) there is no relationship between gender and the amount of tips; (2) smokers give more tips than non-smokers.</p>
+<p>There are two parts of a hypothesis:</p>
+<ul class="simple">
+<li><p><strong>Null Hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>):</strong>
+The null hypothesis proposes that there is no effect or difference between the variables in two or more samples. For example, a null hypothesis might state, <em>“There is no relationship between gender and the amount of tips.”</em>
+It is the default assumption and the one that is formally tested—either to be retained or rejected based on statistical evidence.</p></li>
+<li><p><strong>Alternative Hypothesis (<span class="math notranslate nohighlight">\(H_1\)</span>):</strong>
+The alternative hypothesis suggests that there is a meaningful effect or difference between the variables. For instance, it might state, <em>“Gender has an impact on the amount of tips.”</em>
+This hypothesis represents what we aim to support if the null hypothesis is rejected.</p></li>
+</ul>
+<p>Below are some hypothesis testing terms:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Level</span> <span class="pre">of</span> <span class="pre">Significance</span> <span class="pre">(α)</span></code>: often denoted as <strong>α</strong>, is the threshold we set to decide whether to reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<ul class="simple">
+<li><p>A common value is <strong>0.05</strong>, meaning we are willing to accept a 5% chance of a false assumption.</p></li>
+<li><p>If the <strong>p-value ≤ α</strong>, we <strong>reject</strong> the null hypothesis.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p-value</span></code>: The <strong>p-value</strong> tells us how likely it is to observe our data, or something more extreme, <strong>if the null hypothesis were true</strong>.</p>
+<ul class="simple">
+<li><p>A <strong>small p-value</strong> (typically ≤ 0.05) suggests that the observed result is unlikely under the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>, and we reject it.</p></li>
+<li><p>A <strong>large p-value</strong> indicates that the data is consistent with the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>, and we accept it.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Level</span></code>: The  confidence level tells us how confident we are that a <strong>confidence interval</strong> contains the true value of a population parameter (like the mean or proportion). <strong>Confidence level = 1 - <span class="math notranslate nohighlight">\(\alpha\)</span></strong>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is the level of significance.</p>
+<ul class="simple">
+<li><p>A <strong>95% confidence level</strong> means that if we repeated the experiment many times, about 95% of the resulting confidence intervals would contain the true value.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Confidence</span> <span class="pre">Interval</span> <span class="pre">(CI)</span></code>: A confidence interval is a <strong>range of values</strong> estimated from sample data that is likely to contain the true value of a population parameter.</p>
+<ul class="simple">
+<li><p>For example: “We are 95% confident that the true average height is between 170 cm and 175 cm.”</p></li>
+</ul>
+</li>
+</ol>
+<section id="t-test">
+<h3><span class="section-number">8.4.1. </span>t-test<a class="headerlink" href="#t-test" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Student's</span> <span class="pre">t-test</span></code> is a statistical test used to test whether the difference between the <strong>numerical values</strong> of two groups is statistically significant or not.</p>
+<p>In this test, the test statistic follows a <code class="docutils literal notranslate"><span class="pre">Student's</span> <span class="pre">t-distribution</span></code> under the null hypothesis. This distribution is similar to normal distribution but with <strong>slightly larger variance</strong>, and is more suitable for testing the real life sampled data. In addition to mean and varariance, it has another parameter called <code class="docutils literal notranslate"><span class="pre">degree</span> <span class="pre">of</span> <span class="pre">freedom</span></code>, which is the number of values in the final calculation of a statistic that are free to vary.</p>
+<p>There are 3 types t-tests in general and we can use the corresponding methods in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library:</p>
+<ul class="simple">
+<li><p>One sample t-test → <code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code></p></li>
+<li><p>Two independent sample t-test → <code class="docutils literal notranslate"><span class="pre">ttest_ind</span></code></p></li>
+<li><p>Two dependent sample t-test → <code class="docutils literal notranslate"><span class="pre">ttest_rel</span></code></p></li>
+</ul>
+<p>Two events are <code class="docutils literal notranslate"><span class="pre">independent</span></code> if the occurrence of one event does not affect the chances of the occurrence of the other event. In hypothestis tests, <code class="docutils literal notranslate"><span class="pre">independent</span></code> means one sampeld data is not affected by other sampled data.</p>
+</section>
+<section id="one-sample-t-test">
+<h3><span class="section-number">8.4.2. </span>One sample t-test<a class="headerlink" href="#one-sample-t-test" title="Link to this heading">#</a></h3>
+<hr><p>A <strong>one-sample t-test</strong> is to test whether the mean of a population equals to/not less than/not greater than a value specified in a null hypothesis. The syntax for the method <code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code> is below:</p>
+<table>
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">ttest_1samp(a, popmean, alternative='two-sided')</th>
+    </tr>
+    <tr>
+        <td style="text-align:left">a</td>
+        <td style="text-align:left">Array like, sampled observations</td>
+    </tr>
+    <tr>
+        <td style="text-align:left">popmean</td>
+        <td style="text-align:left">Usually float, expected value in null hypothesis</td>
+    </tr>
+    <tr>
+        <td style="text-align:left", rowspan=3>alternative</td>
+        <td style="text-align:left">"two-sided", H1: the mean of the sampled data is different than the given population mean </td>
+    </tr>
+    <tr>
+        <td style="text-align:left">"less", H1: the mean of the sampled data is less than the given population mean </td>
+    </tr>
+    <tr style="border-bottom:solid">
+        <td style="text-align:left">"greater", H1: the mean of the sampled data is greater than the given population mean</td>
+    </tr>
+</table>
+<br /><p>For example, we test the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>: the mean of tips is equal to 3.</p>
+<ul class="simple">
+<li><p>Install the library <code class="docutils literal notranslate"><span class="pre">Scipy</span></code> by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scipy</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.019432641422916876), pvalue=np.float64(0.9845119176410543), df=np.int64(243))
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code> return the t-statistics, p-value and the number of degrees of freedom.</p></li>
+</ul>
+<p>Suppose we choose a confidence level 95% (or equivalently, significance level <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>). Since the p-value is 0.98 &gt; 0.05, we do not reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. Namely, we can believe that the mean of tips is equal to 3 (the probability is 98.45%).</p>
+<p>For example, we test a one-sided null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>: the mean of tips is not less than 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">],</span> <span class="n">popmean</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;less&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.019432641422916876), pvalue=np.float64(0.49225595882052714), df=np.int64(243))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we choose a confidence level 95% (or equivalently, significance level <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>). Since the p-value is 0.49 &gt; 0.05, we do not reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. Namely, we can believe that the mean of tips is not less than 3 (the probability is 50.77%).</p>
+</section>
+<section id="two-sample-t-test">
+<h3><span class="section-number">8.4.3. </span>Two sample t-test<a class="headerlink" href="#two-sample-t-test" title="Link to this heading">#</a></h3>
+<hr><p>A <code class="docutils literal notranslate"><span class="pre">two-sample</span> <span class="pre">t-test</span></code> tests the null hypothesis such that the means of two populations are equal or the mean of one population is not less than/not greater than another.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">independent</span> <span class="pre">two</span> <span class="pre">samples</span></code>, this can be done by the method <code class="docutils literal notranslate"><span class="pre">ttest_ind()</span></code>, the syntex of which is below:</p>
+<table>
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">ttest_ind(a, b, equal_var=True, alternative='two-sided')</th>
+    </tr>
+    <tr>
+        <td style="text-align:left">a</td>
+        <td style="text-align:left">Array like, sampled observations</td>
+    </tr>
+    <tr>
+        <td style="text-align:left">b</td>
+        <td style="text-align:left">Array like, the other sampled observations</td>
+    </tr>
+    <tr>
+        <td style="text-align:left", rowspan=2>equal_var</td>
+        <td style="text-align:left">If True (default), perform a standard independent 2 sample test that assumes equal population variances 
+    </tr>
+    <tr>
+        <td style="text-align:left">If False, perform Welch’s t-test, which does not assume equal population variance</td>
+    </tr>
+    <tr>
+        <td style="text-align:left", rowspan=3>alternative</td>
+        <td style="text-align:left">"two-sided", H1: the mean of the sampled data is different than the other sampled data </td>
+    </tr>
+    <tr>
+        <td style="text-align:left">"less", H1: the mean of the sampled data is less than the other sampled data </td>
+    </tr>
+    <tr style="border-bottom:solid">
+        <td style="text-align:left">"greater", H1: the mean of the sampled data is greater than the other sampled data</td>
+    </tr>
+</table>
+<br /><p>For example, we want to test the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>: the amount of tips from male customers shows no difference with that of female cusotomers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+<span class="n">male_tip</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Male&quot;</span><span class="p">][</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span>
+<span class="n">female_tip</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span><span class="p">][</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">male_tip</span><span class="p">,</span> <span class="n">female_tip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(1.387859705421269), pvalue=np.float64(0.16645623503456755), df=np.float64(242.0))
+</pre></div>
+</div>
+</div>
+</div>
+<p>P-value is 0.16. If we choose a confidence level 95%, we should accept the null hypothsis <span class="math notranslate nohighlight">\(H_0\)</span> since 0.16&gt;0.05.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">dependent</span> <span class="pre">two</span> <span class="pre">samples</span></code>, this can be done by the method <code class="docutils literal notranslate"><span class="pre">ttest_rel()</span></code>, the syntex of which is similar to <code class="docutils literal notranslate"><span class="pre">ttest_ind</span></code>.</p>
+<ul class="simple">
+<li><p>Examples of dependent two samples such as students’ scores in two different exams but from the same group of students, or repeated sampling scores from the students in the same class.</p></li>
+</ul>
+</section>
+<section id="anova">
+<h3><span class="section-number">8.4.4. </span>Anova<a class="headerlink" href="#anova" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Analysis</span> <span class="pre">of</span> <span class="pre">Variance</span> <span class="pre">(ANOVA)</span></code> is a statistical formula used to compare variances to determine if there is any <strong>difference between the means two or more groups</strong>.</p>
+<p>Anova can be easiy done by the method <code class="docutils literal notranslate"><span class="pre">anova</span></code> in the library <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
+<ul class="simple">
+<li><p>Install the library <code class="docutils literal notranslate"><span class="pre">pingonin</span></code> by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">%pip</span></code> is more suitable for install libraries in the Jupyter notebook environment</p>
+</div>
+<p>The syntax for <code class="docutils literal notranslate"><span class="pre">anova</span></code> is below.</p>
+<table>
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">anova(data, between=None)</th>
+    </tr>
+    <tr>
+        <td style="text-align:left">data</td>
+        <td style="text-align:left">DataFrame</td>
+    </tr>
+    <tr style="text-align:left" >
+        <td style="text-align:left" rowspan=2>between</td>
+        <td style="text-align:left">String or list with N elements, name of column(s) in data containing the between-subject factor(s)</td>
+    </tr>
+    <tr style="border-bottom:solid">
+        <td style="text-align:left"> If between is a single string, a one-way ANOVA is computed. If between is a list with two or more elements, a N-way ANOVA is performed</td>
+    </tr>
+</table>
+</br><p>For example, the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>: the amount of tips from male customers shows no difference with that of female cusotomers, can also tested by <code class="docutils literal notranslate"><span class="pre">ANOVA</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">between</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Source</th>
+      <th>ddof1</th>
+      <th>ddof2</th>
+      <th>F</th>
+      <th>p_unc</th>
+      <th>np2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sex</td>
+      <td>1</td>
+      <td>242</td>
+      <td>1.926155</td>
+      <td>0.166456</td>
+      <td>0.007896</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There is much information in the output, but the most imoportant one if the <code class="docutils literal notranslate"><span class="pre">p-value</span></code> shown by the “p-unc”. Since the p-value 0.167 is larger than 0.05, we should accept the null hypothesis at a 95% confidence level. The test result is in consitent with that of the two sample t-test.</p>
+<p>For example, test the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>: there is no difference between the amount of tips and the day of the week.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">between</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Source</th>
+      <th>ddof1</th>
+      <th>ddof2</th>
+      <th>F</th>
+      <th>p_unc</th>
+      <th>np2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>day</td>
+      <td>3</td>
+      <td>240</td>
+      <td>1.672355</td>
+      <td>0.173589</td>
+      <td>0.020476</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Since the p-value 0.174 is larger than 0.05, we should accept the null hypothesis at a 95% confidence level.</p>
+<p>For example, test three null hypotheses:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: there is no difference between the amount of tips and whether the customer is a smoker or not.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: there is no difference between the amount of tips and the sex of the customers.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: there is no difference between the amount of tips and the interation of sex and smoker.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">between</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Source</th>
+      <th>SS</th>
+      <th>DF</th>
+      <th>MS</th>
+      <th>F</th>
+      <th>p_unc</th>
+      <th>np2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sex</td>
+      <td>3.672183</td>
+      <td>1.0</td>
+      <td>3.672183</td>
+      <td>1.912247</td>
+      <td>0.167999</td>
+      <td>0.007905</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>smoker</td>
+      <td>0.015000</td>
+      <td>1.0</td>
+      <td>0.015000</td>
+      <td>0.007811</td>
+      <td>0.929648</td>
+      <td>0.000033</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sex * smoker</td>
+      <td>0.639891</td>
+      <td>1.0</td>
+      <td>0.639891</td>
+      <td>0.333216</td>
+      <td>0.564313</td>
+      <td>0.001386</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Residual</td>
+      <td>460.884051</td>
+      <td>240.0</td>
+      <td>1.920350</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Since the p-values are all larger than 0.05, we should accept all the null hypothese at a 95% confidence level.</p>
+</section>
+<section id="chi-2-tests">
+<h3><span class="section-number">8.4.5. </span><span class="math notranslate nohighlight">\(\chi^2\)</span> tests<a class="headerlink" href="#chi-2-tests" title="Link to this heading">#</a></h3>
+<hr><p>Pearson’s Chi-Square Test is to evaluate the relationship between <strong>categorical variables</strong>, which determines whether significant differences of the <strong>frquencies</strong> within data. Since the statistic used is <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution, we call this test <span class="math notranslate nohighlight">\(\chi^2\)</span> test.</p>
+<p>It can be easiy done by the method <code class="docutils literal notranslate"><span class="pre">chi2_independence</span></code> in the library <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
+<table>
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">chi2_independence(data, x, y)</th>
+    </tr>
+    <tr>
+        <td style="text-align:left">data</td>
+        <td style="text-align:left">DataFrame</td>
+    </tr>
+    <tr style="text-align:left; border-bottom:solid" >
+        <td style="text-align:left" rowspan=2>x, y</td>
+        <td style="text-align:left">String, the variables names for the Chi-squared test. Must be names of columns in data</td>
+    </tr>
+</table>
+<br /><p>For example, we want to know whether the survival rate is related with gender from the titanic data.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: there is no difference between the gender in the survivals.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">)</span>
+<span class="n">titanic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>0</td>
+      <td>2</td>
+      <td>male</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13.0000</td>
+      <td>S</td>
+      <td>Second</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30.0000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>B</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>0</td>
+      <td>3</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>23.4500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30.0000</td>
+      <td>C</td>
+      <td>First</td>
+      <td>man</td>
+      <td>True</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.7500</td>
+      <td>Q</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Queenstown</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">chi2_independence</span><span class="p">(</span><span class="n">titanic</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;survived&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(sex           female        male
+ survived                        
+ 0         193.474747  355.525253
+ 1         120.525253  221.474747,
+ sex       female   male
+ survived               
+ 0           81.5  467.5
+ 1          232.5  109.5,
+                  test    lambda        chi2  dof          pval    cramer  \
+ 0             pearson  1.000000  260.717020  1.0  1.197357e-58  0.540936   
+ 1        cressie-read  0.666667  260.413906  1.0  1.394102e-58  0.540621   
+ 2      log-likelihood  0.000000  266.344480  1.0  7.106137e-60  0.546743   
+ 3       freeman-tukey -0.500000  276.922737  1.0  3.517208e-62  0.557494   
+ 4  mod-log-likelihood -1.000000  293.475958  1.0  8.693443e-66  0.573915   
+ 5              neyman -2.000000  349.098487  1.0  6.659745e-78  0.625943   
+ 
+    power  
+ 0    1.0  
+ 1    1.0  
+ 2    1.0  
+ 3    1.0  
+ 4    1.0  
+ 5    1.0  )
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a lot of information in the output. But we can only care about the <code class="docutils literal notranslate"><span class="pre">p-value</span></code> in the first row of the column “pval”. Since it is much smaller than 0.05, we can reject the null hypothesis at confidence level 95%.</p>
+<ul class="simple">
+<li><p>The first two part of the information are <strong>expected frequencies</strong>, <strong>observed frequencies</strong>, respectively. The thrid part of the information is all the test results with different values of lambda.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Anova test can also be done by the library <code class="docutils literal notranslate"><span class="pre">statesmodels</span></code> and <span class="math notranslate nohighlight">\(\chi^2\)</span> test can also be done by the library <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. But they are more cumbesome than <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Standardization</span></code> is a process of transforming the data to make it more suitable for some statistical analysis or machine learning.</p>
+<p>The main reasons include:</p>
+<ul class="simple">
+<li><p>To remove the effect of different units and scales</p>
+<ul>
+<li><p>Variables may have different units (e.g., dollars, percentages, counts).</p></li>
+<li><p>Without standardization, variables with larger scales may dominate the model (especially in regression or distance-based models like KNN, SVM).</p></li>
+</ul>
+</li>
+<li><p>To compare variable importance</p>
+<ul>
+<li><p>In regression, standardized coefficients allow you to compare which variable has a stronger effect on the outcome.</p></li>
+</ul>
+</li>
+<li><p>To improve model performance</p>
+<ul>
+<li><p>Many machine learning models (e.g., gradient descent-based, PCA, K-means) work better when input features are on similar scales.</p></li>
+</ul>
+</li>
+<li><p>To meet assumptions of some statistical tests</p>
+<ul>
+<li><p>Some models assume variables are normally distributed or centered around 0, especially in multivariate analysis.</p></li>
+</ul>
+</li>
+</ul>
+<p>There are two common methods for standardizing data: z-score standardization and min-max standardization.</p>
+</section>
+<section id="z-score-standardization-standardscaler">
+<h3><span class="section-number">8.4.6. </span>Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)<a class="headerlink" href="#z-score-standardization-standardscaler" title="Link to this heading">#</a></h3>
+<hr>
+<p>Transforms data to have mean (<span class="math notranslate nohighlight">\(\mu\)</span>) = 0 and standard deviation (<span class="math notranslate nohighlight">\(\sigma\)</span>) = 1.</p>
+<div class="math notranslate nohighlight">
+\[
+z = \frac{x - \mu}{\sigma}
+\]</div>
+<p>In python, it is easy to standardize the data with the method <code class="docutils literal notranslate"><span class="pre">fit_transform(</span> <span class="pre">)</span></code> from the class <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> of the library <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">crashes</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;car_crashes&#39;</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">crash_standard</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">crashes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># standarize the data except the last column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crash_standard</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print the first 10 rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.56593556  1.2126951  -0.21131068  0.60853209  0.80725756  0.94325764
+  -0.02289992]
+ [ 0.68844283  0.75670887  0.18761539  0.45935701  1.03314134  0.0708756
+  -0.98177845]
+ [ 1.61949811 -0.48361373  0.54740815  1.67605228  1.95169961 -0.33770122
+   0.32112519]
+ [-0.92865317 -0.39952407 -0.8917629  -0.594276   -0.89196792 -0.04841772
+   1.26617765]
+ [-0.5366299   0.01692    -0.63009543 -0.63369765 -0.29104195 -0.2914793
+   0.22027622]
+ [-1.22267063 -0.01511416 -0.5833691  -0.9356316  -1.38129335  1.02964051
+   1.32270187]
+ [ 0.10040792  0.57951992 -0.01564416  0.1166575   0.54542553  1.42128062
+   0.6907692 ]
+ [-2.42324191 -1.49769509 -1.92383077 -1.71868879 -2.17430102  2.19175919
+   0.06330968]
+ [ 0.51693265 -0.62025945  0.17768604  0.64840171  0.7568227   1.54737129
+   0.39391538]]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Min-Max Normalization</strong> (0-1 Scaling)</p></li>
+</ol>
+<p>This method scales data to the <strong>[0, 1]</strong> range.</p>
+<div class="math notranslate nohighlight">
+\[
+x' = \frac{x - \min(x)}{\max(x) - \min(x)}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">crashes</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;car_crashes&#39;</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">crash_standard</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">crashes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># standarize the data except the last column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crash_standard</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print the first 10 rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.67777778 0.73504832 0.34718769 0.66344003 0.72262679 0.62393111
+  0.45684192]
+ [0.70555556 0.61608775 0.42806394 0.63303046 0.77737321 0.39042695
+  0.24636258]
+ [0.91666667 0.29250457 0.50100651 0.88105566 1.         0.28106617
+  0.5323574 ]
+ [0.33888889 0.31444241 0.20923623 0.41824574 0.31079324 0.35849657
+  0.73980184]
+ [0.42777778 0.42308697 0.26228538 0.41020958 0.45643693 0.29343805
+  0.51022048]
+ [0.27222222 0.41472969 0.27175844 0.34865988 0.19219766 0.64705258
+  0.75220923]
+ [0.57222222 0.56986158 0.38685613 0.56317063 0.65916775 0.75188004
+  0.61349638]
+ [0.         0.02794463 0.         0.18903246 0.         0.95810844
+  0.47576542]
+ [0.66666667 0.25685558 0.42605092 0.67156751 0.71040312 0.78562981
+  0.54833527]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>There is no negative values after standarization for the min-max method.</p></li>
+</ul>
+</section>
+</section>
+<section id="factor-analysis">
+<h2><span class="section-number">8.5. </span>*Factor analysis<a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h2>
+<hr><p>Factor analysis is a statistical method used to <strong>identify underlying latent factors</strong> that explain the patterns of correlations among observed variables. It helps to uncover the hidden structure in the data by modeling observed variables as linear combinations of a smaller number of unobserved factors. In simple terms, <strong>factor analysis reduces the dimensionality of data by assuming that multiple observed variables are influenced by fewer common factors</strong>.</p>
+<p>Factor analysis is extensively applied in fields such as market research, advertising, psychology, finance, and operations research. Take market research for an example, it helps identify price-sensitive customer segments, uncover brand attributes that affect consumer preferences, and provides insights into the factors influencing the choice of distribution channels.</p>
+<p>The main objective of factor analysis is to <code class="docutils literal notranslate"><span class="pre">reduce</span> <span class="pre">the</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">observed</span> <span class="pre">variables</span> <span class="pre">and</span> <span class="pre">find</span> <span class="pre">unobservable</span> <span class="pre">variables</span></code>, which can be achieved in two steps:</p>
+<ul class="simple">
+<li><p>Factor extraction</p>
+<ul>
+<li><p>This process uses statistical methods (such as principal component analysis or maximum likelihood) to find factors that explain the maximum shared variance among the variables, <strong>determining the number of factors and their initial loadings</strong> (the strength of the relationship between factors and variables).</p></li>
+</ul>
+</li>
+<li><p>Factor rotation</p>
+<ul>
+<li><p>Factor rotation is applied after factor extraction to adjust the factor loading matrix in order to make the factors easier to interpret. <strong>Rotation redistributes the loadings to achieve a simpler and more meaningful structure (close to 1 or 0)</strong>, where each factor loads highly on a few variables and minimally on others. Common rotation methods include orthogonal rotation (e.g., Varimax), which keeps factors uncorrelated, and oblique rotation (e.g., Promax), which allows factors to be correlated.</p></li>
+</ul>
+</li>
+</ul>
+<p>In short, factor extraction finds “what factors exist,” and factor rotation makes those factors “easier to understand.”</p>
+</section>
+<section id="structural-equation-model">
+<h2><span class="section-number">8.6. </span>*Structural equation model<a class="headerlink" href="#structural-equation-model" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Structural</span> <span class="pre">Equation</span> <span class="pre">Modeling</span></code> (SEM) is especially useful when the research involves <strong>latent variables</strong> (concepts that can’t be directly observed) and <strong>complex relationships</strong> among multiple variables—such as mediation, moderation or multiple simultaneous dependencies.</p>
+<blockquote>
+<div><p>Variables like job satisfaction, employee engagement, customer loyalty, leadership style, or brand perception are not directly measurable.</p>
+</div></blockquote>
+<p>These are called latent variables and typically measured through surveys using multiple items. SEM allows us to model the relationship between latent constructs and their observed indicators (this is called the measurement model).</p>
+<blockquote>
+<div><p>SEM is also ideal when the model includes complex cause-effect relationships and we want to test direct and indirect effects simultaneously.</p>
+</div></blockquote>
+<p>For example, we can use SEM to test the following relationship:</p>
+<ul>
+<li><p>Does corporate Social Responsibility (CSR) positively influence a company’s Brand Image, which in turn enhances Customer Satisfaction, ultimately leading to increased Customer Loyalty.</p>
+<p>Corporate Social Responsibility (CSR) → Brand Image → Customer Satisfaction → Customer Loyalty</p>
+</li>
+<li><p>How motivation and leadership style affect both job performance and turnover intention at the same time.</p>
+<p>Motivation        ──→ Job Performance<br />
+Leadership Style  ──→ Job Performance<br />
+Motivation        ──→ Turnover Intention<br />
+Leadership Style  ──→ Turnover Intention</p>
+</li>
+</ul>
+<section id="an-example-of-using-sem">
+<h3><span class="section-number">8.6.1. </span>An example of using SEM<a class="headerlink" href="#an-example-of-using-sem" title="Link to this heading">#</a></h3>
+<hr>
+<p>We use an example in one marketing research showing how tuo use SEM.</p>
+<section id="research-question-assumptions-and-variables">
+<h4><span class="section-number">8.6.1.1. </span>Research question, assumptions and variables<a class="headerlink" href="#research-question-assumptions-and-variables" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Research question: this study aims to explore the impact mechanism of social media advertising (e.g., Instagram ads) on consumers’ purchase intention, and to analyze the mediating role of brand trust and the moderating role of personal innovativeness.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Research Hypotheses:</p>
+<ul>
+<li><p>H1: Attractiveness of social media advertising positively influences brand trust.</p></li>
+<li><p>H2: Brand trust positively influences purchase intention.</p></li>
+<li><p>H3: Brand trust mediates the relationship between advertising attractiveness and purchase intention.</p></li>
+<li><p>H4: Personal innovativeness moderates the relationship between advertising attractiveness and brand trust (the effect is stronger among highly innovative individuals).</p></li>
+</ul>
+</li>
+</ul>
+<p>The hypotheses is illustrated by the following graph.</p>
+<pre  class="mermaid">
+        graph LR
+  X[Social media advertising X] --&gt; M[Brand Trust M]
+  M --&gt; Y[Purchase Intention Y]
+  X --&gt; Y
+  Z[Personal Innovativeness Z] --&gt; X
+  Z --&gt; M
+    </pre><ul class="simple">
+<li><p>Variable Design:</p>
+<ul>
+<li><p>Independent Variable (X): Attractiveness of social media advertising (measured by: advertising creativity, visual design, information usefulness).</p></li>
+<li><p>Mediating Variable (M): Brand trust (measured by: brand reliability, brand integrity).</p></li>
+<li><p>Dependent Variable (Y): Purchase intention (measured by: willingness to buy, willingness to recommend to others).</p></li>
+<li><p>Moderating Variable (Z): Personal innovativeness (categorical variable: high vs. low innovativeness groups).</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Moderating</span> <span class="pre">varaible</span></code>: Determines whether the strength or direction of the effect of the independent variable (X) on the dependent variable (Y) changes depending on <strong>different levels of another variable</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mediating</span> <span class="pre">variable</span></code>: Explains how the independent variable (X) influences the dependent variable (Y) through an <strong>intermediate</strong> mechanism (M).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="data-collection">
+<h4><span class="section-number">8.6.1.2. </span>Data collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h4>
+<p>We can collect the data by questionaries: there aer 3 questions related with social media advertisement, 3 questions related with brand trust and 1 questions related personal innovativeness.</p>
+<ul class="simple">
+<li><p>Generally, the number of respondents should be at least 10 times of the number of questions in a questionary.</p></li>
+<li><p>Each latent variable was measured using 3-5 Likert-scale items (e.g., “The design of this advertisement is appealing to me,” with response options ranging from 1 = strongly disagree to 5 = strongly agree).</p></li>
+</ul>
+<p>The following codes generate the data in a DataFrame by randome samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># data collection</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Sample size</span>
+
+<span class="c1"># True scores of latent variables (used to generate observed items)</span>
+<span class="n">latent_ad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>  <span class="c1"># Latent variable: Ad Attractiveness</span>
+<span class="n">latent_trust</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">latent_ad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span>
+<span class="p">)</span>  <span class="c1"># Brand Trust (influenced by ads)</span>
+<span class="n">latent_purchase</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mf">0.7</span> <span class="o">*</span> <span class="n">latent_trust</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">latent_ad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># Purchase Intention</span>
+
+<span class="c1"># Generate observed items (with measurement error)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="c1"># Ad Attractiveness items (3 items)</span>
+        <span class="s2">&quot;ad1&quot;</span><span class="p">:</span> <span class="n">latent_ad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s2">&quot;ad2&quot;</span><span class="p">:</span> <span class="n">latent_ad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s2">&quot;ad3&quot;</span><span class="p">:</span> <span class="n">latent_ad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="c1"># Brand Trust items (3 items)</span>
+        <span class="s2">&quot;trust1&quot;</span><span class="p">:</span> <span class="n">latent_trust</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s2">&quot;trust2&quot;</span><span class="p">:</span> <span class="n">latent_trust</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s2">&quot;trust3&quot;</span><span class="p">:</span> <span class="n">latent_trust</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="c1"># Purchase Intention items (2 items)</span>
+        <span class="s2">&quot;purchase1&quot;</span><span class="p">:</span> <span class="n">latent_purchase</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="s2">&quot;purchase2&quot;</span><span class="p">:</span> <span class="n">latent_purchase</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+        <span class="c1"># Moderator variable (Personal Innovativeness, 0 = Low, 1 = High)</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>  <span class="c1"># Random group assignment</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ad1</th>
+      <th>ad2</th>
+      <th>ad3</th>
+      <th>trust1</th>
+      <th>trust2</th>
+      <th>trust3</th>
+      <th>purchase1</th>
+      <th>purchase2</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.190021</td>
+      <td>4.470220</td>
+      <td>4.693156</td>
+      <td>2.963560</td>
+      <td>2.819397</td>
+      <td>2.635941</td>
+      <td>4.828307</td>
+      <td>4.269241</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6.207140</td>
+      <td>6.087824</td>
+      <td>6.818595</td>
+      <td>2.453288</td>
+      <td>2.744874</td>
+      <td>3.046170</td>
+      <td>2.999860</td>
+      <td>3.254426</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.190805</td>
+      <td>5.949379</td>
+      <td>5.019433</td>
+      <td>2.408478</td>
+      <td>2.339786</td>
+      <td>3.355576</td>
+      <td>3.601268</td>
+      <td>4.194445</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.367330</td>
+      <td>3.988168</td>
+      <td>3.371123</td>
+      <td>2.814195</td>
+      <td>2.959416</td>
+      <td>2.576147</td>
+      <td>2.680936</td>
+      <td>3.006890</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.275398</td>
+      <td>4.112914</td>
+      <td>3.589247</td>
+      <td>3.025766</td>
+      <td>3.292522</td>
+      <td>2.107603</td>
+      <td>4.664010</td>
+      <td>5.209560</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>6.368672</td>
+      <td>5.803688</td>
+      <td>5.694210</td>
+      <td>4.569970</td>
+      <td>2.989834</td>
+      <td>3.871037</td>
+      <td>4.494799</td>
+      <td>4.961940</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>7.038577</td>
+      <td>6.155933</td>
+      <td>6.660471</td>
+      <td>3.135916</td>
+      <td>3.609047</td>
+      <td>3.361674</td>
+      <td>2.929658</td>
+      <td>3.933962</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>5.280736</td>
+      <td>5.394691</td>
+      <td>5.342487</td>
+      <td>1.443446</td>
+      <td>2.170921</td>
+      <td>2.257418</td>
+      <td>4.310186</td>
+      <td>3.887843</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>4.722381</td>
+      <td>5.403578</td>
+      <td>5.740632</td>
+      <td>4.776973</td>
+      <td>4.515847</td>
+      <td>3.133695</td>
+      <td>5.886338</td>
+      <td>5.420127</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>5.107155</td>
+      <td>6.696215</td>
+      <td>5.499004</td>
+      <td>2.872156</td>
+      <td>2.339892</td>
+      <td>2.988231</td>
+      <td>2.271778</td>
+      <td>3.164029</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>300 rows × 9 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="pre-test">
+<h4><span class="section-number">8.6.1.3. </span>Pre-test<a class="headerlink" href="#pre-test" title="Link to this heading">#</a></h4>
+<p>In research methodology (especially in fields such as <strong>surveys</strong>, psychometrics, and educational assessment), <code class="docutils literal notranslate"><span class="pre">reliability</span></code> and <code class="docutils literal notranslate"><span class="pre">validity</span></code> are two core indicators for evaluating the quality of a measurement scale.</p>
+<ol class="arabic simple">
+<li><p>Reliablity</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">Reliability</span></code> refers to the consistency of measurement. It means that if the questions in a questionnaire are asked repeatedly to the same person, their responses should remain consistent each time.</p>
+<p>One common types of reliability is internal consistency and typically measured using <strong>Cronbach’s alpha</strong> (α).</p>
+<ul class="simple">
+<li><p>α ≥ 0.9: Excellent</p></li>
+<li><p>0.8 ≤ α &lt; 0.9: Good</p></li>
+<li><p>0.7 ≤ α &lt; 0.8: Acceptable</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Cronbach’s</span> <span class="pre">alpha</span> <span class="pre">(α)</span></code> can be computed by the method <code class="docutils literal notranslate"><span class="pre">cronbach_alpha</span></code> in the library <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
+<table>
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">cronbach_alpha(data, items=None, scores=None)</th>
+    </tr>
+    <tr>
+        <td style="text-align:left">data</td>
+        <td style="text-align:left">DataFrame</td>
+    </tr>
+    <tr style="text-align:left" >
+        <td style="text-align:left">item</td>
+        <td style="text-align:left">String, column in "data" with the items names</td>
+    </tr>
+    <tr style="text-align:left; border-bottom:solid" >
+        <td style="text-align:left">scores</td>
+        <td style="text-align:left">String, column in "data" with the scores</td>
+    </tr>
+</table>
+<br /><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+
+<span class="c1"># cronbach alpha test</span>
+<span class="n">cronbach_result</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">cronbach_alpha</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cronbach alpha value is </span><span class="si">{</span><span class="n">cronbach_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cronbach alpha value is 0.89
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The method “cronbach_alpha” returns the <code class="docutils literal notranslate"><span class="pre">Cronbach's</span> <span class="pre">alpha</span></code> and the corresponding 95% confidence interval.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Validity</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">Validity</span></code> refers to whether a test or study measures what it claims to measure. For example, can a certain set of IQ test questions truly reflect a person’s real intelligence?</p>
+<p>There are several common types of validity listed below.</p>
+<ol class="arabic simple">
+<li><p><strong>Construct Validity</strong></p>
+<ul class="simple">
+<li><p>Assesses whether the instrument truly measures the theoretical construct it is intended to.</p></li>
+</ul>
+</li>
+</ol>
+<p>Common Methods / Indicators:</p>
+<ul class="simple">
+<li><p>Exploratory Factor Analysis (EFA): Identifies underlying factor structures.</p></li>
+<li><p>Confirmatory Factor Analysis (CFA): Tests how well the proposed model fits the observed data. Key fit indices include:</p>
+<ul>
+<li><p>Chi-square/df ratio (χ²/df)</p></li>
+<li><p>RMSEA (Root Mean Square Error of Approximation)</p></li>
+<li><p>CFI (Comparative Fit Index)</p></li>
+<li><p>TLI (Tucker-Lewis Index)</p></li>
+<li><p>SRMR (Standardized Root Mean Square Residual)</p></li>
+</ul>
+</li>
+<li><p>Average Variance Extracted (AVE): Assesses convergent validity (AVE ≥ 0.50 is acceptable).</p></li>
+<li><p>Composite Reliability (CR): Evaluates internal consistency of latent variables.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">semopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">calc_stats</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="c1"># Generate latent variables with assumed relationships</span>
+<span class="c1"># BrandImage ~ N(0,1)</span>
+<span class="n">BrandImage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="c1"># Customer Satisfaction influenced by BrandImage + noise</span>
+<span class="n">CustSatis</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">BrandImage</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="c1"># Customer Loyalty influenced by BrandImage and CustSatis + noise</span>
+<span class="n">CustLoyal</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">BrandImage</span> <span class="o">+</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">CustSatis</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Function to generate observed indicators from latent variables</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_indicators</span><span class="p">(</span><span class="n">latent_var</span><span class="p">):</span>
+    <span class="c1"># Each latent variable is measured by 3 indicators with measurement error (std=0.3)</span>
+    <span class="k">return</span> <span class="n">latent_var</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Generate observed variables for each latent variable</span>
+<span class="n">BI</span> <span class="o">=</span> <span class="n">generate_indicators</span><span class="p">(</span><span class="n">BrandImage</span><span class="p">)</span>  <span class="c1"># Brand Image indicators</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">generate_indicators</span><span class="p">(</span><span class="n">CustSatis</span><span class="p">)</span>   <span class="c1"># Customer Satisfaction indicators</span>
+<span class="n">CL</span> <span class="o">=</span> <span class="n">generate_indicators</span><span class="p">(</span><span class="n">CustLoyal</span><span class="p">)</span>   <span class="c1"># Customer Loyalty indicators</span>
+
+<span class="c1"># Combine all observed indicators into one dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">BI</span><span class="p">,</span> <span class="n">CS</span><span class="p">,</span> <span class="n">CL</span><span class="p">])</span>
+
+<span class="c1"># Create DataFrame with appropriate column names matching SEM model</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BI1&#39;</span><span class="p">,</span> <span class="s1">&#39;BI2&#39;</span><span class="p">,</span> <span class="s1">&#39;BI3&#39;</span><span class="p">,</span> <span class="s1">&#39;CS1&#39;</span><span class="p">,</span> <span class="s1">&#39;CS2&#39;</span><span class="p">,</span> <span class="s1">&#39;CS3&#39;</span><span class="p">,</span> <span class="s1">&#39;CL1&#39;</span><span class="p">,</span> <span class="s1">&#39;CL2&#39;</span><span class="p">,</span> <span class="s1">&#39;CL3&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Transform data to simulate Likert-scale scores (1 to 5)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">df</span>          <span class="c1"># Shift mean to around 3</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># Clip values to range [1, 5]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Round to 2 decimal places</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample of simulated data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Define SEM model using lavaan-style syntax</span>
+<span class="n">model_desc</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">BrandImage =~ BI1 + BI2 + BI3</span>
+<span class="s1">CustSatis =~ CS1 + CS2 + CS3</span>
+<span class="s1">CustLoyal =~ CL1 + CL2 + CL3</span>
+
+<span class="s1">CustSatis ~ BrandImage</span>
+<span class="s1">CustLoyal ~ BrandImage + CustSatis</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="c1"># Initialize and fit SEM model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">model_desc</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Inspect and print path coefficients and loadings</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Path coefficients and loadings:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">inspect</span><span class="p">())</span>
+
+<span class="c1"># Calculate and print model fit statistics (CFI, TLI, RMSEA, AIC, BIC)</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">calc_stats</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Model fit indices:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="p">[[</span><span class="s1">&#39;CFI&#39;</span><span class="p">,</span> <span class="s1">&#39;TLI&#39;</span><span class="p">,</span> <span class="s1">&#39;RMSEA&#39;</span><span class="p">,</span> <span class="s1">&#39;AIC&#39;</span><span class="p">,</span> <span class="s1">&#39;BIC&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample of simulated data:
+    BI1   BI2   BI3   CS1   CS2   CS3   CL1   CL2   CL3
+0  3.61  3.38  3.51  3.50  2.92  2.72  3.60  3.81  4.09
+1  3.25  2.92  2.88  2.17  2.08  2.15  2.58  2.35  2.58
+2  3.24  3.87  3.84  3.91  3.98  3.35  4.17  4.13  4.02
+3  5.00  4.43  4.59  4.64  4.23  4.42  5.00  4.71  5.00
+4  2.84  3.24  2.74  3.31  3.09  2.75  3.18  2.61  3.14
+
+Path coefficients and loadings:
+          lval  op        rval  Estimate  Std. Err    z-value p-value
+0    CustSatis   ~  BrandImage  0.709237  0.037495  18.915261     0.0
+1    CustLoyal   ~  BrandImage  0.387441  0.062317   6.217298     0.0
+2    CustLoyal   ~   CustSatis  0.523353  0.072203    7.24833     0.0
+3          BI1   ~  BrandImage  1.000000         -          -       -
+4          BI2   ~  BrandImage  1.002760  0.028184  35.579601     0.0
+5          BI3   ~  BrandImage  1.001947  0.026477  37.841908     0.0
+6          CS1   ~   CustSatis  1.000000         -          -       -
+7          CS2   ~   CustSatis  1.017153  0.031754  32.032238     0.0
+8          CS3   ~   CustSatis  1.020169  0.031555  32.329417     0.0
+9          CL1   ~   CustLoyal  1.000000         -          -       -
+10         CL2   ~   CustLoyal  0.984234  0.030301  32.481949     0.0
+11         CL3   ~   CustLoyal  0.991315  0.029436  33.677374     0.0
+12  BrandImage  ~~  BrandImage  0.836740  0.076387  10.953963     0.0
+13   CustLoyal  ~~   CustLoyal  0.230526  0.023739    9.71088     0.0
+14   CustSatis  ~~   CustSatis  0.216182  0.022635   9.550606     0.0
+15         BI1  ~~         BI1  0.099460  0.011123   8.941709     0.0
+16         BI2  ~~         BI2  0.087458  0.010387   8.419813     0.0
+17         BI3  ~~         BI3  0.062645  0.008972   6.982363     0.0
+18         CL1  ~~         CL1  0.088397   0.01132   7.808606     0.0
+19         CL2  ~~         CL2  0.108024  0.012346    8.74958     0.0
+20         CL3  ~~         CL3  0.093793  0.011534     8.1317     0.0
+21         CS1  ~~         CS1  0.094962   0.01064    8.92529     0.0
+22         CS2  ~~         CS2  0.078832  0.009772   8.067484     0.0
+23         CS3  ~~         CS3  0.075517  0.009604   7.862728     0.0
+
+Model fit indices:
+            CFI       TLI     RMSEA        AIC         BIC
+Value  0.999754  0.999631  0.011327  41.833862  119.613294
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Discriminant Validity</p>
+<ul class="simple">
+<li><p>Assesses the extent to which constructs that should not be related are indeed distinct.</p></li>
+</ul>
+</li>
+</ol>
+<p>Common Methods / Indicators:</p>
+<ul class="simple">
+<li><p>Fornell-Larcker Criterion: The square root of the AVE for each construct should be greater than its correlations with other constructs.</p></li>
+<li><p>HTMT Ratio (Heterotrait-Monotrait): Measures inter-construct correlations. HTMT values &lt; 0.85 (or 0.90) are considered acceptable.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>Content Validity</strong></p>
+<ul class="simple">
+<li><p>Examines whether the items adequately cover the domain of the construct.</p></li>
+</ul>
+</li>
+</ol>
+<p>How to do?</p>
+<ul class="simple">
+<li><p>Expert review (at least three subject matter experts assess the relevance of each item).</p></li>
+<li><p>Pilot study (feedback from a small sample of respondents is used to revise unclear wording).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;average is </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;variance is </span><span class="si">{</span><span class="n">var</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>average is  51.15
+variance is  841.51
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">8.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<hr><div class="exercise admonition" id="mean-var">
+
+<p class="admonition-title"><span class="caption-number">Exercise 8.1 </span></p>
+<section id="exercise-content">
+<p>Caculute the average and variance for the following data using Python codes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution dropdown admonition" id="statistics-solution-1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#mean-var"> Exercise 8.1</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;average is </span><span class="si">{mean: .2f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;variance is </span><span class="si">{var: .2f}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div>
+<script src="https://giscus.app/client.js"
+        data-repo="RobinChen121/book-Python-Data-Science-en"
+        data-repo-id="R_kgDOOt-49A"
+        data-category="General"
+        data-category-id="DIC_kwDOOt-49M4C2R1O"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Toogle google translation -->
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en',
+                  includedLanguages: 'en,zh-CN,zh-TW,ja,ko,de,ru,fr,es,it,pt,hi,ar,fa',
+layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+      }
+</script>
+<script type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
+<br></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="draw-pictures.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Draw graphs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="machine-learning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Python machine learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">8.1. Mean, Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">8.2. Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">8.2.1. Uniform distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">8.2.2. Normal distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">8.3. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">8.3.1. Pearson correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">8.3.2. Spearman correlation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">8.4. *Hypothesis test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">8.4.1. t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">8.4.2. One sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">8.4.3. Two sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">8.4.4. Anova</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests">8.4.5. <span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">8.4.6. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">8.5. *Factor analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">8.6. *Structural equation model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">8.6.1. An example of using SEM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">8.6.1.1. Research question, assumptions and variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.6.1.2. Data collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">8.6.1.3. Pre-test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zhen Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
