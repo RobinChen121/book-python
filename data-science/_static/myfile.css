@@ -1,5 +1,6 @@
 p {
     text-align: justify;
+    margin-bottom: 1em;
 }
 
 /*调整主内容区域的最大宽度，这个内容是也包含边栏的 */
@@ -14,9 +15,6 @@ h2, h3 {
     margin-top: 1.5em;
 }
 
-p {
-    margin-bottom: 1em;
-}
 
 /* 侧边栏当前活动项的样式 */
 /*.current > .reference {*/
@@ -58,8 +56,15 @@ table.docutils thead th {
 }
 
 /* 4. 鼠标悬停：保持你要求的淡紫色 */
+/*类名前面有点，标签名前面没有点*/
+/*.dataframe (点)：去仓库里找 Class 名字 叫 dataframe 的箱子
+(空格)：进入箱子内部。
+tbody (无符号)：寻找标签名为 <tbody> 的层级。
+(空格)：再进入内部。
+tr (无符号)：寻找名为 <tr> 的行。
+:hover (冒号)：检查这行当前是否正被鼠标悬停*/
 .dataframe tbody tr:hover, table tbody tr:hover {
-    background-color: #e0a7f4 !important;
+    background-color: #bbd7fa !important;
     transition: background-color 0.2s ease;
 }
 
@@ -121,7 +126,7 @@ table td, table th {
     zoom: 1;
 }
 
-
+/*# 是 id 选择器*/
 #google_translate_element .goog-te-gadget {
     display: inline-flex !important;
     margin-right: 20px;
@@ -161,7 +166,7 @@ body {
     display: none !important;
 }
 
-/* 控制翻译框显示文字颜色，旨在jupyter book 中有必要使用 */
+/* 控制翻译框显示文字颜色，旨在jupyter book 中有必要使用，根据主题变化 */
 .VIpgJd-ZVi9od-xl07Ob-lTBxed span {
     color: var(--pst-color-text-base);
 }
@@ -198,6 +203,7 @@ img[src="https://www.google.com/images/cleardot.gif"] {
 
 /*!* 当系统处于深色模式时，隐藏默认 logo，显示深色专用 logo *!*/
 /* 强制让深色模式下的 logo 反色变白 */
+/*连着两个点表示两个样式叠加的类： class = "class1 class1"*/
 .logo__image.only-dark {
     /*颜色反转，亮度提升*/
     /*filter 属性允许对图像进行像素级的色彩处理*/

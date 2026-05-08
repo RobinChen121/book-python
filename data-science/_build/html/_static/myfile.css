@@ -1,5 +1,6 @@
 p {
     text-align: justify;
+    margin-bottom: 1em;
 }
 
 /*调整主内容区域的最大宽度，这个内容是也包含边栏的 */
@@ -14,9 +15,6 @@ h2, h3 {
     margin-top: 1.5em;
 }
 
-p {
-    margin-bottom: 1em;
-}
 
 /* 侧边栏当前活动项的样式 */
 /*.current > .reference {*/
@@ -59,7 +57,7 @@ table.docutils thead th {
 
 /* 4. 鼠标悬停：保持你要求的淡紫色 */
 .dataframe tbody tr:hover, table tbody tr:hover {
-    background-color: #e0a7f4 !important;
+    background-color: #bbd7fa !important;
     transition: background-color 0.2s ease;
 }
 
@@ -161,7 +159,7 @@ body {
     display: none !important;
 }
 
-/* 控制翻译框显示文字颜色，旨在jupyter book 中有必要使用 */
+/* 控制翻译框显示文字颜色，旨在jupyter book 中有必要使用，根据主题变化 */
 .VIpgJd-ZVi9od-xl07Ob-lTBxed span {
     color: var(--pst-color-text-base);
 }
