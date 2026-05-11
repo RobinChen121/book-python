@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -66,7 +66,7 @@
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Python statistics" href="statistics.html" />
+    <link rel="next" title="Python statistics" href="statistics.html" />
     <link rel="prev" title="6. Define functions" href="define-function.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,9 +197,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -638,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a8dd485590&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x26fde909590&gt;]
 </pre></div>
 </div>
 <img alt="_images/15ee875acfffffeda285bcb1f6b39cde7c2bdbbc1199d9b6af18adea89ef6b34.png" src="_images/15ee875acfffffeda285bcb1f6b39cde7c2bdbbc1199d9b6af18adea89ef6b34.png" />
@@ -651,7 +652,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a8dd50a0d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x26fde9960d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/18630ccbff37f114b0237411f016c5c77873b793b4dbca6c65d8c23300848ac8.png" src="_images/18630ccbff37f114b0237411f016c5c77873b793b4dbca6c65d8c23300848ac8.png" />
@@ -667,7 +668,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a8dd29a5d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x26fde71a5d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/b790829347df5189759ba8af86a35525f59528a133fc6c9bf6da29dd0a4f9fed.png" src="_images/b790829347df5189759ba8af86a35525f59528a133fc6c9bf6da29dd0a4f9fed.png" />
@@ -1486,7 +1487,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/58010f03ac921e0d607a5bae811aca95d8fa169b2d14f077e31efacc3281ec39.png" src="_images/58010f03ac921e0d607a5bae811aca95d8fa169b2d14f077e31efacc3281ec39.png" />
+<img alt="_images/e1aaa009ce71547df56bc8956f8910e90771bf7eb2e71be84dc199bf9d038d86.png" src="_images/e1aaa009ce71547df56bc8956f8910e90771bf7eb2e71be84dc199bf9d038d86.png" />
 </div>
 </div>
 <p>Seaborn also provides the <code class="docutils literal notranslate"><span class="pre">regplot</span></code> function, which can perform linear regression along with a 95% confidence interval fitting on the data.</p>
@@ -1500,7 +1501,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/aee6408cb3292ea0a6f8b95341f5baab1e55066e29b1d08eef155653585b3852.png" src="_images/aee6408cb3292ea0a6f8b95341f5baab1e55066e29b1d08eef155653585b3852.png" />
+<img alt="_images/d42ae678ffb4e4ecd913e1c0d218c53ea67acc799d92e02feccf34fa44a8a69c.png" src="_images/d42ae678ffb4e4ecd913e1c0d218c53ea67acc799d92e02feccf34fa44a8a69c.png" />
 </div>
 </div>
 <p>For curve fitting, you can further configure parameters such as <code class="docutils literal notranslate"><span class="pre">order</span></code>, <code class="docutils literal notranslate"><span class="pre">logx</span></code>, and <code class="docutils literal notranslate"><span class="pre">logistic</span></code> in regplot to generate the desired plot.</p>
@@ -1524,7 +1525,7 @@ Seaborn provides built-in functions for generating common statistical visualizat
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3004523b885cd0c8ea5255e4724a55d7d64de9026d4e4eb9271d32eb2684d9db.png" src="_images/3004523b885cd0c8ea5255e4724a55d7d64de9026d4e4eb9271d32eb2684d9db.png" />
+<img alt="_images/30ca527e14fdf501953ffe8dd40d5b349123fa1c220d517fb9f74420473c222e.png" src="_images/30ca527e14fdf501953ffe8dd40d5b349123fa1c220d517fb9f74420473c222e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1888,7 +1889,7 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Python statistics</p>
+        <p class="prev-next-title">Python statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

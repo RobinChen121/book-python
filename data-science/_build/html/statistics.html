@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Python statistics &#8212; Python Data Science</title>
+    <title>Python statistics &#8212; Python Data Science</title>
   
   
   
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -502,7 +502,7 @@ window.runMermaid = runMermaid;</script>
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Python machine learning" href="machine-learning.html" />
+    <link rel="next" title="Introduction to machine learning" href="machine-learning.html" />
     <link rel="prev" title="7. Draw graphs" href="draw-pictures.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -633,9 +633,10 @@ window.runMermaid = runMermaid;</script>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Python statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -866,37 +867,37 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">8.1. Mean, Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">8.2. Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">8.2.1. Uniform distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">8.2.2. Normal distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">Mean, Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">Normal distribution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">8.3. Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">8.3.1. Pearson correlation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">8.3.2. Spearman correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">Pearson correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">Spearman correlation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">8.4. *Hypothesis test</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">8.4.1. t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">8.4.2. One sample t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">8.4.3. Two sample t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">8.4.4. Anova</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests">8.4.5. <span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">8.4.6. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">*Hypothesis test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">One sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">Two sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">Anova</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests"><span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">8.5. *Factor analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">8.6. *Structural equation model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">8.6.1. An example of using SEM</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">8.6.1.1. Research question, assumptions and variables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.6.1.2. Data collection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">8.6.1.3. Pre-test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">*Factor analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">*Structural equation model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">An example of using SEM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">Research question, assumptions and variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">Pre-test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -909,7 +910,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-statistics">
-<h1><span class="section-number">8. </span>Python statistics<a class="headerlink" href="#python-statistics" title="Link to this heading">#</a></h1>
+<h1>Python statistics<a class="headerlink" href="#python-statistics" title="Link to this heading">#</a></h1>
 <hr>
 <div class="tip admonition">
 <p class="admonition-title">Goals and prerequisites</p>
@@ -935,7 +936,7 @@ document.write(`
 </div>
 <p>In this chapter, we explain how to perform statistical analysis on data using Python. Rather than delving into the theoretical and computational details of the statistical concepts and methods, we aim to provide intuitive, visual explanations that are easy to understand.</p>
 <section id="mean-variance">
-<h2><span class="section-number">8.1. </span>Mean, Variance<a class="headerlink" href="#mean-variance" title="Link to this heading">#</a></h2>
+<h2>Mean, Variance<a class="headerlink" href="#mean-variance" title="Link to this heading">#</a></h2>
 <hr><p>The <code class="docutils literal notranslate"><span class="pre">mean</span></code> value is the <code class="docutils literal notranslate"><span class="pre">average</span></code> value of a number of numeric data. To calculate the mean, find the sum of all numeric values, and divide the sum by the number of values.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Variance</span></code> is the squared deviation of a variable from its mean.</p>
 <ul class="simple">
@@ -1172,10 +1173,10 @@ document.write(`
 </ul>
 </section>
 <section id="distribution">
-<h2><span class="section-number">8.2. </span>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
+<h2>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
 <hr><p>In data analysis, the columns of a dataset represent random variables—quantities that fluctuate due to randomness. A <code class="docutils literal notranslate"><span class="pre">probability</span> <span class="pre">distribution</span></code> characterizes the likelihood of different values these variables may assume.</p>
 <section id="uniform-distribution">
-<h3><span class="section-number">8.2.1. </span>Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h3>
+<h3>Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h3>
 <hr><p>The uniform distribution is a probability distribution where each value within a certain range is <strong>equally likely to occur</strong> and values outside of the range never occur.</p>
 <p>For the visualization of the distribution of data, we can draw the histogram graph.</p>
 <div class="cell docutils container">
@@ -1193,13 +1194,13 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/5dc3ad338f67c51ecc57c0019c7883bac57369ab73522303d6d670394b8b0980.png" src="_images/5dc3ad338f67c51ecc57c0019c7883bac57369ab73522303d6d670394b8b0980.png" />
+<img alt="_images/062207e7d328c19c5bbb55ea94241d1d2b1bfa7be9d67c27e87fe149f5aa1f16.png" src="_images/062207e7d328c19c5bbb55ea94241d1d2b1bfa7be9d67c27e87fe149f5aa1f16.png" />
 </div>
 </div>
 <p>For uniformly distributed data, the histogram typically displays bars of approximately equal height, resulting in a <strong>flat</strong> or level appearance.</p>
 </section>
 <section id="normal-distribution">
-<h3><span class="section-number">8.2.2. </span>Normal distribution<a class="headerlink" href="#normal-distribution" title="Link to this heading">#</a></h3>
+<h3>Normal distribution<a class="headerlink" href="#normal-distribution" title="Link to this heading">#</a></h3>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Normal</span> <span class="pre">distribution</span></code>, also known as the Gaussian distribution, is a probability distribution that appears as a <strong>“bell curve”</strong> when graphed. The normal distribution describes a symmetrical plot of data around its mean value, where the width of the curve is related to the standard deviation. <strong>The data near the mean are more frequent in occurrence than data far from the mean</strong>.</p>
 <p>The normal distribution is perhaps <strong>the most important distribution</strong>. Many real world phenomena, like IQ test scores and human heights/weights, roughly follow a normal distribution. Many common statistical tests also assume distributions are normal.</p>
 <p>The central limit theorem says that the <strong>sampling distribution of the mean will always be normally distributed</strong>, as long as the <strong>sample size is large enough</strong>.</p>
@@ -1217,18 +1218,18 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/7f368e4981ef12f1e920fce99fec7852ae7deb63ccba4cd259d15090c61c5b96.png" src="_images/7f368e4981ef12f1e920fce99fec7852ae7deb63ccba4cd259d15090c61c5b96.png" />
+<img alt="_images/f1f0b91adf69e3cc3619cb61ef645ef3340da7059256e924dd3ce32f4f3184fa.png" src="_images/f1f0b91adf69e3cc3619cb61ef645ef3340da7059256e924dd3ce32f4f3184fa.png" />
 </div>
 </div>
 <p>For uniformly distributed data, the histogram typically displays a <strong>bell</strong> shape.</p>
 </section>
 </section>
 <section id="correlation">
-<h2><span class="section-number">8.3. </span>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
+<h2>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
 <hr><p>There are three types of correlation coefficients that can be computed by the <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.corr()</span></code> method: <code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span> <span class="pre">(default)</span></code>, <code class="docutils literal notranslate"><span class="pre">Spearman</span> <span class="pre">Rank</span> <span class="pre">Correlation</span></code>, <code class="docutils literal notranslate"><span class="pre">Kendall</span> <span class="pre">Tau</span> <span class="pre">Correlation</span></code>.</p>
 <p>The value of all three correlation coefficients ranges from -1 to +1.  What is a good correlation? It depends on the use, usually <strong>at least 0.6 (or -0.6)</strong> to call it a good correlation.</p>
 <section id="pearson-correlation">
-<h3><span class="section-number">8.3.1. </span>Pearson correlation<a class="headerlink" href="#pearson-correlation" title="Link to this heading">#</a></h3>
+<h3>Pearson correlation<a class="headerlink" href="#pearson-correlation" title="Link to this heading">#</a></h3>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span></code> measures how strongly and in which direction two numerical variables are related in a <strong>linear</strong> fashion.</p>
 <p>Its value ranges from -1 to +1. When its value is positive, it signifies a direct (positive) relationship; when its value is negative, it signifies an inverse (negative) relationship.</p>
 <ul class="simple">
@@ -1246,7 +1247,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/58e239f051c1ec462edf163cfda50c029e605c1f5cee8d2939a722d63f341d17.png" src="_images/58e239f051c1ec462edf163cfda50c029e605c1f5cee8d2939a722d63f341d17.png" />
+<img alt="_images/078e58faa35a290e3b8d8d2ac1b53a9068d0ad26d708e131ccdad7338330faa0.png" src="_images/078e58faa35a290e3b8d8d2ac1b53a9068d0ad26d708e131ccdad7338330faa0.png" />
 </div>
 </div>
 <p>If the data is stored in a Pandas DataFrame, it is very convenient to compute the correlation between two columns.</p>
@@ -1269,7 +1270,7 @@ document.write(`
 </ul>
 </section>
 <section id="spearman-correlation">
-<h3><span class="section-number">8.3.2. </span>Spearman correlation<a class="headerlink" href="#spearman-correlation" title="Link to this heading">#</a></h3>
+<h3>Spearman correlation<a class="headerlink" href="#spearman-correlation" title="Link to this heading">#</a></h3>
 <hr><p>The <code class="docutils literal notranslate"><span class="pre">Spearman</span> <span class="pre">correlation</span></code> coefficient is a measure of the <strong>monotonicity</strong> of the relationship between two <strong>ranked/ordered datasets</strong>. Its value varies between -1 and +1 with 0 implying no correlation. Correlations close to -1 or +1 imply a strong monotonic relationship. Positive correlations imply that as x increases, so does y. Negative correlations imply that as x increases, y decreases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,7 +1288,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;size&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/e44d896d6d5ce9a24d059eb12931c9180d347e0477845b2a806fb2850de0798d.png" src="_images/e44d896d6d5ce9a24d059eb12931c9180d347e0477845b2a806fb2850de0798d.png" />
+<img alt="_images/f294ad1856bbcc20225a9705b6a5a245a606f56202082f321d45d91ebee131bb.png" src="_images/f294ad1856bbcc20225a9705b6a5a245a606f56202082f321d45d91ebee131bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1318,7 +1319,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/87e1b93ab42fefd12036c6095919c106d0a9f072df8212e5995eaf52e6bf0645.png" src="_images/87e1b93ab42fefd12036c6095919c106d0a9f072df8212e5995eaf52e6bf0645.png" />
+<img alt="_images/5519eb76ad2b4924fa71fb8ddf23c12840f2dfdb7312d43997df4d6ebe11c0b0.png" src="_images/5519eb76ad2b4924fa71fb8ddf23c12840f2dfdb7312d43997df4d6ebe11c0b0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1538,7 +1539,7 @@ document.write(`
 </section>
 </section>
 <section id="hypothesis-test">
-<h2><span class="section-number">8.4. </span>*Hypothesis test<a class="headerlink" href="#hypothesis-test" title="Link to this heading">#</a></h2>
+<h2>*Hypothesis test<a class="headerlink" href="#hypothesis-test" title="Link to this heading">#</a></h2>
 <hr><p>Hypothesis testing enables data scientists to determine whether their findings, theories, or assumptions are the result of random chance or supported by statistical evidence.</p>
 <ul class="simple">
 <li><p>A hypothesis is a proposed explanation or prediction derived from prior knowledge or observation.</p></li>
@@ -1579,7 +1580,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 </li>
 </ol>
 <section id="t-test">
-<h3><span class="section-number">8.4.1. </span>t-test<a class="headerlink" href="#t-test" title="Link to this heading">#</a></h3>
+<h3>t-test<a class="headerlink" href="#t-test" title="Link to this heading">#</a></h3>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Student's</span> <span class="pre">t-test</span></code> is a statistical test used to test whether the difference between the <strong>numerical values</strong> of two groups is statistically significant or not.</p>
 <p>In this test, the test statistic follows a <code class="docutils literal notranslate"><span class="pre">Student's</span> <span class="pre">t-distribution</span></code> under the null hypothesis. This distribution is similar to normal distribution but with <strong>slightly larger variance</strong>, and is more suitable for testing the real life sampled data. In addition to mean and varariance, it has another parameter called <code class="docutils literal notranslate"><span class="pre">degree</span> <span class="pre">of</span> <span class="pre">freedom</span></code>, which is the number of values in the final calculation of a statistic that are free to vary.</p>
 <p>There are 3 types t-tests in general and we can use the corresponding methods in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library:</p>
@@ -1591,7 +1592,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 <p>Two events are <code class="docutils literal notranslate"><span class="pre">independent</span></code> if the occurrence of one event does not affect the chances of the occurrence of the other event. In hypothestis tests, <code class="docutils literal notranslate"><span class="pre">independent</span></code> means one sampeld data is not affected by other sampled data.</p>
 </section>
 <section id="one-sample-t-test">
-<h3><span class="section-number">8.4.2. </span>One sample t-test<a class="headerlink" href="#one-sample-t-test" title="Link to this heading">#</a></h3>
+<h3>One sample t-test<a class="headerlink" href="#one-sample-t-test" title="Link to this heading">#</a></h3>
 <hr><p>A <strong>one-sample t-test</strong> is to test whether the mean of a population equals to/not less than/not greater than a value specified in a null hypothesis. The syntax for the method <code class="docutils literal notranslate"><span class="pre">ttest_1samp</span></code> is below:</p>
 <table>
     <tr style="border-top:solid; border-bottom:solid">
@@ -1660,7 +1661,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 <p>Suppose we choose a confidence level 95% (or equivalently, significance level <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>). Since the p-value is 0.49 &gt; 0.05, we do not reject the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>. Namely, we can believe that the mean of tips is not less than 3 (the probability is 50.77%).</p>
 </section>
 <section id="two-sample-t-test">
-<h3><span class="section-number">8.4.3. </span>Two sample t-test<a class="headerlink" href="#two-sample-t-test" title="Link to this heading">#</a></h3>
+<h3>Two sample t-test<a class="headerlink" href="#two-sample-t-test" title="Link to this heading">#</a></h3>
 <hr><p>A <code class="docutils literal notranslate"><span class="pre">two-sample</span> <span class="pre">t-test</span></code> tests the null hypothesis such that the means of two populations are equal or the mean of one population is not less than/not greater than another.</p>
 <p>For <code class="docutils literal notranslate"><span class="pre">independent</span> <span class="pre">two</span> <span class="pre">samples</span></code>, this can be done by the method <code class="docutils literal notranslate"><span class="pre">ttest_ind()</span></code>, the syntex of which is below:</p>
 <table>
@@ -1720,7 +1721,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 </ul>
 </section>
 <section id="anova">
-<h3><span class="section-number">8.4.4. </span>Anova<a class="headerlink" href="#anova" title="Link to this heading">#</a></h3>
+<h3>Anova<a class="headerlink" href="#anova" title="Link to this heading">#</a></h3>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Analysis</span> <span class="pre">of</span> <span class="pre">Variance</span> <span class="pre">(ANOVA)</span></code> is a statistical formula used to compare variances to determine if there is any <strong>difference between the means two or more groups</strong>.</p>
 <p>Anova can be easiy done by the method <code class="docutils literal notranslate"><span class="pre">anova</span></code> in the library <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
 <ul class="simple">
@@ -1937,7 +1938,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 <p>Since the p-values are all larger than 0.05, we should accept all the null hypothese at a 95% confidence level.</p>
 </section>
 <section id="chi-2-tests">
-<h3><span class="section-number">8.4.5. </span><span class="math notranslate nohighlight">\(\chi^2\)</span> tests<a class="headerlink" href="#chi-2-tests" title="Link to this heading">#</a></h3>
+<h3><span class="math notranslate nohighlight">\(\chi^2\)</span> tests<a class="headerlink" href="#chi-2-tests" title="Link to this heading">#</a></h3>
 <hr><p>Pearson’s Chi-Square Test is to evaluate the relationship between <strong>categorical variables</strong>, which determines whether significant differences of the <strong>frquencies</strong> within data. Since the statistic used is <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution, we call this test <span class="math notranslate nohighlight">\(\chi^2\)</span> test.</p>
 <p>It can be easiy done by the method <code class="docutils literal notranslate"><span class="pre">chi2_independence</span></code> in the library <code class="docutils literal notranslate"><span class="pre">pingouin</span></code>.</p>
 <table>
@@ -2277,7 +2278,7 @@ This hypothesis represents what we aim to support if the null hypothesis is reje
 <p>There are two common methods for standardizing data: z-score standardization and min-max standardization.</p>
 </section>
 <section id="z-score-standardization-standardscaler">
-<h3><span class="section-number">8.4.6. </span>Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)<a class="headerlink" href="#z-score-standardization-standardscaler" title="Link to this heading">#</a></h3>
+<h3>Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)<a class="headerlink" href="#z-score-standardization-standardscaler" title="Link to this heading">#</a></h3>
 <hr>
 <p>Transforms data to have mean (<span class="math notranslate nohighlight">\(\mu\)</span>) = 0 and standard deviation (<span class="math notranslate nohighlight">\(\sigma\)</span>) = 1.</p>
 <div class="math notranslate nohighlight">
@@ -2369,7 +2370,7 @@ x' = \frac{x - \min(x)}{\max(x) - \min(x)}
 </section>
 </section>
 <section id="factor-analysis">
-<h2><span class="section-number">8.5. </span>*Factor analysis<a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h2>
+<h2>*Factor analysis<a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h2>
 <hr><p>Factor analysis is a statistical method used to <strong>identify underlying latent factors</strong> that explain the patterns of correlations among observed variables. It helps to uncover the hidden structure in the data by modeling observed variables as linear combinations of a smaller number of unobserved factors. In simple terms, <strong>factor analysis reduces the dimensionality of data by assuming that multiple observed variables are influenced by fewer common factors</strong>.</p>
 <p>Factor analysis is extensively applied in fields such as market research, advertising, psychology, finance, and operations research. Take market research for an example, it helps identify price-sensitive customer segments, uncover brand attributes that affect consumer preferences, and provides insights into the factors influencing the choice of distribution channels.</p>
 <p>The main objective of factor analysis is to <code class="docutils literal notranslate"><span class="pre">reduce</span> <span class="pre">the</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">observed</span> <span class="pre">variables</span> <span class="pre">and</span> <span class="pre">find</span> <span class="pre">unobservable</span> <span class="pre">variables</span></code>, which can be achieved in two steps:</p>
@@ -2388,7 +2389,7 @@ x' = \frac{x - \min(x)}{\max(x) - \min(x)}
 <p>In short, factor extraction finds “what factors exist,” and factor rotation makes those factors “easier to understand.”</p>
 </section>
 <section id="structural-equation-model">
-<h2><span class="section-number">8.6. </span>*Structural equation model<a class="headerlink" href="#structural-equation-model" title="Link to this heading">#</a></h2>
+<h2>*Structural equation model<a class="headerlink" href="#structural-equation-model" title="Link to this heading">#</a></h2>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Structural</span> <span class="pre">Equation</span> <span class="pre">Modeling</span></code> (SEM) is especially useful when the research involves <strong>latent variables</strong> (concepts that can’t be directly observed) and <strong>complex relationships</strong> among multiple variables—such as mediation, moderation or multiple simultaneous dependencies.</p>
 <blockquote>
 <div><p>Variables like job satisfaction, employee engagement, customer loyalty, leadership style, or brand perception are not directly measurable.</p>
@@ -2410,11 +2411,11 @@ Leadership Style  ──→ Turnover Intention</p>
 </li>
 </ul>
 <section id="an-example-of-using-sem">
-<h3><span class="section-number">8.6.1. </span>An example of using SEM<a class="headerlink" href="#an-example-of-using-sem" title="Link to this heading">#</a></h3>
+<h3>An example of using SEM<a class="headerlink" href="#an-example-of-using-sem" title="Link to this heading">#</a></h3>
 <hr>
 <p>We use an example in one marketing research showing how tuo use SEM.</p>
 <section id="research-question-assumptions-and-variables">
-<h4><span class="section-number">8.6.1.1. </span>Research question, assumptions and variables<a class="headerlink" href="#research-question-assumptions-and-variables" title="Link to this heading">#</a></h4>
+<h4>Research question, assumptions and variables<a class="headerlink" href="#research-question-assumptions-and-variables" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Research question: this study aims to explore the impact mechanism of social media advertising (e.g., Instagram ads) on consumers’ purchase intention, and to analyze the mediating role of brand trust and the moderating role of personal innovativeness.</p></li>
 </ul>
@@ -2454,7 +2455,7 @@ Leadership Style  ──→ Turnover Intention</p>
 </div></blockquote>
 </section>
 <section id="data-collection">
-<h4><span class="section-number">8.6.1.2. </span>Data collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h4>
+<h4>Data collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h4>
 <p>We can collect the data by questionaries: there aer 3 questions related with social media advertisement, 3 questions related with brand trust and 1 questions related personal innovativeness.</p>
 <ul class="simple">
 <li><p>Generally, the number of respondents should be at least 10 times of the number of questions in a questionary.</p></li>
@@ -2677,7 +2678,7 @@ Leadership Style  ──→ Turnover Intention</p>
 </div>
 </section>
 <section id="pre-test">
-<h4><span class="section-number">8.6.1.3. </span>Pre-test<a class="headerlink" href="#pre-test" title="Link to this heading">#</a></h4>
+<h4>Pre-test<a class="headerlink" href="#pre-test" title="Link to this heading">#</a></h4>
 <p>In research methodology (especially in fields such as <strong>surveys</strong>, psychometrics, and educational assessment), <code class="docutils literal notranslate"><span class="pre">reliability</span></code> and <code class="docutils literal notranslate"><span class="pre">validity</span></code> are two core indicators for evaluating the quality of a measurement scale.</p>
 <ol class="arabic simple">
 <li><p>Reliablity</p></li>
@@ -2911,10 +2912,10 @@ variance is  841.51
 </section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">8.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <hr><div class="exercise admonition" id="mean-var">
 
-<p class="admonition-title"><span class="caption-number">Exercise 8.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span></p>
 <section id="exercise-content">
 <p>Caculute the average and variance for the following data using Python codes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
@@ -2924,7 +2925,7 @@ variance is  841.51
 </div>
 <div class="solution dropdown admonition" id="statistics-solution-1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#mean-var"> Exercise 8.1</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#mean-var"> Exercise 1</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -3011,7 +3012,7 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Python machine learning</p>
+        <p class="prev-next-title">Introduction to machine learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3031,37 +3032,37 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">8.1. Mean, Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">8.2. Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">8.2.1. Uniform distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">8.2.2. Normal distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">Mean, Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">Normal distribution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">8.3. Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">8.3.1. Pearson correlation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">8.3.2. Spearman correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">Pearson correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-correlation">Spearman correlation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">8.4. *Hypothesis test</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">8.4.1. t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">8.4.2. One sample t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">8.4.3. Two sample t-test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">8.4.4. Anova</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests">8.4.5. <span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">8.4.6. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-test">*Hypothesis test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sample-t-test">One sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-sample-t-test">Two sample t-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">Anova</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-tests"><span class="math notranslate nohighlight">\(\chi^2\)</span> tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">8.5. *Factor analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">8.6. *Structural equation model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">8.6.1. An example of using SEM</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">8.6.1.1. Research question, assumptions and variables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.6.1.2. Data collection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">8.6.1.3. Pre-test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">*Factor analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-equation-model">*Structural equation model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-using-sem">An example of using SEM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-assumptions-and-variables">Research question, assumptions and variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-test">Pre-test</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

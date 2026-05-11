@@ -16,11 +16,12 @@ parts:
   - file: draw-pictures  
 
 - caption: Python Advanced
-  numbered: true
+  numbered: false
   chapters:
   - file: statistics
   - file: machine-learning
   - file: introduction-to-class
+  - file: introduction-to-pytorch
 
 - caption: Python hands-on projects
   numbered: false
