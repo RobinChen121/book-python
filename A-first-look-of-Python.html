@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -197,9 +197,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -478,7 +479,7 @@ document.write(`
 <p><img alt="title" src="_images/guido.jpeg" /></p>
 <p>Python was created by a Dutch programmer Guido van Rossum. During the Christmas holiday in 1989, he decided to develop a new scripting interpreter to pass the time. His goal was to create a successor to the ABC programming language, and thus Python was born.</p>
 <p>The name “Python” was chosen not because of the snake, but because Guido van Rossum was a big fan of the BBC television show Monty Python’s Flying Circus. However, since “python” also means a large snake in English, many Python-related tools and books use a snake as their logo or icon.</p>
-<p>Python 2.0 was released on October 16, 2000, while Python 3.0 was released on December 3, 2008. Python 3 is not backward-compatible with Python 2 code. Currently, Python 3 is the dominant version, and all Python programs in this book are based on Python 3.</p>
+<p>Python 2.0 was released on October 16, 2000, while Python 3.0 was released on December 3, 2008. Python 3 is <strong>not backward-compatible</strong> with Python 2 code. Currently, Python 3 is the dominant version, and all Python programs in this book are based on Python 3</p>
 </section>
 <section id="features-of-python">
 <h2><span class="section-number">1.2. </span>Features of Python<a class="headerlink" href="#features-of-python" title="Link to this heading">#</a></h2>
@@ -573,7 +574,7 @@ document.write(`
 <h2><span class="section-number">1.3. </span>Python installation<a class="headerlink" href="#python-installation" title="Link to this heading">#</a></h2>
 <hr>
 <p>There are generally several ways to use Python. One option is to install <strong>Anaconda</strong>, while another is to install <strong>Python together with an integrated development environment (IDE)</strong> such as <strong>PyCharm</strong> or <strong>VS Code</strong>.</p>
-<p>Anaconda comes with a built-in IDE, Spyder, and includes a wide range of commonly used libraries, such as NumPy, Pandas, Matplotlib, and Scikit-learn. It also supports other development environments, including Jupyter Notebook, IPython, and RStudio. For beginners who are just starting to learn Python, <strong>Jupyter Notebook or Spyder is highly recommended</strong> for coding Python.</p>
+<p>Anaconda comes with a built-in IDE, Spyder, and includes a wide range of commonly used libraries, such as NumPy, Pandas, Matplotlib, and Scikit-learn. It also supports other development environments, including Jupyter Notebook, IPython, and RStudio. For beginners who are just starting to learn Python, <strong>Jupyter Lab/Notebook or Spyder is highly recommended</strong> for coding Python.</p>
 <p>The specific installation steps are not detailed here. Please visit the official websites to download and install the required software. For example:</p>
 <ul class="simple">
 <li><p><strong>Anaconda installation:</strong></p>
@@ -880,7 +881,7 @@ Exponentiation: 1000
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>

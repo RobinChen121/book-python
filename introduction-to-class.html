@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Python Object Oriented Programming* &#8212; Python Data Science</title>
+    <title>Python Object Oriented Programming* &#8212; Python Data Science</title>
   
   
   
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -64,8 +64,8 @@
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data cleaning about Excel files" href="projects.html" />
-    <link rel="prev" title="9. Python machine learning" href="machine-learning.html" />
+    <link rel="next" title="Introduction to deep learning and Pytorch" href="introduction-to-pytorch.html" />
+    <link rel="prev" title="Introduction to machine learning" href="machine-learning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,9 +195,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -428,14 +429,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-object-attribute-method">10.1. Class, Object, Attribute, Method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-class-init">10.2. Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance-and-method-overriding">10.3. Class Inheritance and Method Overriding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-methods-of-a-class">10.4. *Special (or “magic”) methods of a class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-attribute-of-a-class">10.5. *Special (or “magic”) attribute of a class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-related-methodssetattr-getattr">10.6. Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-method-and-static-method">10.7. *Class method and static method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateclass">10.8. dateclass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-object-attribute-method">Class, Object, Attribute, Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-class-init">Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance-and-method-overriding">Class Inheritance and Method Overriding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-methods-of-a-class">*Special (or “magic”) methods of a class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-attribute-of-a-class">*Special (or “magic”) attribute of a class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-related-methodssetattr-getattr">Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-method-and-static-method">*Class method and static method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateclass">dateclass</a></li>
 </ul>
             </nav>
         </div>
@@ -448,10 +449,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-object-oriented-programming">
-<h1><span class="section-number">10. </span>Python Object Oriented Programming*<a class="headerlink" href="#python-object-oriented-programming" title="Link to this heading">#</a></h1>
+<h1>Python Object Oriented Programming*<a class="headerlink" href="#python-object-oriented-programming" title="Link to this heading">#</a></h1>
 <hr><p>Python is a programming language that supports object-oriented programming (OOP). Object-oriented programming is a paradigm that encapsulates data and the functions that operate on it within objects. By organizing code through classes and objects, <strong>it makes programs clearer, easier to maintain, and more extensible and reusable</strong>, making it particularly well-suited for developing large and complex systems.</p>
 <section id="class-object-attribute-method">
-<h2><span class="section-number">10.1. </span>Class, Object, Attribute, Method<a class="headerlink" href="#class-object-attribute-method" title="Link to this heading">#</a></h2>
+<h2>Class, Object, Attribute, Method<a class="headerlink" href="#class-object-attribute-method" title="Link to this heading">#</a></h2>
 <hr><p>In object-oriented programming, a class is a template or blueprint for objects, describing the attributes (variables) and behaviors (methods) of a certain type of entity. An object, on the other hand, is an instance of a class, concretely embodying the class’s attributes and behaviors. For example, if we define “Employee” as a class, it can include attributes such as name, salary, years of service, and position; a specific employee, like Zhang San or Li Si, would be an instance of this class. To use an analogy, a class is like a “cake mold,” and an object is the “cake” made from that mold.</p>
 <p>Python uses <code class="docutils literal notranslate"><span class="pre">class</span></code> to define a class, and within the class further defines class attributes (data) and methods (functions). The syntax is as follows:</p>
 <table>   
@@ -546,7 +547,7 @@ My department is business school.
 </div>
 </section>
 <section id="initialize-a-class-init">
-<h2><span class="section-number">10.2. </span>Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#initialize-a-class-init" title="Link to this heading">#</a></h2>
+<h2>Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#initialize-a-class-init" title="Link to this heading">#</a></h2>
 <hr><p>A class has a special method called <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> that is automatically invoked when an instance of the class is created, and is used to initialize the object. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,7 +590,7 @@ My department is engineering school.
 </div>
 </section>
 <section id="class-inheritance-and-method-overriding">
-<h2><span class="section-number">10.3. </span>Class Inheritance and Method Overriding<a class="headerlink" href="#class-inheritance-and-method-overriding" title="Link to this heading">#</a></h2>
+<h2>Class Inheritance and Method Overriding<a class="headerlink" href="#class-inheritance-and-method-overriding" title="Link to this heading">#</a></h2>
 <hr><p>Python supports class inheritance, meaning that one class can <code class="docutils literal notranslate"><span class="pre">inherit</span></code> all the attributes and methods of another class. It can also add new attributes and methods, or <code class="docutils literal notranslate"><span class="pre">override</span></code> methods of the parent class.</p>
 <p>For example, we can create a class ‘NewEmployee’ that inherits from the ‘Employ’ class.</p>
 <div class="cell docutils container">
@@ -688,7 +689,7 @@ I have passed probation.
 </div>
 </section>
 <section id="special-or-magic-methods-of-a-class">
-<h2><span class="section-number">10.4. </span>*Special (or “magic”) methods of a class<a class="headerlink" href="#special-or-magic-methods-of-a-class" title="Link to this heading">#</a></h2>
+<h2>*Special (or “magic”) methods of a class<a class="headerlink" href="#special-or-magic-methods-of-a-class" title="Link to this heading">#</a></h2>
 <hr><p>Methods named with double underscores at both ends are special or “magic” methods of a class, used to implement specific functionalities.</p>
 <p>The table below summarizes some commonly used special methods.</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -785,7 +786,7 @@ Bob, 30 years old
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Dog object at 0x0000027C42F2CEC0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Dog object at 0x0000022ED35ECEC0&gt;
 &lt;class &#39;__main__.Dog&#39;&gt;
 </pre></div>
 </div>
@@ -897,7 +898,7 @@ Arguments: (1, 2) {&#39;a&#39;: 3}
 </div>
 </section>
 <section id="special-or-magic-attribute-of-a-class">
-<h2><span class="section-number">10.5. </span>*Special (or “magic”) attribute of a class<a class="headerlink" href="#special-or-magic-attribute-of-a-class" title="Link to this heading">#</a></h2>
+<h2>*Special (or “magic”) attribute of a class<a class="headerlink" href="#special-or-magic-attribute-of-a-class" title="Link to this heading">#</a></h2>
 <hr><p>In Python, special attributes of a class are also known as “magic attributes” or “dunder” (double underscore) attributes/methods. They typically refer to special attributes or methods that begin and end with <strong>double underscores</strong>. These attributes and methods are built into the Python language and are used to implement specific behaviors and functionalities.</p>
 <p>For example:</p>
 <ul class="simple">
@@ -990,7 +991,7 @@ Hello, world!
 </div>
 </section>
 <section id="attribute-related-methodssetattr-getattr">
-<h2><span class="section-number">10.6. </span>Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code><a class="headerlink" href="#attribute-related-methodssetattr-getattr" title="Link to this heading">#</a></h2>
+<h2>Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code><a class="headerlink" href="#attribute-related-methodssetattr-getattr" title="Link to this heading">#</a></h2>
 <hr><p>For modifying and accessing attribute values in a class, Python provides two built-in functions that are quite useful: <code class="docutils literal notranslate"><span class="pre">setattr()</span></code> and <code class="docutils literal notranslate"><span class="pre">getattr()</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">setattr(object,</span> <span class="pre">name,</span> <span class="pre">value)</span></code>: sets the value of the attribute name on object to value. If the attribute does not exist, it is created and assigned the given value.</p></li>
@@ -1028,7 +1029,7 @@ male
 </div>
 </section>
 <section id="class-method-and-static-method">
-<h2><span class="section-number">10.7. </span>*Class method and static method<a class="headerlink" href="#class-method-and-static-method" title="Link to this heading">#</a></h2>
+<h2>*Class method and static method<a class="headerlink" href="#class-method-and-static-method" title="Link to this heading">#</a></h2>
 <hr><p>In the examples above, the first parameter of a method in a class is always self. Such methods are called <code class="docutils literal notranslate"><span class="pre">instance</span> <span class="pre">methods</span></code> and can only be called by an object.</p>
 <p>In addition to <code class="docutils literal notranslate"><span class="pre">instance</span> <span class="pre">methods</span></code>, there are also <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">methods</span></code> and <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">methods</span></code>.</p>
 <ul class="simple">
@@ -1073,7 +1074,7 @@ Instance method
 </div>
 </section>
 <section id="dateclass">
-<h2><span class="section-number">10.8. </span>dateclass<a class="headerlink" href="#dateclass" title="Link to this heading">#</a></h2>
+<h2>dateclass<a class="headerlink" href="#dateclass" title="Link to this heading">#</a></h2>
 <hr><p><code class="docutils literal notranslate"><span class="pre">dataclass</span></code> is a decorator introduced in Python 3.7 that automatically generates methods like <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__repr__</span></code>, and <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>, making the definition of data classes more concise.</p>
 <p>One example:</p>
 <div class="cell docutils container">
@@ -1170,15 +1171,15 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Python machine learning</p>
+        <p class="prev-next-title">Introduction to machine learning</p>
       </div>
     </a>
     <a class="right-next"
-       href="projects.html"
+       href="introduction-to-pytorch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data cleaning about Excel files</p>
+        <p class="prev-next-title">Introduction to deep learning and Pytorch</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1198,14 +1199,14 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-object-attribute-method">10.1. Class, Object, Attribute, Method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-class-init">10.2. Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance-and-method-overriding">10.3. Class Inheritance and Method Overriding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-methods-of-a-class">10.4. *Special (or “magic”) methods of a class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-attribute-of-a-class">10.5. *Special (or “magic”) attribute of a class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-related-methodssetattr-getattr">10.6. Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-method-and-static-method">10.7. *Class method and static method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateclass">10.8. dateclass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-object-attribute-method">Class, Object, Attribute, Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-class-init">Initialize a class <code class="docutils literal notranslate"><span class="pre">__init__</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance-and-method-overriding">Class Inheritance and Method Overriding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-methods-of-a-class">*Special (or “magic”) methods of a class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-or-magic-attribute-of-a-class">*Special (or “magic”) attribute of a class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-related-methodssetattr-getattr">Attribute related methods<code class="docutils literal notranslate"><span class="pre">setattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-method-and-static-method">*Class method and static method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dateclass">dateclass</a></li>
 </ul>
   </nav></div>
 

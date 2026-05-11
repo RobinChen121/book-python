@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -195,9 +195,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">9. Python machine learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch*</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -1203,8 +1204,8 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.55662582, 7.03698857],
-       [2.7315848 , 1.91773436]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.43418104, 2.30817668],
+       [2.53091164, 8.31085948]])
 </pre></div>
 </div>
 </div>
@@ -1216,7 +1217,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9.00599497, 2.65598182, 8.22367082, 3.41486401, 9.45505022])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.94376391, 1.34928089, 1.80691214, 8.12382066, 3.70656082])
 </pre></div>
 </div>
 </div>
@@ -1228,8 +1229,8 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 6],
-       [8, 6]], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 9],
+       [4, 6]], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -1241,8 +1242,8 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.51689366, 6.23561029],
-       [3.96702348, 4.13344438]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.3333527 , 5.55108321],
+       [6.5869388 , 3.61063127]])
 </pre></div>
 </div>
 </div>
@@ -1254,8 +1255,8 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 4],
-       [8, 4]], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6, 2],
+       [3, 6]], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -1310,7 +1311,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778094698.651071
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778484758.2907395
 </pre></div>
 </div>
 </div>
@@ -1326,7 +1327,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time.struct_time(tm_year=2026, tm_mon=5, tm_mday=6, tm_hour=20, tm_min=11, tm_sec=38, tm_wday=2, tm_yday=126, tm_isdst=1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time.struct_time(tm_year=2026, tm_mon=5, tm_mday=11, tm_hour=8, tm_min=32, tm_sec=38, tm_wday=0, tm_yday=131, tm_isdst=1)
 </pre></div>
 </div>
 </div>
@@ -1342,7 +1343,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-06 20:11:38
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-11 08:32:38
 </pre></div>
 </div>
 </div>
@@ -1428,7 +1429,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time: 0.040461 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time: 0.030393 seconds
 </pre></div>
 </div>
 </div>
@@ -1447,7 +1448,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time: 0.032374 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time: 0.015792 seconds
 </pre></div>
 </div>
 </div>
@@ -1489,7 +1490,7 @@ eigenvectors are [[-0.76729658 -0.57152478]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-06 20:11:41.785929
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-05-11 08:32:41.387159
 </pre></div>
 </div>
 </div>

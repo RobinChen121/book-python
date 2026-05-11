@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Python machine learning &#8212; Python Data Science</title>
+    <title>Introduction to machine learning &#8212; Python Data Science</title>
   
   
   
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=ef6f26c9" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -66,8 +66,8 @@
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. Python Object Oriented Programming*" href="introduction-to-class.html" />
-    <link rel="prev" title="8. Python statistics" href="statistics.html" />
+    <link rel="next" title="Python Object Oriented Programming*" href="introduction-to-class.html" />
+    <link rel="prev" title="Python statistics" href="statistics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -197,9 +197,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Advanced</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="statistics.html">8. Python statistics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Python machine learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">10. Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to machine learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -420,7 +421,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Python machine learning</h1>
+    <h1>Introduction to machine learning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,23 +431,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">9.1. Linear regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-interaction-terms">9.1.1. *With interaction terms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-catogorical-variabls">9.1.2. *With catogorical variabls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation-of-the-regression-results-from-statsmodels">9.1.3. *Detailed explanation of the regression results from Statsmodels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-interaction-terms">*With interaction terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-catogorical-variabls">*With catogorical variabls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation-of-the-regression-results-from-statsmodels">*Detailed explanation of the regression results from Statsmodels</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-data">9.2. Standardize Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">9.2.1. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">9.2.2. Min-Max Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-data">Standardize Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">Min-Max Normalization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis-pca">9.3. *Principle component analysis (PCA)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">9.4. K-means Clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-ann">9.5. Artificial neural network (ANN)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">9.6. *Support vector machine (SVM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-leanring">9.7. *Decision tree leanring</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis-pca">*Principle component analysis (PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-ann">Artificial neural network (ANN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">*Support vector machine (SVM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-leanring">*Decision tree leanring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -458,8 +459,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-machine-learning">
-<h1><span class="section-number">9. </span>Python machine learning<a class="headerlink" href="#python-machine-learning" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-machine-learning">
+<h1>Introduction to machine learning<a class="headerlink" href="#introduction-to-machine-learning" title="Link to this heading">#</a></h1>
 <hr>
 <div class="tip admonition">
 <p class="admonition-title">Goals and prerequisites</p>
@@ -494,7 +495,7 @@ document.write(`
 <p>When we use this library in Python, its name is <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
 <p>Another widely used marchine learning library is <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>, which is deep learning framework and build some deep learning networks like RNN, CNN, Transformer, and so on.</p>
 <section id="linear-regression">
-<h2><span class="section-number">9.1. </span>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
 <hr><p>linear regression is a model that estimates the relationship between a scalar <code class="docutils literal notranslate"><span class="pre">response</span></code> (dependent variable) and one or more <code class="docutils literal notranslate"><span class="pre">explanatory</span> <span class="pre">variables</span></code> (regressor or independent variable).</p>
 <p>Linear regression is widely used in biological and social sciences to describe possible relationships between variables. It ranks as <strong>one of the most important tools</strong> used in these disciplines.</p>
 <p>For example, for a seaborn dataset “car_crashes”, which contains data on car crashes in different U.S. states.</p>
@@ -642,12 +643,12 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;speeding&#39;, ylabel=&#39;total&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/8431bbb2968c2ec376e5b9194c5f652d0e112d45ba3e666d84a2c7910fe73a04.png" src="_images/8431bbb2968c2ec376e5b9194c5f652d0e112d45ba3e666d84a2c7910fe73a04.png" />
+<img alt="_images/185e2b338ee0e36f8bdea112425997417243e497035320d95eae5cca8241b4f0.png" src="_images/185e2b338ee0e36f8bdea112425997417243e497035320d95eae5cca8241b4f0.png" />
 </div>
 </div>
 <p>We may assume there is a linear relationship between the amount of total crashes and the speeding, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-variable">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-eq-single-variable" title="Link to this equation">#</a></span>\[\text{total}=\beta_0+\beta_1\text{ speeding}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-single-variable" title="Link to this equation">#</a></span>\[\text{total}=\beta_0+\beta_1\text{ speeding}\]</div>
 <p>Geometrically, linear regression involves finding <strong>the best-fitting line through a set of points</strong>, represented by a linear equation as shown above, where <span class="math notranslate nohighlight">\(\beta_0\)</span> is called the <code class="docutils literal notranslate"><span class="pre">intercept</span></code>.</p>
 <p>The most common way to comute the linear regreesion model is by the ordinary least square method, for which we can use the function <code class="docutils literal notranslate"><span class="pre">OLS()</span></code> from the library <code class="docutils literal notranslate"><span class="pre">Statsmodels</span></code>.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library to perform regression typically involves the following steps:</p>
@@ -656,7 +657,7 @@ document.write(`
 <li><p>Output the regression results using the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> function.</p></li>
 <li><p>Obtain predicted values using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function. This step can be omitted if not for prediction.</p></li>
 </ul>
-<p>In the following code, we build a linear model for the equation <a class="reference internal" href="#equation-eq-single-variable">(9.1)</a> using <code class="docutils literal notranslate"><span class="pre">statsmodels.formula.api</span></code>.</p>
+<p>In the following code, we build a linear model for the equation <a class="reference internal" href="#equation-eq-single-variable">(1)</a> using <code class="docutils literal notranslate"><span class="pre">statsmodels.formula.api</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
@@ -675,8 +676,8 @@ document.write(`
 Dep. Variable:                  total   R-squared:                       0.374
 Model:                            OLS   Adj. R-squared:                  0.361
 Method:                 Least Squares   F-statistic:                     29.27
-Date:                Wed, 06 May 2026   Prob (F-statistic):           1.87e-06
-Time:                        20:11:49   Log-Likelihood:                -132.15
+Date:                Mon, 11 May 2026   Prob (F-statistic):           1.87e-06
+Time:                        08:20:15   Log-Likelihood:                -132.15
 No. Observations:                  51   AIC:                             268.3
 Df Residuals:                      49   BIC:                             272.2
 Df Model:                           1                                         
@@ -788,8 +789,8 @@ Notes:
 Dep. Variable:                  total   R-squared:                       0.730
 Model:                            OLS   Adj. R-squared:                  0.719
 Method:                 Least Squares   F-statistic:                     64.87
-Date:                Wed, 06 May 2026   Prob (F-statistic):           2.27e-14
-Time:                        20:11:49   Log-Likelihood:                -110.71
+Date:                Mon, 11 May 2026   Prob (F-statistic):           2.27e-14
+Time:                        08:20:15   Log-Likelihood:                -110.71
 No. Observations:                  51   AIC:                             227.4
 Df Residuals:                      48   BIC:                             233.2
 Df Model:                           2                                         
@@ -815,7 +816,7 @@ Notes:
 </div>
 <p>In the regression results, the p-value for ‘alcohol’ is below 0.001, indicating a statistically significant association with the number of accidents. In contrast, the p-value for ‘speeding’ is 0.470, which exceeds the conventional 0.05 significance level. This suggests that, after controlling for ‘alcohol’ consumption, ‘speeding’ does not have a statistically significant independent effect in this specification of the model. This may be due to the presence of an interaction effect between speeding and alcohol.</p>
 <section id="with-interaction-terms">
-<h3><span class="section-number">9.1.1. </span>*With interaction terms<a class="headerlink" href="#with-interaction-terms" title="Link to this heading">#</a></h3>
+<h3>*With interaction terms<a class="headerlink" href="#with-interaction-terms" title="Link to this heading">#</a></h3>
 <p>Normally in regression, we assume that variables affect the outcome <strong>independently</strong>. But sometimes, the combined effect of two variables is more (or less) than just adding their individual effects — that’s where <code class="docutils literal notranslate"><span class="pre">interaction</span> <span class="pre">terms</span></code> come in.</p>
 <p>For example, if we consider the interaction of speeding and alcohol (drivers with alcohol tend to driving with highe speed):</p>
 <div class="math notranslate nohighlight">
@@ -853,8 +854,8 @@ Notes:
 Dep. Variable:                  total   R-squared:                       0.790
 Model:                            OLS   Adj. R-squared:                  0.777
 Method:                 Least Squares   F-statistic:                     58.91
-Date:                Wed, 06 May 2026   Prob (F-statistic):           5.91e-16
-Time:                        20:11:49   Log-Likelihood:                -104.31
+Date:                Mon, 11 May 2026   Prob (F-statistic):           5.91e-16
+Time:                        08:20:15   Log-Likelihood:                -104.31
 No. Observations:                  51   AIC:                             216.6
 Df Residuals:                      47   BIC:                             224.3
 Df Model:                           3                                         
@@ -882,7 +883,7 @@ Notes:
 <p>The interaction term is statistically significant (<span class="math notranslate nohighlight">\(p = 0.001\)</span>), indicating a robust joint effect on total car crashes. The negative coefficient (-0.2761) suggests a negative moderatio): specifically, the positive association between ‘alcohol’ and crash frequency diminishes as ‘speeding’ levels increase.</p>
 </section>
 <section id="with-catogorical-variabls">
-<h3><span class="section-number">9.1.2. </span>*With catogorical variabls<a class="headerlink" href="#with-catogorical-variabls" title="Link to this heading">#</a></h3>
+<h3>*With catogorical variabls<a class="headerlink" href="#with-catogorical-variabls" title="Link to this heading">#</a></h3>
 <p>For the catogorical variable, we use the dataset “tips” as an example to fit the following equation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1075,8 +1076,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.020
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     1.672
-Date:                Wed, 06 May 2026   Prob (F-statistic):              0.174
-Time:                        20:11:49   Log-Likelihood:                -422.43
+Date:                Mon, 11 May 2026   Prob (F-statistic):              0.174
+Time:                        08:20:15   Log-Likelihood:                -422.43
 No. Observations:                 244   AIC:                             852.9
 Df Residuals:                     240   BIC:                             866.8
 Df Model:                           3                                         
@@ -1144,8 +1145,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.020
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     1.672
-Date:                Wed, 06 May 2026   Prob (F-statistic):              0.174
-Time:                        20:11:49   Log-Likelihood:                -422.43
+Date:                Mon, 11 May 2026   Prob (F-statistic):              0.174
+Time:                        08:20:15   Log-Likelihood:                -422.43
 No. Observations:                 244   AIC:                             852.9
 Df Residuals:                     240   BIC:                             866.8
 Df Model:                           3                                         
@@ -1195,8 +1196,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.450
 Method:                 Least Squares   F-statistic:                     50.67
-Date:                Wed, 06 May 2026   Prob (F-statistic):           7.52e-31
-Time:                        20:11:49   Log-Likelihood:                -350.03
+Date:                Mon, 11 May 2026   Prob (F-statistic):           7.52e-31
+Time:                        08:20:15   Log-Likelihood:                -350.03
 No. Observations:                 244   AIC:                             710.1
 Df Residuals:                     239   BIC:                             727.5
 Df Model:                           4                                         
@@ -1228,7 +1229,7 @@ Notes:
 </ul>
 </section>
 <section id="detailed-explanation-of-the-regression-results-from-statsmodels">
-<h3><span class="section-number">9.1.3. </span>*Detailed explanation of the regression results from Statsmodels<a class="headerlink" href="#detailed-explanation-of-the-regression-results-from-statsmodels" title="Link to this heading">#</a></h3>
+<h3>*Detailed explanation of the regression results from Statsmodels<a class="headerlink" href="#detailed-explanation-of-the-regression-results-from-statsmodels" title="Link to this heading">#</a></h3>
 <p>To understand the Statsmodels OLS (Ordinary Least Squares) output as show in the several tables above, it is helpful to divide the results into three main sections: <strong>Model Fit Summary</strong>, <strong>Coefficient Estimates</strong>, and <strong>Diagnostic Tests</strong>.</p>
 <p>Here is a detailed breakdown of each statistical value:</p>
 <ol class="arabic simple">
@@ -1278,7 +1279,7 @@ Notes:
 </section>
 </section>
 <section id="standardize-data">
-<h2><span class="section-number">9.2. </span>Standardize Data<a class="headerlink" href="#standardize-data" title="Link to this heading">#</a></h2>
+<h2>Standardize Data<a class="headerlink" href="#standardize-data" title="Link to this heading">#</a></h2>
 <hr><p><code class="docutils literal notranslate"><span class="pre">Standardization</span></code> is a process of transforming the data to make it more suitable for some statistical analysis or machine learning.</p>
 <p>The main reasons include:</p>
 <ul class="simple">
@@ -1306,7 +1307,7 @@ Notes:
 </ul>
 <p>There are two common methods for standardizing data: z-score standardization and min-max standardization</p>
 <section id="z-score-standardization-standardscaler">
-<h3><span class="section-number">9.2.1. </span>Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)<a class="headerlink" href="#z-score-standardization-standardscaler" title="Link to this heading">#</a></h3>
+<h3>Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)<a class="headerlink" href="#z-score-standardization-standardscaler" title="Link to this heading">#</a></h3>
 <p>Transforms data to have mean (<span class="math notranslate nohighlight">\(\mu\)</span>) = 0 and standard deviation (<span class="math notranslate nohighlight">\(\sigma\)</span>) = 1.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1353,7 +1354,7 @@ z = \frac{x - \mu}{\sigma}
 </ul>
 </section>
 <section id="min-max-normalization">
-<h3><span class="section-number">9.2.2. </span>Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Link to this heading">#</a></h3>
+<h3>Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Link to this heading">#</a></h3>
 <p>This method scales data to the <strong>[0, 1]</strong> range by default.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1554,7 +1555,7 @@ x' = \frac{x - \min(x)}{\max(x) - \min(x)}
 </section>
 </section>
 <section id="principle-component-analysis-pca">
-<h2><span class="section-number">9.3. </span>*Principle component analysis (PCA)<a class="headerlink" href="#principle-component-analysis-pca" title="Link to this heading">#</a></h2>
+<h2>*Principle component analysis (PCA)<a class="headerlink" href="#principle-component-analysis-pca" title="Link to this heading">#</a></h2>
 <hr><p>Principal component analysis (PCA) is a <strong>dimensionality reduction</strong> to simplify a large data set into a smaller set, while preserving their most important structures.</p>
 <p>It represent a transformation of the original variables into a new set of uncorrelated variables through linear combinations. This transformation is structured such that the leading components account for the <strong>maximal possible information (reflected by the data variance)</strong> in the data, effectively compressing the key information into fewer dimensions.</p>
 <ul class="simple">
@@ -1744,7 +1745,7 @@ principal components shown the first 10 rows:
 <p>*The solution to principal component analysis (PCA) is generally obtained via eigenvalue decomposition. Specifically, one computes the eigenvectors corresponding to the largest eigenvalues of the covariance matrix or the correlation matrix of the original data. The eigenvector associated with the largest eigenvalue is the first principal component, the eigenvector associated with the second largest eigenvalue is the second principal component, and the remaining principal components are obtained in descending order accordingly. The proportion of variance explained (also called the contribution rate) of each principal component is defined as the ratio of its corresponding eigenvalue to the sum of all eigenvalues.</p>
 </section>
 <section id="k-means-clustering">
-<h2><span class="section-number">9.4. </span>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h2>
+<h2>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h2>
 <hr>
 <p>K-means is a dynamic clustering method. Its basic idea is as follows: first, randomly select K points as the initial centroids, and assign points to K clusters based on the nearest distance principle; then, recalculate the centroids of the K clusters as the new centroids, and reassign points according to the nearest distance principle; this process is repeated until the centroids no longer change.</p>
 <p>Now, we use K-means to cluster the iris data.</p>
@@ -1817,12 +1818,12 @@ principal components shown the first 10 rows:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de1d74f9639aece9a2d56a79f1aaf6e87bb837b917f35c3d2b2cb35cb13eff33.png" src="_images/de1d74f9639aece9a2d56a79f1aaf6e87bb837b917f35c3d2b2cb35cb13eff33.png" />
+<img alt="_images/79699957a51f83d5d09254f764c2794ccae7e4a23ea1603229354bd709481f05.png" src="_images/79699957a51f83d5d09254f764c2794ccae7e4a23ea1603229354bd709481f05.png" />
 </div>
 </div>
 </section>
 <section id="artificial-neural-network-ann">
-<h2><span class="section-number">9.5. </span>Artificial neural network (ANN)<a class="headerlink" href="#artificial-neural-network-ann" title="Link to this heading">#</a></h2>
+<h2>Artificial neural network (ANN)<a class="headerlink" href="#artificial-neural-network-ann" title="Link to this heading">#</a></h2>
 <hr>
 <p>Artificial neural network tries to imiate the function of a human brain.</p>
 <p>How a human brain work: the brain continuously sends and receives electrical and chemical signals throughout the body. Some signals make us feel tired, while others allow us to perceive pain. To accomplish this complex communication, the central nervous system depends on billions of neurons (nerve cells).</p>
@@ -1915,7 +1916,7 @@ principal components shown the first 10 rows:
 <p>Those complex networks are usually built using frameworks like <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> or <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>.</p>
 </section>
 <section id="support-vector-machine-svm">
-<h2><span class="section-number">9.6. </span>*Support vector machine (SVM)<a class="headerlink" href="#support-vector-machine-svm" title="Link to this heading">#</a></h2>
+<h2>*Support vector machine (SVM)<a class="headerlink" href="#support-vector-machine-svm" title="Link to this heading">#</a></h2>
 <hr><p>Support vector machines are supervised machine learning algorithms that analyze data for classification and regression analysis.</p>
 <p>The geometric idea behind SVM is to find a decision boundary (which is a line in two dimensional space) that separates classes with the maximum possible margin. The data points that lie closest to this boundary are called support vectors.</p>
 <p><img alt="svm1" src="_images/svm1.png" /></p>
@@ -1965,28 +1966,28 @@ principal components shown the first 10 rows:
 </div>
 </section>
 <section id="decision-tree-leanring">
-<h2><span class="section-number">9.7. </span>*Decision tree leanring<a class="headerlink" href="#decision-tree-leanring" title="Link to this heading">#</a></h2>
+<h2>*Decision tree leanring<a class="headerlink" href="#decision-tree-leanring" title="Link to this heading">#</a></h2>
 <p>Decision tree learning is a supervised learning method used for classification and regression.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">9.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <hr><div class="exercise admonition" id="regression">
 
-<p class="admonition-title"><span class="caption-number">Exercise 9.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span></p>
 <section id="exercise-content">
 <p>Use the library <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> to do some linear regressions for the ‘tips’ dataset in the seaborn library.</p>
 </section>
 </div>
 <div class="exercise admonition" id="kmeans">
 
-<p class="admonition-title"><span class="caption-number">Exercise 9.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
 <section id="exercise-content">
 <p>Use the library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> to do some k-means clustering for the ‘penguin’ dataset in the seaborn library.</p>
 </section>
 </div>
 <div class="exercise admonition" id="prediction">
 
-<p class="admonition-title"><span class="caption-number">Exercise 9.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 4 </span></p>
 <section id="exercise-content">
 <p>Use the artificial neural network from the library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> to do some predictions for the ‘titanic’ dataset in the seaborn library.</p>
 </section>
@@ -2057,7 +2058,7 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Python statistics</p>
+        <p class="prev-next-title">Python statistics</p>
       </div>
     </a>
     <a class="right-next"
@@ -2065,7 +2066,7 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Python Object Oriented Programming*</p>
+        <p class="prev-next-title">Python Object Oriented Programming*</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2085,23 +2086,23 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">9.1. Linear regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-interaction-terms">9.1.1. *With interaction terms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-catogorical-variabls">9.1.2. *With catogorical variabls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation-of-the-regression-results-from-statsmodels">9.1.3. *Detailed explanation of the regression results from Statsmodels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-interaction-terms">*With interaction terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-catogorical-variabls">*With catogorical variabls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation-of-the-regression-results-from-statsmodels">*Detailed explanation of the regression results from Statsmodels</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-data">9.2. Standardize Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">9.2.1. Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">9.2.2. Min-Max Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-data">Standardize Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-standardization-standardscaler">Z-score Standardization (<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">Min-Max Normalization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis-pca">9.3. *Principle component analysis (PCA)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">9.4. K-means Clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-ann">9.5. Artificial neural network (ANN)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">9.6. *Support vector machine (SVM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-leanring">9.7. *Decision tree leanring</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis-pca">*Principle component analysis (PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-network-ann">Artificial neural network (ANN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">*Support vector machine (SVM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-leanring">*Decision tree leanring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 
