@@ -32,11 +32,11 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=270a6d5f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -200,7 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch*</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -434,17 +434,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-origin-of-python">1.1. The origin of Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-python">1.2. Features of Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-installation">1.3. Python installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-uses-of-python">1.4. Some basic uses of Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-and-reserved-words">1.4.1. Naming and reserved words</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-assignments-swapping-deleting">1.4.2. Multiple assignments, swapping, deleting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">1.4.3. Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-input">1.4.4. Print and Input</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.4.5. Comments and line breaking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-learn-coding">1.4. How to learn coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-uses-of-python">1.5. Some basic uses of Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-and-reserved-words">1.5.1. Naming and reserved words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-assignments-swapping-deleting">1.5.2. Multiple assignments, swapping, deleting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">1.5.3. Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-input">1.5.4. Print and Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.5.5. Comments and line breaking</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.5. Install and use libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.6. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.6. Install and use libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.7. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.8. Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -472,7 +473,48 @@ document.write(`
 <li><p>Can do some basic computer operations.</p></li>
 </ul>
 </div>
-<section id="the-origin-of-python">
+<style>
+.reveal h1 {
+    font-size: 4em !important;
+}
+
+.reveal h2 {
+    font-size: 3em !important;
+}
+
+.reveal h3 {
+    font-size: 2em !important;
+}
+
+.reveal p{ 
+    font-size: xx-large;
+}
+
+.reveal .cm-line{ 
+    font-size: xx-large;
+}
+
+.reveal .node.default p{
+    font-size: large;
+}
+
+.reveal code{
+    font-size: xx-large;
+}
+
+.reveal table {
+    font-size: xx-large;
+}
+
+.reveal pre {
+    font-size: xx-large !important;
+}
+
+.reveal ol{
+        font-size: xx-large;
+    }
+
+</style><section id="the-origin-of-python">
 <h2><span class="section-number">1.1. </span>The origin of Python<a class="headerlink" href="#the-origin-of-python" title="Link to this heading">#</a></h2>
 <hr><p>The first version of Python released in 1991—earlier than the programming language Java. For much of its early existence, Python remained a niche language and did not gain widespread popularity. However, in recent years, the rise and proliferation of big data and artificial intelligence technologies have significantly boosted Python’s popularity. Thanks to its <strong>simplicity and strong scalability</strong>, Python aligns well with the needs of these emerging technologies, allowing it to surpass many other programming languages and rise rapidly in prominence.</p>
 <p>Python was named “Programming Language of the Year” by the well-known TIOBE index in 2010, 2018, 2020, 2021 and 2024. It has consistently ranked among the top three most popular programming languages in both annual and monthly rankings. A popular saying has even emerged online: <code class="docutils literal notranslate"><span class="pre">Life</span> <span class="pre">is</span> <span class="pre">short,</span> <span class="pre">I</span> <span class="pre">use</span> <span class="pre">Python.</span></code></p>
@@ -554,6 +596,14 @@ document.write(`
 <ol class="arabic simple" start="4">
 <li><p>Python is a cross-platform scripting language (a <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">language</span></code> where codes are intepreted during running). <strong>Compared to compiled languages like C/C++ and Java, its execution speed is slower</strong>. However, as computer processing power continues to increase, Python’s slower speed has gradually become a negligible drawback.</p></li>
 </ol>
+<ol class="arabic simple" start="5">
+<li><p>Possible drawbacks of Python:</p>
+<ul class="simple">
+<li><p>It generally runs more slowly than compiled languages such as C++ and Java.</p></li>
+<li><p>Its highly flexible syntax and large ecosystem of libraries can sometimes lead to inconsistent coding styles and project structures.</p></li>
+</ul>
+</li>
+</ol>
 <p>Famous applications developed using Python include:</p>
 <ul class="simple">
 <li><p>YouTube — A video-sharing platform</p></li>
@@ -572,9 +622,12 @@ document.write(`
 </section>
 <section id="python-installation">
 <h2><span class="section-number">1.3. </span>Python installation<a class="headerlink" href="#python-installation" title="Link to this heading">#</a></h2>
-<hr>
-<p>There are generally several ways to use Python. One option is to install <strong>Anaconda</strong>, while another is to install <strong>Python together with an integrated development environment (IDE)</strong> such as <strong>PyCharm</strong> or <strong>VS Code</strong>.</p>
-<p>Anaconda comes with a built-in IDE, Spyder, and includes a wide range of commonly used libraries, such as NumPy, Pandas, Matplotlib, and Scikit-learn. It also supports other development environments, including Jupyter Notebook, IPython, and RStudio. For beginners who are just starting to learn Python, <strong>Jupyter Lab/Notebook or Spyder is highly recommended</strong> for coding Python.</p>
+<hr><p>There are generally several ways to use Python. One option is to install <strong>Anaconda</strong>, while another is to install <strong>Python together with an integrated development environment (IDE)</strong> such as <strong>PyCharm</strong> or <strong>VS Code</strong>.</p>
+<p>Anaconda comes with a built-in IDE, Spyder, and includes a wide range of commonly used libraries, such as NumPy, Pandas, Matplotlib, and Scikit-learn. It also supports other development environments, including Jupyter Notebook, IPython, and RStudio. For beginners who are just starting to learn Python, <strong>Jupyter Lab/Notebook is highly recommended</strong> for coding Python.</p>
+<ul class="simple">
+<li><p>If you are a Matlab/R user before, you may prefer Spyder.</p></li>
+<li><p>While Jupyter Notebook focuses on a single interactive notebook, JupyterLab provides a more complete IDE-like environment with support for multiple files, terminals, and tabs.</p></li>
+</ul>
 <p>The specific installation steps are not detailed here. Please visit the official websites to download and install the required software. For example:</p>
 <ul class="simple">
 <li><p><strong>Anaconda installation:</strong></p>
@@ -589,11 +642,46 @@ document.write(`
 </ul>
 </li>
 </ul>
+<p>Comparisions between Jupyter Notebook/Lab and Pycharm are listed in the following table.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Main Purpose</p></th>
+<th class="head"><p>Best For</p></th>
+<th class="head"><p>Advantages</p></th>
+<th class="head"><p>Disadvantages</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jupyter Notebook/Lab</p></td>
+<td><p>Interactive experimentation</p></td>
+<td><p>Data science, research, teaching</p></td>
+<td><p>Extremely interactive, cell-based execution, combines code, plots, and notes</p></td>
+<td><p>Harder to maintain large projects and debug</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyCharm</p></td>
+<td><p>Professional IDE for software development</p></td>
+<td><p>Large projects, deep learning, engineering</p></td>
+<td><p>Excellent code completion, strong debugging tools and package management</p></td>
+<td><p>Heavy memory usage, more complex for beginners</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-to-learn-coding">
+<h2><span class="section-number">1.4. </span>How to learn coding<a class="headerlink" href="#how-to-learn-coding" title="Link to this heading">#</a></h2>
+<p>The key to learning coding well is consistent practice. In other words, when you are a beginner, you should try to write as much code by yourself as possible. Although AI tools can now generate hundreds of lines of code within seconds, and “<strong>vibe coding</strong>” (i.e., relying on AI tools to generate code) has become increasingly popular, this approach has several drawbacks, especially for beginners.</p>
+<ul class="simple">
+<li><p>If you have limited understanding of a programming language, it is difficult to fully comprehend AI-generated code, which makes it harder to modify or adapt it to your specific needs.</p></li>
+<li><p>Code generated by AI may contain errors or bugs. In many cases, debugging such code can be more difficult than writing it yourself from scratch.</p></li>
+<li><p>Once you have become more proficient in a programming language, you can make much more effective use of AI tools as a complement rather than a substitute for your own coding ability.</p></li>
+</ul>
 </section>
 <section id="some-basic-uses-of-python">
-<h2><span class="section-number">1.4. </span>Some basic uses of Python<a class="headerlink" href="#some-basic-uses-of-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>Some basic uses of Python<a class="headerlink" href="#some-basic-uses-of-python" title="Link to this heading">#</a></h2>
 <hr><section id="naming-and-reserved-words">
-<h3><span class="section-number">1.4.1. </span>Naming and reserved words<a class="headerlink" href="#naming-and-reserved-words" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.1. </span>Naming and reserved words<a class="headerlink" href="#naming-and-reserved-words" title="Link to this heading">#</a></h3>
 <hr><p>When writing programs, variables are often used to store data. In Python, a variable is assigned using an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>). For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -735,7 +823,7 @@ user-name = &quot;Donald&quot;  # contains a hyphen
 </div>
 </section>
 <section id="multiple-assignments-swapping-deleting">
-<h3><span class="section-number">1.4.2. </span>Multiple assignments, swapping, deleting<a class="headerlink" href="#multiple-assignments-swapping-deleting" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.2. </span>Multiple assignments, swapping, deleting<a class="headerlink" href="#multiple-assignments-swapping-deleting" title="Link to this heading">#</a></h3>
 <hr><p>Python allows assigning the same value to multiple variables in a single line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -790,7 +878,7 @@ user-name = &quot;Donald&quot;  # contains a hyphen
 </div>
 </section>
 <section id="operators">
-<h3><span class="section-number">1.4.3. </span>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.3. </span>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h3>
 <hr><p>Operators are used to perform operations on values and variables. The operators of Python are given by the following table.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -982,7 +1070,7 @@ False
 </div>
 </section>
 <section id="print-and-input">
-<h3><span class="section-number">1.4.4. </span>Print and Input<a class="headerlink" href="#print-and-input" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.4. </span>Print and Input<a class="headerlink" href="#print-and-input" title="Link to this heading">#</a></h3>
 <hr><p>Printing output in Python is straightforward with the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1021,7 +1109,7 @@ False
 </div>
 </section>
 <section id="comments-and-line-breaking">
-<h3><span class="section-number">1.4.5. </span>Comments and line breaking<a class="headerlink" href="#comments-and-line-breaking" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.5. </span>Comments and line breaking<a class="headerlink" href="#comments-and-line-breaking" title="Link to this heading">#</a></h3>
 <hr>
 <p>When writing programs, it’s often necessary to add comments in the code to explain or annotate certain parts, indicate the author or date, and improve the readability of the program. Comments are not executed by the computer. In Python, there are two ways to add comments:</p>
 <ul class="simple">
@@ -1084,7 +1172,7 @@ False
 </section>
 </section>
 <section id="install-and-use-libraries">
-<h2><span class="section-number">1.5. </span>Install and use libraries<a class="headerlink" href="#install-and-use-libraries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.6. </span>Install and use libraries<a class="headerlink" href="#install-and-use-libraries" title="Link to this heading">#</a></h2>
 <hr><p><code class="docutils literal notranslate"><span class="pre">pip</span></code> is Python’s built-in library management tool. It allows you to search for, download, install, and uninstall Python librarys. When you install Python, pip is installed automatically. The basic syntax is:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1211,7 +1299,7 @@ False
 <p>At the end of each chapter, this book introduces some of Python’s standard libraries. These built-in libraries, which require no additional installation, provide many commonly used functionalities such as file operations, mathematical computations, network communication, data processing, and more.</p>
 </section>
 <section id="math-library">
-<h2><span class="section-number">1.6. </span><code class="docutils literal notranslate"><span class="pre">math</span></code> library<a class="headerlink" href="#math-library" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.7. </span><code class="docutils literal notranslate"><span class="pre">math</span></code> library<a class="headerlink" href="#math-library" title="Link to this heading">#</a></h2>
 <hr><p><code class="docutils literal notranslate"><span class="pre">math</span></code> is a built-in Python library containing mathematical methods, providing 4 mathematical constants and 44 mathematical methods. These methods include: math constants, number representation methods, power and logarithmic methods, trigonometric methods and special methods.</p>
 <p>Math constants:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1345,7 +1433,7 @@ False
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <hr><div class="exercise admonition" id="A-first-look-of-Python-exercise-0">
 
 <p class="admonition-title"><span class="caption-number">Exercise 1.1 </span></p>
@@ -1660,16 +1748,16 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -1718,17 +1806,18 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-origin-of-python">1.1. The origin of Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-python">1.2. Features of Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-installation">1.3. Python installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-uses-of-python">1.4. Some basic uses of Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-and-reserved-words">1.4.1. Naming and reserved words</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-assignments-swapping-deleting">1.4.2. Multiple assignments, swapping, deleting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">1.4.3. Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-input">1.4.4. Print and Input</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.4.5. Comments and line breaking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-learn-coding">1.4. How to learn coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-uses-of-python">1.5. Some basic uses of Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-and-reserved-words">1.5.1. Naming and reserved words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-assignments-swapping-deleting">1.5.2. Multiple assignments, swapping, deleting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">1.5.3. Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-input">1.5.4. Print and Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.5.5. Comments and line breaking</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.5. Install and use libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.6. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.6. Install and use libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.7. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.8. Exercises</a></li>
 </ul>
   </nav></div>
 

@@ -32,11 +32,11 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=270a6d5f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -200,7 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to machine learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch*</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -509,93 +509,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">crashes</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;car_crashes&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">crashes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total</th>
-      <th>speeding</th>
-      <th>alcohol</th>
-      <th>not_distracted</th>
-      <th>no_previous</th>
-      <th>ins_premium</th>
-      <th>ins_losses</th>
-      <th>abbrev</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>18.8</td>
-      <td>7.332</td>
-      <td>5.640</td>
-      <td>18.048</td>
-      <td>15.040</td>
-      <td>784.55</td>
-      <td>145.08</td>
-      <td>AL</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>18.1</td>
-      <td>7.421</td>
-      <td>4.525</td>
-      <td>16.290</td>
-      <td>17.014</td>
-      <td>1053.48</td>
-      <td>133.93</td>
-      <td>AK</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>18.6</td>
-      <td>6.510</td>
-      <td>5.208</td>
-      <td>15.624</td>
-      <td>17.856</td>
-      <td>899.47</td>
-      <td>110.35</td>
-      <td>AZ</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>22.4</td>
-      <td>4.032</td>
-      <td>5.824</td>
-      <td>21.056</td>
-      <td>21.280</td>
-      <td>827.34</td>
-      <td>142.39</td>
-      <td>AR</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>12.0</td>
-      <td>4.200</td>
-      <td>3.360</td>
-      <td>10.920</td>
-      <td>10.680</td>
-      <td>878.41</td>
-      <td>165.63</td>
-      <td>CA</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Descriptions for each column are below:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -643,7 +568,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;speeding&#39;, ylabel=&#39;total&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/185e2b338ee0e36f8bdea112425997417243e497035320d95eae5cca8241b4f0.png" src="_images/185e2b338ee0e36f8bdea112425997417243e497035320d95eae5cca8241b4f0.png" />
+<img alt="_images/2ae63a45c65ce61624c0198c15564f8517c3029ef008b522f812817b8415263b.png" src="_images/2ae63a45c65ce61624c0198c15564f8517c3029ef008b522f812817b8415263b.png" />
 </div>
 </div>
 <p>We may assume there is a linear relationship between the amount of total crashes and the speeding, i.e.,</p>
@@ -676,8 +601,8 @@ document.write(`
 Dep. Variable:                  total   R-squared:                       0.374
 Model:                            OLS   Adj. R-squared:                  0.361
 Method:                 Least Squares   F-statistic:                     29.27
-Date:                Mon, 11 May 2026   Prob (F-statistic):           1.87e-06
-Time:                        08:20:15   Log-Likelihood:                -132.15
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):           1.87e-06
+Time:                        21:55:42   Log-Likelihood:                -132.15
 No. Observations:                  51   AIC:                             268.3
 Df Residuals:                      49   BIC:                             272.2
 Df Model:                           1                                         
@@ -789,8 +714,8 @@ Notes:
 Dep. Variable:                  total   R-squared:                       0.730
 Model:                            OLS   Adj. R-squared:                  0.719
 Method:                 Least Squares   F-statistic:                     64.87
-Date:                Mon, 11 May 2026   Prob (F-statistic):           2.27e-14
-Time:                        08:20:15   Log-Likelihood:                -110.71
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):           2.27e-14
+Time:                        21:55:42   Log-Likelihood:                -110.71
 No. Observations:                  51   AIC:                             227.4
 Df Residuals:                      48   BIC:                             233.2
 Df Model:                           2                                         
@@ -854,8 +779,8 @@ Notes:
 Dep. Variable:                  total   R-squared:                       0.790
 Model:                            OLS   Adj. R-squared:                  0.777
 Method:                 Least Squares   F-statistic:                     58.91
-Date:                Mon, 11 May 2026   Prob (F-statistic):           5.91e-16
-Time:                        08:20:15   Log-Likelihood:                -104.31
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):           5.91e-16
+Time:                        21:55:43   Log-Likelihood:                -104.31
 No. Observations:                  51   AIC:                             216.6
 Df Residuals:                      47   BIC:                             224.3
 Df Model:                           3                                         
@@ -1076,8 +1001,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.020
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     1.672
-Date:                Mon, 11 May 2026   Prob (F-statistic):              0.174
-Time:                        08:20:15   Log-Likelihood:                -422.43
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):              0.174
+Time:                        21:55:43   Log-Likelihood:                -422.43
 No. Observations:                 244   AIC:                             852.9
 Df Residuals:                     240   BIC:                             866.8
 Df Model:                           3                                         
@@ -1145,8 +1070,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.020
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     1.672
-Date:                Mon, 11 May 2026   Prob (F-statistic):              0.174
-Time:                        08:20:15   Log-Likelihood:                -422.43
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):              0.174
+Time:                        21:55:43   Log-Likelihood:                -422.43
 No. Observations:                 244   AIC:                             852.9
 Df Residuals:                     240   BIC:                             866.8
 Df Model:                           3                                         
@@ -1196,8 +1121,8 @@ Notes:
 Dep. Variable:                    tip   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.450
 Method:                 Least Squares   F-statistic:                     50.67
-Date:                Mon, 11 May 2026   Prob (F-statistic):           7.52e-31
-Time:                        08:20:15   Log-Likelihood:                -350.03
+Date:                Thu, 05 Mar 2026   Prob (F-statistic):           7.52e-31
+Time:                        21:55:43   Log-Likelihood:                -350.03
 No. Observations:                 244   AIC:                             710.1
 Df Residuals:                     239   BIC:                             727.5
 Df Model:                           4                                         
@@ -1818,7 +1743,7 @@ principal components shown the first 10 rows:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/79699957a51f83d5d09254f764c2794ccae7e4a23ea1603229354bd709481f05.png" src="_images/79699957a51f83d5d09254f764c2794ccae7e4a23ea1603229354bd709481f05.png" />
+<img alt="_images/a389081912382cc874032e710f21b08e97b374f00ada76c768575632b32c8bc9.png" src="_images/a389081912382cc874032e710f21b08e97b374f00ada76c768575632b32c8bc9.png" />
 </div>
 </div>
 </section>

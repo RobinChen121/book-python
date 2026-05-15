@@ -32,11 +32,11 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=270a6d5f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -495,8 +495,7 @@ mermaid.initialize(
     }
 );
 
-window.addEventListener("load", load);
-window.runMermaid = runMermaid;</script>
+window.addEventListener("load", load);</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'statistics';</script>
     <script src="_static/myfile.js?v=550dacb2"></script>
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
@@ -636,7 +635,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Python statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch*</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -953,148 +952,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">tips</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>sex</th>
-      <th>smoker</th>
-      <th>day</th>
-      <th>time</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>16.99</td>
-      <td>1.01</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10.34</td>
-      <td>1.66</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21.01</td>
-      <td>3.50</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23.68</td>
-      <td>3.31</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24.59</td>
-      <td>3.61</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>239</th>
-      <td>29.03</td>
-      <td>5.92</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>240</th>
-      <td>27.18</td>
-      <td>2.00</td>
-      <td>Female</td>
-      <td>Yes</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>241</th>
-      <td>22.67</td>
-      <td>2.00</td>
-      <td>Male</td>
-      <td>Yes</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>242</th>
-      <td>17.82</td>
-      <td>1.75</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sat</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>243</th>
-      <td>18.78</td>
-      <td>3.00</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Thur</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-<p>244 rows × 7 columns</p>
-</div></div></div>
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The following codes draw a graph of the data in the column “tip”.</p>
 <div class="cell docutils container">
@@ -1194,7 +1063,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/062207e7d328c19c5bbb55ea94241d1d2b1bfa7be9d67c27e87fe149f5aa1f16.png" src="_images/062207e7d328c19c5bbb55ea94241d1d2b1bfa7be9d67c27e87fe149f5aa1f16.png" />
+<img alt="_images/4c7d68cbfd170d2c524b77ecef35360560e0d6ce0c85592a7324c8f4b42de385.png" src="_images/4c7d68cbfd170d2c524b77ecef35360560e0d6ce0c85592a7324c8f4b42de385.png" />
 </div>
 </div>
 <p>For uniformly distributed data, the histogram typically displays bars of approximately equal height, resulting in a <strong>flat</strong> or level appearance.</p>
@@ -1218,7 +1087,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/f1f0b91adf69e3cc3619cb61ef645ef3340da7059256e924dd3ce32f4f3184fa.png" src="_images/f1f0b91adf69e3cc3619cb61ef645ef3340da7059256e924dd3ce32f4f3184fa.png" />
+<img alt="_images/64e65608a4009d87f383d8b2ea0edffc308625bccb06919b9a67360f716ba4d1.png" src="_images/64e65608a4009d87f383d8b2ea0edffc308625bccb06919b9a67360f716ba4d1.png" />
 </div>
 </div>
 <p>For uniformly distributed data, the histogram typically displays a <strong>bell</strong> shape.</p>
@@ -1247,7 +1116,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;total_bill&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/078e58faa35a290e3b8d8d2ac1b53a9068d0ad26d708e131ccdad7338330faa0.png" src="_images/078e58faa35a290e3b8d8d2ac1b53a9068d0ad26d708e131ccdad7338330faa0.png" />
+<img alt="_images/fcf18614feb5ceff766aac34af08f39b3a7f9fde7ace2df17250a0b4f291a417.png" src="_images/fcf18614feb5ceff766aac34af08f39b3a7f9fde7ace2df17250a0b4f291a417.png" />
 </div>
 </div>
 <p>If the data is stored in a Pandas DataFrame, it is very convenient to compute the correlation between two columns.</p>
@@ -1288,7 +1157,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;size&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/f294ad1856bbcc20225a9705b6a5a245a606f56202082f321d45d91ebee131bb.png" src="_images/f294ad1856bbcc20225a9705b6a5a245a606f56202082f321d45d91ebee131bb.png" />
+<img alt="_images/a37fdad72b5d39dfc0cd1a0a84385dbbc06c94d53d64d5019f8f9f1833b85e7c.png" src="_images/a37fdad72b5d39dfc0cd1a0a84385dbbc06c94d53d64d5019f8f9f1833b85e7c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1319,7 +1188,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;tip&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/5519eb76ad2b4924fa71fb8ddf23c12840f2dfdb7312d43997df4d6ebe11c0b0.png" src="_images/5519eb76ad2b4924fa71fb8ddf23c12840f2dfdb7312d43997df4d6ebe11c0b0.png" />
+<img alt="_images/820bea508b76f96a40641114988c8bb5d81d45d4c4c80d7880c7fb6dbd4885ae.png" src="_images/820bea508b76f96a40641114988c8bb5d81d45d4c4c80d7880c7fb6dbd4885ae.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2823,44 +2692,16 @@ Leadership Style  ──→ Turnover Intention</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample of simulated data:
-    BI1   BI2   BI3   CS1   CS2   CS3   CL1   CL2   CL3
-0  3.61  3.38  3.51  3.50  2.92  2.72  3.60  3.81  4.09
-1  3.25  2.92  2.88  2.17  2.08  2.15  2.58  2.35  2.58
-2  3.24  3.87  3.84  3.91  3.98  3.35  4.17  4.13  4.02
-3  5.00  4.43  4.59  4.64  4.23  4.42  5.00  4.71  5.00
-4  2.84  3.24  2.74  3.31  3.09  2.75  3.18  2.61  3.14
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">semopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">calc_stats</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Set random seed for reproducibility</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
-Path coefficients and loadings:
-          lval  op        rval  Estimate  Std. Err    z-value p-value
-0    CustSatis   ~  BrandImage  0.709237  0.037495  18.915261     0.0
-1    CustLoyal   ~  BrandImage  0.387441  0.062317   6.217298     0.0
-2    CustLoyal   ~   CustSatis  0.523353  0.072203    7.24833     0.0
-3          BI1   ~  BrandImage  1.000000         -          -       -
-4          BI2   ~  BrandImage  1.002760  0.028184  35.579601     0.0
-5          BI3   ~  BrandImage  1.001947  0.026477  37.841908     0.0
-6          CS1   ~   CustSatis  1.000000         -          -       -
-7          CS2   ~   CustSatis  1.017153  0.031754  32.032238     0.0
-8          CS3   ~   CustSatis  1.020169  0.031555  32.329417     0.0
-9          CL1   ~   CustLoyal  1.000000         -          -       -
-10         CL2   ~   CustLoyal  0.984234  0.030301  32.481949     0.0
-11         CL3   ~   CustLoyal  0.991315  0.029436  33.677374     0.0
-12  BrandImage  ~~  BrandImage  0.836740  0.076387  10.953963     0.0
-13   CustLoyal  ~~   CustLoyal  0.230526  0.023739    9.71088     0.0
-14   CustSatis  ~~   CustSatis  0.216182  0.022635   9.550606     0.0
-15         BI1  ~~         BI1  0.099460  0.011123   8.941709     0.0
-16         BI2  ~~         BI2  0.087458  0.010387   8.419813     0.0
-17         BI3  ~~         BI3  0.062645  0.008972   6.982363     0.0
-18         CL1  ~~         CL1  0.088397   0.01132   7.808606     0.0
-19         CL2  ~~         CL2  0.108024  0.012346    8.74958     0.0
-20         CL3  ~~         CL3  0.093793  0.011534     8.1317     0.0
-21         CS1  ~~         CS1  0.094962   0.01064    8.92529     0.0
-22         CS2  ~~         CS2  0.078832  0.009772   8.067484     0.0
-23         CS3  ~~         CS3  0.075517  0.009604   7.862728     0.0
-
-Model fit indices:
-            CFI       TLI     RMSEA        AIC         BIC
-Value  0.999754  0.999631  0.011327  41.833862  119.613294
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;semopy&#39;
 </pre></div>
 </div>
 </div>
@@ -2898,12 +2739,6 @@ Value  0.999754  0.999631  0.011327  41.833862  119.613294
 <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;average is </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;variance is </span><span class="si">{</span><span class="n">var</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>average is  51.15
-variance is  841.51
 </pre></div>
 </div>
 </div>

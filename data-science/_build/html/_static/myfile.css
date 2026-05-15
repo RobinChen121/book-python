@@ -55,6 +55,10 @@ table.docutils thead th {
     text-align: center !important;
 }
 
+table {
+    margin-bottom: 1em;
+}
+
 /* 4. 鼠标悬停：保持你要求的淡紫色 */
 /*类名前面有点，标签名前面没有点*/
 /*.dataframe (点)：去仓库里找 Class 名字 叫 dataframe 的箱子
