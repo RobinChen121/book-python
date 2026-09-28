@@ -1,0 +1,153 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+from semopy import Model, calc_stats
+
+# Set random seed for reproducibility
+np.random.seed(42)
+n_samples = 300
+
+# Generate latent variables with assumed relationships
+# BrandImage ~ N(0,1)
+BrandImage = np.random.normal(0, 1, n_samples)
+# Customer Satisfaction influenced by BrandImage + noise
+CustSatis = 0.7 * BrandImage + np.random.normal(0, 0.5, n_samples)
+# Customer Loyalty influenced by BrandImage and CustSatis + noise
+CustLoyal = 0.3 * BrandImage + 0.6 * CustSatis + np.random.normal(0, 0.5, n_samples)
+
+# Function to generate observed indicators from latent variables
+def generate_indicators(latent_var):
+    # Each latent variable is measured by 3 indicators with measurement error (std=0.3)
+    return latent_var.reshape(-1, 1) + np.random.normal(0, 0.3, (n_samples, 3))
+
+# Generate observed variables for each latent variable
+BI = generate_indicators(BrandImage)  # Brand Image indicators
+CS = generate_indicators(CustSatis)   # Customer Satisfaction indicators
+CL = generate_indicators(CustLoyal)   # Customer Loyalty indicators
+
+# Combine all observed indicators into one dataset
+data = np.hstack([BI, CS, CL])
+
+# Create DataFrame with appropriate column names matching SEM model
+columns = ['BI1', 'BI2', 'BI3', 'CS1', 'CS2', 'CS3', 'CL1', 'CL2', 'CL3']
+df = pd.DataFrame(data, columns=columns)
+
+# Transform data to simulate Likert-scale scores (1 to 5)
+df = 3 + df          # Shift mean to around 3
+df = df.clip(1, 5)   # Clip values to range [1, 5]
+df = df.round(2)     # Round to 2 decimal places
+
+print("Sample of simulated data:")
+print(df.head())
+
+# Define SEM model using lavaan-style syntax
+model_desc = '''
+BrandImage =~ BI1 + BI2 + BI3
+CustSatis =~ CS1 + CS2 + CS3
+CustLoyal =~ CL1 + CL2 + CL3
+
+CustSatis ~ BrandImage
+CustLoyal ~ BrandImage + CustSatis
+'''
+
+# Initialize and fit SEM model
+model = Model(model_desc)
+model.fit(df)
+
+# Inspect and print path coefficients and loadings
+print("\nPath coefficients and loadings:")
+print(model.inspect())
+
+# Calculate and print model fit statistics (CFI, TLI, RMSEA, AIC, BIC)
+stats = calc_stats(model)
+print("\nModel fit indices:")
+print(stats[['CFI', 'TLI', 'RMSEA', 'AIC', 'BIC']])
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[29][39m[32m, line 3[39m
+[32m      1[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
+[32m      2[39m [38;5;28;01mimport[39;00m pandas [38;5;28;01mas[39;00m pd
+[32m----> [39m[32m3[39m [38;5;28;01mfrom[39;00m semopy [38;5;28;01mimport[39;00m Model, calc_stats
+[32m      4[39m 
+[32m      5[39m [38;5;66;03m# Set random seed for reproducibility[39;00m
+[32m      6[39m np.random.seed([32m42[39m)
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/semopy/__init__.py:7[39m
+[32m      4[39m __version__ = [33m"[39m[33m2.3.11[39m[33m"[39m
+[32m      5[39m __author__ = [33m"[39m[33mGeorgy Meshcheryakov[39m[33m"[39m
+[32m----> [39m[32m7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmodel_generalized_effects[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ModelGeneralizedEffects
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmodel_effects[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ModelEffects
+[32m      9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmodel_means[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ModelMeans
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/semopy/model_generalized_effects.py:5[39m
+[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mutils[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m chol_inv, chol_inv2, cov
+[32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m solve_sylvester
+[32m----> [39m[32m5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmodel_means[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ModelMeans
+[32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mitertools[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m combinations
+[32m      7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mfunctools[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m partial
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/semopy/model_means.py:7[39m
+[32m      5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m      6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m----> [39m[32m7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmodel[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Model
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mcollections[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m defaultdict
+[32m      9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m block_diag
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/semopy/model.py:7[39m
+[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mstatsmodels[39;00m[34;01m.[39;00m[34;01mstats[39;00m[34;01m.[39;00m[34;01mcorrelation_tools[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m cov_nearest
+[32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mitertools[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m combinations
+[32m----> [39m[32m7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mconstraints[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m parse_constraint
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mcollections[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m defaultdict
+[32m      9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mdataclasses[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m dataclass
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/semopy/constraints.py:4[39m
+[32m      1[39m [38;5;66;03m#!/usr/bin/env python3[39;00m
+[32m      2[39m [38;5;66;03m# -*- coding: utf-8 -*-[39;00m
+[32m      3[39m [33;03m"""This module contains sympy-powered constraint parser."""[39;00m
+[32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msympy[39;00m[34;01m.[39;00m[34;01mparsing[39;00m[34;01m.[39;00m[34;01msympy_parser[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m parse_expr
+[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msympy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m lambdify, derive_by_array, Symbol
+[32m      6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'sympy'
+

@@ -32,11 +32,11 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=270a6d5f" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=eb66d474" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -434,12 +434,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-format-1">3.3. Using <code class="docutils literal notranslate"><span class="pre">format</span></code>*</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-output">3.4. Using <code class="docutils literal notranslate"><span class="pre">%</span></code> for output*</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-files">3.5. Read and write files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.6. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.6.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.6.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordcloud-library">3.6. <code class="docutils literal notranslate"><span class="pre">WordCloud</span></code> library*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.7. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.7.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.7.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.8. Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -1053,7 +1054,7 @@ the numbers are 3 and 4.56 and 3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-    <span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span>
+    <span class="s2">&quot;texts/test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span>
 <span class="p">)</span>  <span class="c1"># creat a file in the current folder; if creating the file under the E drive:  f = open(&#39;E:\\files\\test.txt&#39;, &#39;r&#39;)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;My name is Tim Cook</span><span class="se">\n</span><span class="s2">His name is Elon Musk&quot;</span><span class="p">)</span>  <span class="c1"># write the contents and use \n for line break</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close the opened file</span>
@@ -1068,7 +1069,7 @@ the numbers are 3 and 4.56 and 3
 <p>The following codes read all the contents from the file through the method <code class="docutils literal notranslate"><span class="pre">read()</span></code> and return a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;texts/test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="nb">str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># read the contents and return a string</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="c1"># print the string</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close the opened file</span>
@@ -1090,11 +1091,11 @@ His name is Elon Musk
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write contents</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;texts/test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;My name is Tim Cook</span><span class="se">\n</span><span class="s2">His name is Elon Musk&quot;</span><span class="p">)</span>
 
 <span class="c1"># read contents</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;texts/test.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  
 </pre></div>
@@ -1110,10 +1111,47 @@ His name is Elon Musk
 <p>To read and write data format files such as .txt, .xls, .xlsx, and .csv, it is common to use the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> library to read files and process data. Readers can refer to the Pandas chapter in this book for more details.</p>
 <p>To read and write Word format files, libraries such as <code class="docutils literal notranslate"><span class="pre">textract</span></code> and <code class="docutils literal notranslate"><span class="pre">docx2txt</span></code> can be used. This book does not go into further detail on this topic—interested readers can look up relevant information online.</p>
 </section>
+<section id="wordcloud-library">
+<h2><span class="section-number">3.6. </span><code class="docutils literal notranslate"><span class="pre">WordCloud</span></code> library*<a class="headerlink" href="#wordcloud-library" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">WordCloud</span></code> is a Python library that generates word clouds from text data. It visualizes the frequency of words in a given text, where more frequently occurring words are displayed in larger fonts. This library is often used for text analysis and visualization.</p>
+<p>The following code generates a word cloud from the text of “Game of Thrones” and displays it using Matplotlib. Make sure to install the <code class="docutils literal notranslate"><span class="pre">wordcloud</span></code> library if you haven’t already, using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">wordcloud</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+
+<span class="c1"># Read the text file (ensure &#39;game of thrones.txt&#39; is in the same directory or provide the correct path)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texts/game of thrones.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># Create and configure the word cloud object</span>
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>                <span class="c1"># Width of the image</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>                <span class="c1"># Height of the image</span>
+    <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>  <span class="c1"># Background color of the word cloud</span>
+    <span class="n">max_words</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>              <span class="c1"># Maximum number of words to display</span>
+    <span class="n">min_word_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>         <span class="c1"># Ignore words with length less than 2 (removes single-character words)</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>         <span class="c1"># Color scheme (e.g., &#39;coolwarm&#39;, &#39;magma&#39;, &#39;plasma&#39;, &#39;viridis&#39;, etc.)</span>
+    <span class="n">contour_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>           <span class="c1"># Width of the outline</span>
+    <span class="n">contour_color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span>  <span class="c1"># Color of the outline</span>
+<span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># Save the generated word cloud as an image file in the &#39;pics&#39; folder</span>
+<span class="n">wordcloud</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;pics/game_of_thrones_wordcloud.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;wordcloud.wordcloud.WordCloud at 0x108800ec0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="os-sys-library">
-<h2><span class="section-number">3.6. </span><code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*<a class="headerlink" href="#os-sys-library" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*<a class="headerlink" href="#os-sys-library" title="Link to this heading">#</a></h2>
 <hr><section id="os-library">
-<h3><span class="section-number">3.6.1. </span><code class="docutils literal notranslate"><span class="pre">os</span></code> library<a class="headerlink" href="#os-library" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.1. </span><code class="docutils literal notranslate"><span class="pre">os</span></code> library<a class="headerlink" href="#os-library" title="Link to this heading">#</a></h3>
 <hr>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> in Python is a standard library for interacting with the operating system, providing functionalities for handling files, directories, processes, and environment variables.</p>
 <p>Below are some usages of the <code class="docutils literal notranslate"><span class="pre">os</span></code>:</p>
@@ -1200,15 +1238,15 @@ His name is Elon Musk
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1688
-15608
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4670
+4598
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="sys-library">
-<h3><span class="section-number">3.6.2. </span><code class="docutils literal notranslate"><span class="pre">sys</span></code> library<a class="headerlink" href="#sys-library" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.2. </span><code class="docutils literal notranslate"><span class="pre">sys</span></code> library<a class="headerlink" href="#sys-library" title="Link to this heading">#</a></h3>
 <hr>
 <p>The <code class="docutils literal notranslate"><span class="pre">sys</span></code>  provides variables and functions that are related to the Python interpreter and its environment. It is useful for handling command-line arguments, runtime environment settings, and standard input and output operations.</p>
 <ul class="simple">
@@ -1223,7 +1261,7 @@ His name is Elon Musk
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]
 </pre></div>
 </div>
 </div>
@@ -1238,7 +1276,7 @@ His name is Elon Musk
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>win32
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>darwin
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1291,7 @@ His name is Elon Musk
 </section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">3.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <hr><div class="exercise admonition" id="read-content">
 
 <p class="admonition-title"><span class="caption-number">Exercise 3.1 </span></p>
@@ -1332,7 +1370,7 @@ His name is Elon Musk
 <p class="admonition-title"><span class="caption-number">Exercise 3.5 </span></p>
 <section id="exercise-content">
 <p>What happens to the original file content if you open a file like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texts/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A.    The original content will be overwritten</p>
@@ -1522,12 +1560,13 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-format-1">3.3. Using <code class="docutils literal notranslate"><span class="pre">format</span></code>*</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-for-output">3.4. Using <code class="docutils literal notranslate"><span class="pre">%</span></code> for output*</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-files">3.5. Read and write files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.6. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.6.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.6.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordcloud-library">3.6. <code class="docutils literal notranslate"><span class="pre">WordCloud</span></code> library*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-sys-library">3.7. <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">sys</span></code> library*</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-library">3.7.1. <code class="docutils literal notranslate"><span class="pre">os</span></code> library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys-library">3.7.2. <code class="docutils literal notranslate"><span class="pre">sys</span></code> library</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.8. Exercises</a></li>
 </ul>
   </nav></div>
 
