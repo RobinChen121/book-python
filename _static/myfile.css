@@ -1,5 +1,5 @@
 p {
-    text-align: justify;
+    /*text-align: justify;*/
     margin-bottom: 1em;
 }
 
@@ -53,6 +53,10 @@ table.table thead th,
 table.docutils thead th {
     border-bottom: 2px solid #afa2b6 !important;
     text-align: center !important;
+}
+
+table {
+    margin-bottom: 1em;
 }
 
 /* 4. 鼠标悬停：保持你要求的淡紫色 */

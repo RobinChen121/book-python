@@ -32,11 +32,11 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=0fd55a2d" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=eb66d474" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -493,8 +493,7 @@ mermaid.initialize(
     }
 );
 
-window.addEventListener("load", load);
-window.runMermaid = runMermaid;</script>
+window.addEventListener("load", load);</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'basic-data-type';</script>
     <script src="_static/myfile.js?v=550dacb2"></script>
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
@@ -634,7 +633,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l1"><a class="reference internal" href="statistics.html">Python statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine-learning.html">Introduction to machine learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction-to-class.html">Python Object Oriented Programming*</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction-to-pytorch.html">Introduction to deep learning and Pytorch*</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python hands-on projects</span></p>
 <ul class="nav bd-sidenav">
@@ -868,12 +867,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-integer-and-float">2.1. Numeric: integer and float</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string">2.2. String</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list">2.3. List</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">2.4. Dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.5. Tuple</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean">2.6. Boolean</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-1">2.7. Set*</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-library">2.8. <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.9. Excercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.4. Tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range">2.5. Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">2.6. Dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean">2.7. Boolean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-1">2.8. Set*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-library">2.9. <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.10. Excercises</a></li>
 </ul>
             </nav>
         </div>
@@ -924,6 +924,7 @@ document.write(`
         F1[List]
         F2[Tuple]
         F3[String]
+        F4[Range]
     end
     
     </pre><section id="numeric-integer-and-float">
@@ -1488,9 +1489,9 @@ string
 <p>To change the value of some elements in a <strong>sequence</strong>, we can diretly assign values using indexing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># change the value of the second element in list</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># change the value of the second element in list</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1503,9 +1504,9 @@ string
 <p>To delete some element in a <strong>sequence</strong>, we can use <code class="docutils literal notranslate"><span class="pre">del</span></code> along with indexing：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
-<span class="k">del</span> <span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1518,9 +1519,9 @@ string
 <p>For lists, the operators <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> method identically to their string counterparts. Below are examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
-<span class="nb">list</span> <span class="o">=</span> <span class="nb">list</span> <span class="o">+</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="n">list1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1532,7 +1533,7 @@ string
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">*</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1544,7 +1545,7 @@ string
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="ow">in</span> <span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="ow">in</span> <span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1556,7 +1557,7 @@ string
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1600,9 +1601,9 @@ string
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
-<span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># append one element at the end of a list</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># append one element at the end of a list</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1614,8 +1615,8 @@ string
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># insert an element 10 into the index 1 of the list</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># insert an element 10 into the index 1 of the list</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1627,8 +1628,8 @@ string
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>  <span class="c1"># extend the list with some other sequence elements in the end</span>
-<span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>  <span class="c1"># extend the list with some other sequence elements in the end</span>
+<span class="n">list1</span>
 </pre></div>
 </div>
 </div>
@@ -1643,8 +1644,8 @@ string
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list1</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1733,8 +1734,87 @@ string
 </div>
 </div>
 </section>
+<section id="tuple">
+<h2><span class="section-number">2.4. </span>Tuple<a class="headerlink" href="#tuple" title="Link to this heading">#</a></h2>
+<hr>
+<p>A tuple in Python is very similar to a list, the difference is that <strong>a tuple is immutable</strong>, meaning the elements in a tuple can’t be changed after creation.</p>
+</section>
+<section id="range">
+<h2><span class="section-number">2.5. </span>Range<a class="headerlink" href="#range" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">range</span></code> is a built-in Python data type/function that represents a sequence of numbers, which is usually used in loops.</p>
+<p>Its syntax is:</p>
+<table>   
+    <tr style="border-top:solid; border-bottom:solid">
+        <th colspan=2 style="text-align:center">
+            range(stop) or range(start, stop, step)
+        </th>
+    </tr>
+    <tr>
+        <td style="text-align:left">stop</td>
+        <td style="text-align:left">The end value of the range (exclusive).</td>
+    </tr>
+    <tr>
+        <td style="text-align:left">start</td>
+        <td style="text-align:left">The starting value of the range (inclusive).</td>
+    </tr>
+    <tr style="border-bottom:solid">
+        <td style="text-align:left">step</td>
+        <td style="text-align:left">The difference between each pair of consecutive values in the range.</td>
+    </tr>
+</table><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(0, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">list()</span></code> to transfer the range to the list type.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 4]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="dictionary">
-<h2><span class="section-number">2.4. </span>Dictionary<a class="headerlink" href="#dictionary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.6. </span>Dictionary<a class="headerlink" href="#dictionary" title="Link to this heading">#</a></h2>
 <hr>
 <p>A Python dictionary is a data type that stores the value in <code class="docutils literal notranslate"><span class="pre">{key:</span> <span class="pre">value}</span></code> pairs. Values can be of any data type and can be duplicated, while <code class="docutils literal notranslate"><span class="pre">keys</span> <span class="pre">can't</span> <span class="pre">be</span> <span class="pre">repeated</span> <span class="pre">and</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">immutable</span></code>.</p>
 <div class="cell docutils container">
@@ -1908,11 +1988,6 @@ age: 22
 </div>
 </div>
 </div>
-</section>
-<section id="tuple">
-<h2><span class="section-number">2.5. </span>Tuple<a class="headerlink" href="#tuple" title="Link to this heading">#</a></h2>
-<hr>
-<p>A tuple in Python is very similar to a list, the difference is that <strong>a tuple is immutable</strong>, meaning the elements in a tuple can’t be changed after creation.</p>
 <p>Tuples are created using parentheses <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> with elements separated by <code class="docutils literal notranslate"><span class="pre">commas</span></code>. Accessing, slicing follows the same syntax as lists:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1951,7 +2026,7 @@ age: 22
 </div>
 </div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">del</span></code> to delete the tup， 也可以用运算符 +、*、in、not in：</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">del</span></code> to delete the tup：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;zh&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -2013,7 +2088,7 @@ age: 22
 </div>
 </section>
 <section id="boolean">
-<h2><span class="section-number">2.6. </span>Boolean<a class="headerlink" href="#boolean" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.7. </span>Boolean<a class="headerlink" href="#boolean" title="Link to this heading">#</a></h2>
 <hr>
 <p>In Python, Boolean values (Bool) are typically produced through logical comparisons, and there are only two possible outcomes: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="cell docutils container">
@@ -2134,7 +2209,7 @@ age: 22
 </div>
 </section>
 <section id="set-1">
-<h2><span class="section-number">2.7. </span>Set*<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#set-1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.8. </span>Set*<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#set-1" title="Link to this heading">#</a></h2>
 <hr>
 <p>A set is an unordered sequence of unique elements, typically created using curly braces <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>.</p>
 <div class="admonition note">
@@ -2313,7 +2388,7 @@ age: 22
 </div>
 </section>
 <section id="random-library">
-<h2><span class="section-number">2.8. </span><code class="docutils literal notranslate"><span class="pre">random</span></code> library<a class="headerlink" href="#random-library" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.9. </span><code class="docutils literal notranslate"><span class="pre">random</span></code> library<a class="headerlink" href="#random-library" title="Link to this heading">#</a></h2>
 <hr><p>Random numbers are widely used in simulations. Python’s built-in random module can generate common pseudorandom numbers (note that all computer-generated random numbers are pseudorandom, true random numbers cannot be artificially produced).</p>
 <p>Commonly used methods in <code class="docutils literal notranslate"><span class="pre">random</span></code>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -2354,7 +2429,7 @@ age: 22
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12928092715153372
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9775007333486554
 </pre></div>
 </div>
 </div>
@@ -2374,7 +2449,7 @@ age: 22
 </div>
 </section>
 <section id="excercises">
-<h2><span class="section-number">2.9. </span>Excercises<a class="headerlink" href="#excercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.10. </span>Excercises<a class="headerlink" href="#excercises" title="Link to this heading">#</a></h2>
 <hr><div class="exercise admonition" id="auto-type">
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.1 </span></p>
@@ -2927,12 +3002,13 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-integer-and-float">2.1. Numeric: integer and float</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string">2.2. String</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list">2.3. List</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">2.4. Dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.5. Tuple</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean">2.6. Boolean</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-1">2.7. Set*</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-library">2.8. <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.9. Excercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.4. Tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range">2.5. Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">2.6. Dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean">2.7. Boolean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-1">2.8. Set*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-library">2.9. <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excercises">2.10. Excercises</a></li>
 </ul>
   </nav></div>
 
