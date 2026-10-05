@@ -44,8 +44,8 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -57,8 +57,6 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'A-first-look-of-Python';</script>
@@ -67,7 +65,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Data types in Python" href="basic-data-type.html" />
-    <link rel="prev" title="Preface" href="intro.html" />
+    <link rel="prev" title="Preface" href="preface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,7 +146,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="preface.html">
   
   
   
@@ -180,7 +178,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+                <a class="reference internal" href="preface.html">
                     Preface
                 </a>
             </li>
@@ -623,39 +621,41 @@ document.write(`
 <section id="python-installation">
 <h2><span class="section-number">1.3. </span>Python installation<a class="headerlink" href="#python-installation" title="Link to this heading">#</a></h2>
 <hr><p>There are generally several ways to use Python. One option is to install <strong>Anaconda</strong>, while another is to install <strong>Python together with an integrated development environment (IDE)</strong> such as <strong>PyCharm</strong> or <strong>VS Code</strong>.</p>
-<p>Pycharm is a professional IDE for Python development, providing a complete set of tools for coding, debugging, and testing. It is suitable for large projects and deep learning applications. It performs excellent in code/text completion.</p>
+<p>Pycharm is a professional IDE for Python development, providing a complete set of tools for coding, debugging, and testing. It is suitable for large projects and deep learning applications. It <code class="docutils literal notranslate"><span class="pre">performs</span> <span class="pre">excellent</span> <span class="pre">in</span> <span class="pre">code/text</span> <span class="pre">completion</span></code>.</p>
 <p>Pycharm is available in two versions: the free Community Edition and the paid Professional Edition. The Community Edition is sufficient for most Python development needs, while the Professional Edition offers additional features such as web development support, database tools, and advanced debugging capabilities. Students and teachers can apply for a free license for the Professional Edition through the JetBrains website.</p>
 <p>Pycharm also support Jupyter Notebook and JupyterLab, which are web-based interactive computing environments that allow you to create and share documents containing live code, equations, visualizations, and narrative text. There are also a lot of plugins for Pycharm such as Copilot, which can be used to extend its functionality.</p>
 <p>Anaconda comes with a built-in IDE, Spyder, and includes a wide range of commonly used libraries, such as NumPy, Pandas, Matplotlib, and Scikit-learn. It also supports other development environments, including Jupyter Notebook/Lab, IPython, and RStudio (while Jupyter Notebook focuses on a single interactive notebook, JupyterLab provides a more complete IDE-like environment with support for multiple files, terminals, and tabs).</p>
 <ul class="simple">
 <li><p>I suggest <strong>using PyCharm for learning Python as you don’t have to learn or use so many tools at the same time</strong>. It provides a more complete and user-friendly development environment with many useful plugins, making it easier to write, debug, and manage code.</p></li>
 <li><p>If you are a Matlab/R user before, you may prefer Spyder.</p></li>
+<li><p>You can also do online Python coding using <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>, which is Jupyter notebook based.</p></li>
 </ul>
 <p>The specific installation steps are not detailed here. Please visit the official websites to download and install the required software. For example:</p>
 <ul class="simple">
 <li><p><strong>Pycharm installation:</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://www.jetbrains.com/pycharm/download/">https://www.jetbrains.com/pycharm/download/</a></p>
+<li><p><a class="reference external" href="https://www.jetbrains.com/pycharm/download/">https://www.jetbrains.com/pycharm/download/</a>.</p>
 <ul>
 <li><p>After installation, configure a Python interpreter in Pycharm to run Python code: <a class="reference external" href="https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html">https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html</a>.</p></li>
 </ul>
 </li>
-<li><p>Academic license for students and teachers to use the Professional Edition: <a class="reference external" href="https://www.jetbrains.com/community/education/#students">https://www.jetbrains.com/community/education/#students</a></p></li>
+<li><p>Academic license for students and teachers to use the Professional Edition: <a class="reference external" href="https://www.jetbrains.com/community/education/#students">https://www.jetbrains.com/community/education/#students</a>.</p></li>
 </ul>
 </li>
 <li><p><strong>Anaconda installation:</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://www.anaconda.com/docs/getting-started/main">https://www.anaconda.com/docs/getting-started/main</a></p></li>
-<li><p><a class="reference external" href="https://www.anaconda.com/download">https://www.anaconda.com/download</a></p></li>
+<li><p>Anaconda installers introduction: <a class="reference external" href="https://www.anaconda.com/docs/getting-started/main">https://www.anaconda.com/docs/getting-started/main</a>.</p></li>
+<li><p>Download Anaconda Distribution <a class="reference external" href="https://www.anaconda.com/download">https://www.anaconda.com/download</a>.</p></li>
+<li><p>You can also install PyCharm inside Anaconda.</p></li>
 </ul>
 </li>
 <li><p><strong>Using Jupyter Notebook:</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://www.anaconda.com/docs/psm/on-prem/6.8.0/user/notebook">https://www.anaconda.com/docs/psm/on-prem/6.8.0/user/notebook</a></p></li>
+<li><p><a class="reference external" href="https://www.anaconda.com/docs/psm/on-prem/6.8.0/user/notebook">https://www.anaconda.com/docs/psm/on-prem/6.8.0/user/notebook</a>.</p></li>
 </ul>
 </li>
 </ul>
-<p>Comparisions between Jupyter Notebook/Lab and Pycharm are listed in the following table.</p>
+<p>Comparisions between those Python coding tools are listed in the following table.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Tool</p></th>
@@ -672,13 +672,19 @@ document.write(`
 <td><p>Excellent code completion, strong debugging tools and package management</p></td>
 <td><p>Heavy memory usage, more complex for beginners</p></td>
 </tr>
-<tr class="row-odd"><td><p>Jupyter Notebook/Lab</p></td>
+<tr class="row-odd"><td><p>Spyder</p></td>
+<td><p>Scientific Python development environment</p></td>
+<td><p>Data analysis, scientific computing</p></td>
+<td><p>Integrated development environment for data analysis and scientific computing</p></td>
+<td><p>Code completion are not powerful and plugins are not rich compared with Pycharm</p></td>
+</tr>
+<tr class="row-even"><td><p>Jupyter Notebook/Lab</p></td>
 <td><p>Interactive experimentation</p></td>
 <td><p>Data science, research, teaching</p></td>
 <td><p>Extremely interactive, cell-based execution, combines code, plots, and notes</p></td>
 <td><p>Harder to maintain large projects and debug</p></td>
 </tr>
-<tr class="row-even"><td><p>VS Code</p></td>
+<tr class="row-odd"><td><p>VS Code</p></td>
 <td><p>Lightweight code editor</p></td>
 <td><p>General-purpose coding, web development</p></td>
 <td><p>Highly customizable, supports many languages and extensions</p></td>
@@ -705,7 +711,7 @@ document.write(`
 <hr><p>When writing programs, variables are often used to store data. In Python, a variable is assigned using an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>). For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tim Cook&quot;</span> <span class="c1"># name is string variable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tim Cook&quot;</span> <span class="c1"># name is string variable, string variable is quoted by single or double quotes</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1275,7 +1281,7 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(10.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0
 </pre></div>
 </div>
 </div>
@@ -1290,7 +1296,7 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(14.142135623730951)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.142135623730951
 </pre></div>
 </div>
 </div>
@@ -1311,7 +1317,7 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(4.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
 </pre></div>
 </div>
 </div>
@@ -1364,86 +1370,6 @@ False
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>2026-08-26 00:00:00-04:00</th>
-      <td>310.299988</td>
-      <td>315.429993</td>
-      <td>308.799988</td>
-      <td>313.450012</td>
-      <td>34024500</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-08-27 00:00:00-04:00</th>
-      <td>310.549988</td>
-      <td>315.399994</td>
-      <td>309.399994</td>
-      <td>314.579987</td>
-      <td>32419200</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-08-28 00:00:00-04:00</th>
-      <td>316.850006</td>
-      <td>322.369995</td>
-      <td>315.450012</td>
-      <td>319.700012</td>
-      <td>38649400</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-08-31 00:00:00-04:00</th>
-      <td>319.600006</td>
-      <td>321.239990</td>
-      <td>312.799988</td>
-      <td>316.850006</td>
-      <td>41242700</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-09-01 00:00:00-04:00</th>
-      <td>316.980011</td>
-      <td>327.299988</td>
-      <td>314.730011</td>
-      <td>325.130005</td>
-      <td>53167400</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-09-02 00:00:00-04:00</th>
-      <td>326.869995</td>
-      <td>328.399994</td>
-      <td>323.529999</td>
-      <td>324.959991</td>
-      <td>33776400</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-09-03 00:00:00-04:00</th>
-      <td>324.869995</td>
-      <td>330.809998</td>
-      <td>324.109985</td>
-      <td>328.209991</td>
-      <td>37225800</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2026-09-04 00:00:00-04:00</th>
-      <td>328.309998</td>
-      <td>328.929993</td>
-      <td>317.859985</td>
-      <td>319.970001</td>
-      <td>39606900</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
     <tr>
       <th>2026-09-08 00:00:00-04:00</th>
       <td>317.100006</td>
@@ -1580,7 +1506,67 @@ False
       <td>341.670013</td>
       <td>334.529999</td>
       <td>341.070007</td>
-      <td>29950100</td>
+      <td>30002500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-09-28 00:00:00-04:00</th>
+      <td>340.369995</td>
+      <td>342.989990</td>
+      <td>338.040009</td>
+      <td>338.399994</td>
+      <td>32820800</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-09-29 00:00:00-04:00</th>
+      <td>336.970001</td>
+      <td>337.089996</td>
+      <td>328.700012</td>
+      <td>329.399994</td>
+      <td>38478000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-09-30 00:00:00-04:00</th>
+      <td>330.799988</td>
+      <td>339.500000</td>
+      <td>330.140015</td>
+      <td>333.019989</td>
+      <td>49988600</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-10-01 00:00:00-04:00</th>
+      <td>330.000000</td>
+      <td>332.480011</td>
+      <td>325.809998</td>
+      <td>330.320007</td>
+      <td>36306300</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-10-02 00:00:00-04:00</th>
+      <td>333.260010</td>
+      <td>334.540009</td>
+      <td>330.609985</td>
+      <td>333.690002</td>
+      <td>33245500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2026-10-05 00:00:00-04:00</th>
+      <td>332.795013</td>
+      <td>336.190002</td>
+      <td>331.649994</td>
+      <td>334.410004</td>
+      <td>3789814</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2062,7 +2048,7 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="preface.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

@@ -1,0 +1,154 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from matplotlib.animation import FuncAnimation
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# you may need the following two lines of code to show the figure in a separate window
+# import matplotlib
+# matplotlib.use('QtAgg')
+
+# Apply the default theme
+sns.set_theme("paper")
+sns.set_context("paper")
+frames = 50 # number of frames in the animation
+
+fig = plt.figure()
+ax = fig.add_subplot(111, xlim=(-2.5, 2.5), ylim=(-2, 4))  # or plt.subplot
+(PLOT,) = ax.plot([], [])  # return all the lines
+plt.text(-1, 3, r"$f(x)=x^{2/3}+0.9(3.3-x^2)^{1/2}\sin(\alpha\pi x)$") # math formula at specific location
+time_text = ax.text(-0.25, 2.5, "")  # initial alpha location and value
+
+def animate(alpha):
+    x = np.linspace(-1.8, 1.8, 1000)
+    y = abs(x) ** (2 / 3) + 0.9 * np.sqrt(3.3 - x**2) * np.sin(alpha * (np.pi) * x)
+    PLOT.set_data(x, y)
+    # dynamic color change logic: as alpha increases, the color changes from red to purple
+    blue_val = min(1, alpha / frames + 0.2)
+    red_val = max(0, 1 - blue_val)
+    PLOT.set_color((blue_val, 0.1, red_val))  # change color
+    time_text.set_text(r"$\alpha$ = " + str(round(alpha, 2)))
+    return PLOT, time_text
+
+ani = FuncAnimation(fig, animate, frames=frames, interval=200, repeat=True)
+plt.show()
+ani.save("heart.gif")  # save fig as a gif file
+------------------
+
+----- stderr -----
+MovieWriter stderr:
+[out#0/gif @ 0x7c1020000] Error writing trailer: Invalid argument
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:224[39m, in [36mAbstractMovieWriter.saving[39m[34m(self, fig, outfile, dpi, *args, **kwargs)[39m
+[32m    223[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m224[39m     [38;5;28;01myield[39;00m [38;5;28mself[39m
+[32m    225[39m [38;5;28;01mfinally[39;00m:
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:1109[39m, in [36mAnimation.save[39m[34m(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)[39m
+[32m   1108[39m [38;5;28;01mfor[39;00m anim [38;5;129;01min[39;00m all_anim:
+[32m-> [39m[32m1109[39m     [30;43manim[39;49m[30;43m.[39;49m[30;43m_init_draw[39;49m[30;43m([39;49m[30;43m)[39;49m  [38;5;66;03m# Clear the initial frame[39;00m
+[32m   1110[39m frame_number = [32m0[39m
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:1770[39m, in [36mFuncAnimation._init_draw[39m[34m(self)[39m
+[32m   1769[39m         [38;5;28;01mreturn[39;00m
+[32m-> [39m[32m1770[39m     [30;43mself[39;49m[30;43m.[39;49m[30;43m_draw_frame[39;49m[30;43m([39;49m[30;43mframe_data[39;49m[30;43m)[39;49m
+[32m   1771[39m [38;5;28;01melse[39;00m:
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:1789[39m, in [36mFuncAnimation._draw_frame[39m[34m(self, framedata)[39m
+[32m   1787[39m [38;5;66;03m# Call the func with framedata and args. If blitting is desired,[39;00m
+[32m   1788[39m [38;5;66;03m# func needs to return a sequence of any artists that were modified.[39;00m
+[32m-> [39m[32m1789[39m [38;5;28mself[39m._drawn_artists = [30;43mself[39;49m[30;43m.[39;49m[30;43m_func[39;49m[30;43m([39;49m[30;43mframedata[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_args[39;49m[30;43m)[39;49m
+[32m   1791[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._blit:
+
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 21[39m, in [36manimate[39m[34m(alpha)[39m
+[32m     20[39m [38;5;28;01mdef[39;00m animate(alpha):
+[32m---> [39m[32m21[39m     x = np.linspace(-[32m1.8[39m, [32m1.8[39m, [32m1000[39m)
+[32m     22[39m     y = abs(x) ** ([32m2[39m / [32m3[39m) + [32m0.9[39m * np.sqrt([32m3.3[39m - x**[32m2[39m) * np.sin(alpha * (np.pi) * x)
+
+[31mNameError[39m: name 'np' is not defined
+
+During handling of the above exception, another exception occurred:
+
+[31mCalledProcessError[39m                        Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 33[39m
+[32m     29[39m     [38;5;28;01mreturn[39;00m PLOT, time_text
+[32m     30[39m 
+[32m     31[39m ani = FuncAnimation(fig, animate, frames=frames, interval=[32m200[39m, repeat=[38;5;28;01mTrue[39;00m)
+[32m     32[39m plt.show()
+[32m---> [39m[32m33[39m ani.save([33m"heart.gif"[39m)  [38;5;66;03m# save fig as a gif file[39;00m
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:1098[39m, in [36mAnimation.save[39m[34m(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)[39m
+[32m   1093[39m     [38;5;28;01mreturn[39;00m a * np.array([r, g, b]) + [32m1[39m - a
+[32m   1095[39m [38;5;66;03m# canvas._is_saving = True makes the draw_event animation-starting[39;00m
+[32m   1096[39m [38;5;66;03m# callback a no-op; canvas.manager = None prevents resizing the GUI[39;00m
+[32m   1097[39m [38;5;66;03m# widget (both are likewise done in savefig()).[39;00m
+[32m-> [39m[32m1098[39m [38;5;28;01mwith[39;00m (writer.saving([38;5;28mself[39m._fig, filename, dpi),
+[32m   1099[39m       cbook._setattr_cm([38;5;28mself[39m._fig.canvas, _is_saving=[38;5;28;01mTrue[39;00m, manager=[38;5;28;01mNone[39;00m)):
+[32m   1100[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m writer._supports_transparency():
+[32m   1101[39m         facecolor = savefig_kwargs.get([33m'[39m[33mfacecolor[39m[33m'[39m,
+[32m   1102[39m                                        mpl.rcParams[[33m'[39m[33msavefig.facecolor[39m[33m'[39m])
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/contextlib.py:162[39m, in [36m_GeneratorContextManager.__exit__[39m[34m(self, typ, value, traceback)[39m
+[32m    160[39m     value = typ()
+[32m    161[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m162[39m     [30;43mself[39;49m[30;43m.[39;49m[30;43mgen[39;49m[30;43m.[39;49m[30;43mthrow[39;49m[30;43m([39;49m[30;43mvalue[39;49m[30;43m)[39;49m
+[32m    163[39m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m [38;5;28;01mas[39;00m exc:
+[32m    164[39m     [38;5;66;03m# Suppress StopIteration *unless* it's the same exception that[39;00m
+[32m    165[39m     [38;5;66;03m# was passed to throw().  This prevents a StopIteration[39;00m
+[32m    166[39m     [38;5;66;03m# raised inside the "with" statement from being suppressed.[39;00m
+[32m    167[39m     [38;5;28;01mreturn[39;00m exc [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m value
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:226[39m, in [36mAbstractMovieWriter.saving[39m[34m(self, fig, outfile, dpi, *args, **kwargs)[39m
+[32m    224[39m     [38;5;28;01myield[39;00m [38;5;28mself[39m
+[32m    225[39m [38;5;28;01mfinally[39;00m:
+[32m--> [39m[32m226[39m     [30;43mself[39;49m[30;43m.[39;49m[30;43mfinish[39;49m[30;43m([39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/opt/anaconda3/lib/python3.13/site-packages/matplotlib/animation.py:341[39m, in [36mMovieWriter.finish[39m[34m(self)[39m
+[32m    337[39m     _log.log(
+[32m    338[39m         logging.WARNING [38;5;28;01mif[39;00m [38;5;28mself[39m._proc.returncode [38;5;28;01melse[39;00m logging.DEBUG,
+[32m    339[39m         [33m"[39m[33mMovieWriter stderr:[39m[38;5;130;01m\n[39;00m[38;5;132;01m%s[39;00m[33m"[39m, err)
+[32m    340[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._proc.returncode:
+[32m--> [39m[32m341[39m     [38;5;28;01mraise[39;00m subprocess.CalledProcessError(
+[32m    342[39m         [38;5;28mself[39m._proc.returncode, [38;5;28mself[39m._proc.args, out, err)
+
+[31mCalledProcessError[39m: Command '['ffmpeg', '-f', 'rawvideo', '-vcodec', 'rawvideo', '-s', '640x480', '-pix_fmt', 'rgba', '-framerate', '5.0', '-loglevel', 'error', '-i', 'pipe:', '-filter_complex', 'split [a][b];[a] palettegen [p];[b][p] paletteuse', '-y', 'heart.gif']' returned non-zero exit status 234.
+
