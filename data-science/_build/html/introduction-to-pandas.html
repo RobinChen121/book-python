@@ -7045,6 +7045,25 @@ Name: Enrollment date, dtype: object
 <img alt="_images/ee99b8a4ffa0bd41cce7f8bffed761628e59a5a61a3fb0aeaa4e3770ad309525.png" src="_images/ee99b8a4ffa0bd41cce7f8bffed761628e59a5a61a3fb0aeaa4e3770ad309525.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_tip_by_smoker</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;smoker&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;tip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">avg_tip_by_smoker</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;salmon&#39;</span><span class="p">],</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Smoker&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Mean tip&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mean tip by smoker status&#39;</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="n">avg_tip_by_smoker</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d090977f66125c042c49a6bb3f3f24c04ca5d356777c7a592f56e556fc53f19.png" src="_images/1d090977f66125c042c49a6bb3f3f24c04ca5d356777c7a592f56e556fc53f19.png" />
+</div>
+</div>
 <p>Pandas provides a comprehensive set of data processing methods with numerous argument configurations. Due to space limitations, this book does not elaborate on them in detail. When using Pandas for data processing, readers are encouraged to consult the <a class="reference external" href="https://pandas.pydata.org/docs/">official documentation</a> for further reference.</p>
 </section>
 <section id="exercises">
