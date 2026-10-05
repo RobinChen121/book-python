@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cfae9e31-8a88-466a-8cfe-c4bff40a7e39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/.ipynb_checkpoints/A-first-look-of-Python-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/.ipynb_checkpoints/A-first-look-of-Python-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/A-first-look-of-Python.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/A-first-look-of-Python.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/A-first-look-of-Python.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/A-first-look-of-Python.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/basic-data-type.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/basic-data-type.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/define-function.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/define-function.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/draw-pictures.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/draw-pictures.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/intro.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/intro.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-class.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-class.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-numpy.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-numpy.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-pandas.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-pandas.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-pytorch.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/introduction-to-pytorch.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/machine-learning.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/machine-learning.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/print-read-files.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/print-read-files.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/projects.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/projects.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/.doctrees/statistics.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/.doctrees/statistics.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/.buildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/A-first-look-of-Python.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/A-first-look-of-Python.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_sources/A-first-look-of-Python.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_sources/A-first-look-of-Python.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_sources/intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_sources/intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_sources/introduction-to-pandas.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_sources/introduction-to-pandas.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_static/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_static/basic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_static/doctools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_static/language_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_static/language_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_static/searchtools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/_static/sphinx_highlight.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/_static/sphinx_highlight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/basic-data-type.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/basic-data-type.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/define-function.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/define-function.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/draw-pictures.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/draw-pictures.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/genindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/intro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/introduction-to-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/introduction-to-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/introduction-to-numpy.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/introduction-to-numpy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/introduction-to-pandas.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/introduction-to-pandas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/introduction-to-pytorch.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/introduction-to-pytorch.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/machine-learning.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/machine-learning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/print-read-files.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/print-read-files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/projects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/html/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/html/statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/A-first-look-of-Python.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/A-first-look-of-Python.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/basic-data-type.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/basic-data-type.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/define-function.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/define-function.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/draw-pictures.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/draw-pictures.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-class.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-class.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-numpy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-numpy.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-pandas.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-pandas.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-pytorch.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/introduction-to-pytorch.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/machine-learning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/machine-learning.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/print-read-files.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/print-read-files.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_build/jupyter_execute/statistics.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_build/jupyter_execute/statistics.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/_toc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/_toc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/ann.png" beforeDir="false" afterPath="$PROJECT_DIR$/ann.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/datas/marks.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/datas/marks.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/draw-pictures.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/draw-pictures.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/preface.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/introduction-to-pandas.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/introduction-to-pandas.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/machine-learning.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/machine-learning.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/my figure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-science/pics/game_of_thrones_wordcloud.png" beforeDir="false" afterPath="$PROJECT_DIR$/data-science/pics/game_of_thrones_wordcloud.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/zhenchen/Documents/book-python-data-science-en" value="3JztSLqejHoTvjgW4SxV0cogXxm" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3JyMvrBYl0olBuRgW8qSkpoLtF8" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/data-science/pics" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.33813.50" />
+        <option value="bundled-python-sdk-d4a74c56190c-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.33813.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cfae9e31-8a88-466a-8cfe-c4bff40a7e39" name="Changes" comment="" />
+      <created>1790629088096</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1790629088096</updated>
+      <workItem from="1790629089125" duration="758000" />
+      <workItem from="1790675719047" duration="871000" />
+      <workItem from="1790676898613" duration="335000" />
+      <workItem from="1790677246212" duration="479000" />
+      <workItem from="1790677737176" duration="802000" />
+      <workItem from="1790678546887" duration="4400000" />
+      <workItem from="1790683315114" duration="4558000" />
+      <workItem from="1790798087599" duration="1267000" />
+      <workItem from="1791208531920" duration="70000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>file://$PROJECT_DIR$/data-science/introduction-to-pandas.ipynb</url>
+          <line>1057</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>file://$PROJECT_DIR$/data-science/introduction-to-pandas.ipynb</url>
+          <line>1059</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
