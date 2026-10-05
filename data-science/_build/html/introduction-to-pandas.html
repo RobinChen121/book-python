@@ -44,8 +44,8 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -57,8 +57,6 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'introduction-to-pandas';</script>
     <script src="_static/myfile.js?v=550dacb2"></script>
     <script src="_static/.ipynb_checkpoints/myfile-checkpoint.js"></script>
@@ -146,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="preface.html">
   
   
   
@@ -178,7 +176,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+                <a class="reference internal" href="preface.html">
                     Preface
                 </a>
             </li>
@@ -577,7 +575,7 @@ document.write(`
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>‘D’ and ‘F’ are capitalized for the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> method.</p>
+<p>‘D’ and ‘F’ are capitalized in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> method.</p>
 </div>
 <p>Another way to create DataFrame with argument <code class="docutils literal notranslate"><span class="pre">columns</span></code>:</p>
 <div class="cell docutils container">
@@ -895,12 +893,12 @@ dtype: object
 <section id="reading-data">
 <h3><span class="section-number">5.1.2. </span>Reading Data<a class="headerlink" href="#reading-data" title="Link to this heading">#</a></h3>
 <hr>
-<p>In most cases, we need to read data files (such as Excel files). Suppose the example above is saved in an Excel file named ‘transcripts.xlsx’ located in the “datas/” directory on your computer. We can read the file using the <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> method:</p>
+<p>In most cases, we need to read data files (such as Excel files). Suppose the example above is saved in an Excel file named ‘tips.xlsx’ located in the “datas/” directory on your computer. We can read the file using the <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;datas/transcripts.xlsx&quot;</span><span class="p">)</span>
-<span class="c1"># or df = pd.read_excel(&quot;datas\\transcripts.xlsx&quot;)</span>
-<span class="c1"># or df = pd.read_excel(r&quot;datas\transcripts.xlsx&quot;)</span>
+<span class="c1"># or df = pd.read_excel(&quot;datas\\tips.xlsx&quot;)</span>
+<span class="c1"># or df = pd.read_excel(r&quot;datas\tips.xlsx&quot;)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1194,7 +1192,7 @@ Name: 2, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(90)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1204,7 @@ Name: 2, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(90)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
 </pre></div>
 </div>
 </div>
@@ -1593,7 +1591,7 @@ Name: Statistics, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(68)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68
 </pre></div>
 </div>
 </div>
@@ -1713,7 +1711,7 @@ Name: Statistics, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(81.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81.0
 </pre></div>
 </div>
 </div>
@@ -6826,13 +6824,15 @@ Name: Enrollment date, dtype: object
     </tr>
 </table>
 <br><ul class="simple">
-<li><p>We load a dataset ‘iris’ from seaborn.</p></li>
+<li><p>We load a dataset ‘tips’ from seaborn.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<span class="c1"># load the &#39;tips&#39; dataset from seaborn,</span>
+<span class="c1"># or you can read your own dataset using pd.read_csv() or pd.read_excel() from a local file</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -6856,53 +6856,65 @@ Name: Enrollment date, dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sepal_length</th>
-      <th>sepal_width</th>
-      <th>petal_length</th>
-      <th>petal_width</th>
-      <th>species</th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>...</th>
@@ -6911,50 +6923,62 @@ Name: Enrollment date, dtype: object
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-      <td>virginica</td>
+      <th>239</th>
+      <td>29.03</td>
+      <td>5.92</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-      <td>virginica</td>
+      <th>240</th>
+      <td>27.18</td>
+      <td>2.00</td>
+      <td>Female</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>virginica</td>
+      <th>241</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Male</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-      <td>virginica</td>
+      <th>242</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-      <td>virginica</td>
+      <th>243</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
-<p>150 rows × 5 columns</p>
+<p>244 rows × 7 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -6967,34 +6991,58 @@ Name: Enrollment date, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/475c48dc3a954e84f737a42984ad28c79c44a04cff59be4705bc2acc0f3c4b5e.png" src="_images/475c48dc3a954e84f737a42984ad28c79c44a04cff59be4705bc2acc0f3c4b5e.png" />
+<img alt="_images/d2ba495818c4f30f84594b01c0bcd44d3d22e0d8732ce963ab4dfb58d00e42d8.png" src="_images/d2ba495818c4f30f84594b01c0bcd44d3d22e0d8732ce963ab4dfb58d00e42d8.png" />
 </div>
 </div>
 <p>The above picture shows that the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method of Pandas draw a line chart for each numeric column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My picture&quot;</span><span class="p">)</span>  <span class="c1"># draw a histogram chart for a column</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>  <span class="c1"># draw a histogram chart for a column</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;My picture&#39;}, ylabel=&#39;Frequency&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/d01491f98288663f3261a1135059e036c456f962cfca23af6ad91d2fae64fe73.png" src="_images/d01491f98288663f3261a1135059e036c456f962cfca23af6ad91d2fae64fe73.png" />
+<img alt="_images/0da32997876dddce62890756a74fca5b0edb8da43be083ed74e31166110a79dc.png" src="_images/0da32997876dddce62890756a74fca5b0edb8da43be083ed74e31166110a79dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">)</span>  <span class="c1"># draw scatter chart with given axis</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">)</span>  <span class="c1"># draw scatter chart with given axis</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;sepal_length&#39;, ylabel=&#39;sepal_width&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip&#39;, ylabel=&#39;total_bill&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/96d620d56a3c481454a79ab525bf162c66fbc85370f4e9fa626c775ca4d85dee.png" src="_images/96d620d56a3c481454a79ab525bf162c66fbc85370f4e9fa626c775ca4d85dee.png" />
+<img alt="_images/cd4b1dc547c68c4771c0e7f54d62f7f89e833ec478ec6fab99964897a526bad0.png" src="_images/cd4b1dc547c68c4771c0e7f54d62f7f89e833ec478ec6fab99964897a526bad0.png" />
+</div>
+</div>
+<p>The following example demonstrates how to use Pandas to group data and visualize the results. In this case, we will group the ‘tips’ dataset by the ‘sex’ column and calculate the average tip for each group. Then, we will create a bar chart to visualize the average tips for each gender.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># load the &#39;tips&#39; dataset from seaborn,</span>
+<span class="c1"># or you can read your own dataset using pd.read_csv() or pd.read_excel() from a local file</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tips&#39;</span><span class="p">)</span>
+
+<span class="c1"># group by &#39;sex&#39; and calculate the average tip for each group</span>
+<span class="n">avg_tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;tip&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># draw using Pandas plot method</span>
+<span class="n">avg_tips</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;salmon&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;sex&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ee99b8a4ffa0bd41cce7f8bffed761628e59a5a61a3fb0aeaa4e3770ad309525.png" src="_images/ee99b8a4ffa0bd41cce7f8bffed761628e59a5a61a3fb0aeaa4e3770ad309525.png" />
 </div>
 </div>
 <p>Pandas provides a comprehensive set of data processing methods with numerous argument configurations. Due to space limitations, this book does not elaborate on them in detail. When using Pandas for data processing, readers are encouraged to consult the <a class="reference external" href="https://pandas.pydata.org/docs/">official documentation</a> for further reference.</p>
