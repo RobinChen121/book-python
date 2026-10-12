@@ -904,11 +904,17 @@ dtype: object
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>File paths on macOS use the forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> as a separator, while Windows uses the backslash <code class="docutils literal notranslate"><span class="pre">\</span></code>.</p></li>
-<li><p>Adding an <code class="docutils literal notranslate"><span class="pre">r</span></code> before a file path string (e.g., r”path”) preserves the original meaning of the string and prevents special characters from being escaped.</p></li>
+<li><p>You many need to install the package <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> first to read Excel files. You can install it using the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code>.</p></li>
+<li><p>It is convinent to use the forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> as a separator.</p></li>
+<li><p>If using the backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> in the path,</p>
+<ul>
+<li><p>adding an <code class="docutils literal notranslate"><span class="pre">r</span></code> before a file path string (e.g., r”path”) preserves the original meaning of the string and prevents special characters from being escaped.</p></li>
+<li><p>or using two backslashes <code class="docutils literal notranslate"><span class="pre">\\</span></code> in the path (e.g., “path\to\file”) to avoid escape character issues.</p></li>
+</ul>
+</li>
 </ul>
 </div>
-<p>The syntax for <code class="docutils literal notranslate"><span class="pre">read_excel</span></code>is:</p>
+<p>The syntax for <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> is:</p>
 <table>   
     <tr style="border-top:solid; border-bottom:solid">
         <th colspan=2 style="text-align:center">
