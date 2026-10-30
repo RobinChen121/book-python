@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -44,8 +44,8 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -57,6 +57,8 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'define-function';</script>
@@ -1681,7 +1683,7 @@ Continues program execution until the next breakpoint or program termination.</p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map at 0x10487f250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;map at 0x21d8bd95ae0&gt;
 </pre></div>
 </div>
 </div>
@@ -1778,7 +1780,7 @@ Continues program execution until the next breakpoint or program termination.</p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/Users/yourname/projects&#39;, &#39;/Users/zhenchen/Documents/book-python-data-science-en/data-science&#39;, &#39;/opt/anaconda3/lib/python313.zip&#39;, &#39;/opt/anaconda3/lib/python3.13&#39;, &#39;/opt/anaconda3/lib/python3.13/lib-dynload&#39;, &#39;&#39;, &#39;/opt/anaconda3/lib/python3.13/site-packages&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip&#39;, &#39;D:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\DLLs&#39;, &#39;D:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Lib&#39;, &#39;D:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313&#39;, &#39;&#39;, &#39;D:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages&#39;]
 </pre></div>
 </div>
 </div>
@@ -1788,7 +1790,7 @@ Continues program execution until the next breakpoint or program termination.</p
 <h3><span class="section-number">6.7.2. </span>Import a sibling module<a class="headerlink" href="#import-a-sibling-module" title="Link to this heading">#</a></h3>
 <hr><p>If the imported module is a sibling file of the current module—meaning they share the same parent directory—for example:</p>
 <p><strong>Directory structure</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_root/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project_root/
 │── main.py
 │── my_module.py
 </pre></div>
@@ -1806,7 +1808,7 @@ Continues program execution until the next breakpoint or program termination.</p
 <h3><span class="section-number">6.7.3. </span>Import a nephew/niece module<a class="headerlink" href="#import-a-nephew-niece-module" title="Link to this heading">#</a></h3>
 <p>If the module to be imported is in a folder at the same level as the current module, for example:</p>
 <p><strong>Directory structure</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_root/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project_root/
 │── main.py
 │── folder1/
 │    │── my_module.py
@@ -1825,7 +1827,7 @@ Continues program execution until the next breakpoint or program termination.</p
 <h3><span class="section-number">6.7.4. </span>Import a aucle/aunt, cousin module<a class="headerlink" href="#import-a-aucle-aunt-cousin-module" title="Link to this heading">#</a></h3>
 <hr><p>If the imported module is the sample level with the parent folder:</p>
 <p><strong>Director structure1</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_root/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project_root/
 │── my_module.py
 │── folder1/
 │    │── main.py
@@ -1833,7 +1835,7 @@ Continues program execution until the next breakpoint or program termination.</p
 </div>
 <p>Or if the import module is in the folder which has same level with the parent folder:</p>
 <p><strong>Directory structure2</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_root/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project_root/
 │── folder2
 │    │── my_module.py
 │── folder1/
