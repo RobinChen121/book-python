@@ -443,9 +443,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.5.5. Comments and line breaking</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.6. Install and use libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries-packages">1.6. Install and use libraries (packages)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.7. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-exercises">1.8. Simple Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">1.9. Further Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -1179,6 +1180,20 @@ False
 <li><p>When debugging a program, comments are sometimes used to temporarily disable parts of the code that are not relevant to the debugging process, making it easier to test and troubleshoot.</p></li>
 </ul>
 </div>
+<p>For Python coding, usually every statement is on a separate line. However, if you want to write multiple statements on a single line, you can separate them with semicolons (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">)</span> <span class="c1"># two statements in one line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+world
+</pre></div>
+</div>
+</div>
+</div>
 <p>Sometimes, when a line of code is too long and needs to be split across multiple lines, you can use the backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) at the end of the line to indicate line continuation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,9 +1214,10 @@ False
 </div>
 </section>
 </section>
-<section id="install-and-use-libraries">
-<h2><span class="section-number">1.6. </span>Install and use libraries<a class="headerlink" href="#install-and-use-libraries" title="Link to this heading">#</a></h2>
-<hr><p><code class="docutils literal notranslate"><span class="pre">pip</span></code> is Python’s built-in library management tool. It allows you to search for, download, install, and uninstall Python librarys. When you install Python, pip is installed automatically. The basic syntax is:</p>
+<section id="install-and-use-libraries-packages">
+<h2><span class="section-number">1.6. </span>Install and use libraries (packages)<a class="headerlink" href="#install-and-use-libraries-packages" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">pip</span></code> is Python’s built-in library management tool. It allows you to search for, download, install, and uninstall Python libraries (packages). When you install Python, pip is installed automatically.</p>
+<p>The basic syntax is:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p></p></th>
@@ -1249,8 +1265,13 @@ False
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">[library_name]</span> <span class="pre">--upgrade</span></code> equals <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">[library_name]</span></code></p></li>
 </ul>
 </div>
-<p>Anaconda also allows you to install packages from the Anaconda repository using its built-in tool, <strong>Conda</strong>. The syntax is similar to that of <code class="docutils literal notranslate"><span class="pre">pip</span></code>, with the main difference being that you replace <code class="docutils literal notranslate"><span class="pre">pip</span></code> with <code class="docutils literal notranslate"><span class="pre">conda</span></code> in the command.</p>
-<p>For example，install a Yahoo finace library <code class="docutils literal notranslate"><span class="pre">yfinance</span></code>, input the following in the command line window：</p>
+<p>You should put the command in the command line window (terminal) of your computer, not in the Python editor.</p>
+<ul class="simple">
+<li><p>If you are using PyCharm, you can open the terminal window in the lower left corner of the interface.</p></li>
+<li><p>If you are using PyCharm, you can also install packages through the interpreter settings in the lower right corner of the interface.</p></li>
+<li><p>If you are using Anaconda, you can open the Anaconda Prompt window, either using pip or using the built-in tool Conda to install packages.</p></li>
+</ul>
+<p>For example，install a Yahoo finace library <code class="docutils literal notranslate"><span class="pre">yfinance</span></code>, input the following in the command line window (terminal)：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>yfinance
 </pre></div>
 </div>
@@ -1336,7 +1357,7 @@ False
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dat</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dat</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;1mo&#39;</span><span class="p">)</span>
@@ -1482,30 +1503,217 @@ False
 </div>
 </div>
 </section>
-<section id="exercises">
-<h2><span class="section-number">1.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<hr><div class="exercise admonition" id="A-first-look-of-Python-exercise-0">
+<section id="simple-exercises">
+<h2><span class="section-number">1.8. </span>Simple Exercises<a class="headerlink" href="#simple-exercises" title="Link to this heading">#</a></h2>
+<hr><div class="exercise admonition" id="simple-variable-print">
 
 <p class="admonition-title"><span class="caption-number">Exercise 1.1 </span></p>
 <section id="exercise-content">
-<p>Input the following codes in your Python editor and run.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># draw circles</span>
+<p>Which code correctly assigns a string to <code class="docutils literal notranslate"><span class="pre">student_name</span></code>, assigns the number <code class="docutils literal notranslate"><span class="pre">85</span></code> to <code class="docutils literal notranslate"><span class="pre">score</span></code>, and prints both values?</p>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">student_name</span> <span class="pre">=</span> <span class="pre">Alex;</span> <span class="pre">score</span> <span class="pre">=</span> <span class="pre">85;</span> <span class="pre">print(student_name,</span> <span class="pre">score)</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">student_name</span> <span class="pre">=</span> <span class="pre">&quot;Alex&quot;;</span> <span class="pre">score</span> <span class="pre">=</span> <span class="pre">85;</span> <span class="pre">print(student_name,</span> <span class="pre">score)</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">student_name</span> <span class="pre">=</span> <span class="pre">&quot;Alex&quot;;</span> <span class="pre">score</span> <span class="pre">=</span> <span class="pre">&quot;85;</span> <span class="pre">print(student_name,</span> <span class="pre">score)</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">student_name</span> <span class="pre">==</span> <span class="pre">&quot;Alex&quot;;</span> <span class="pre">score</span> <span class="pre">==</span> <span class="pre">85;</span> <span class="pre">print(student_name,</span> <span class="pre">score)</span></code></p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-1">
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">turtle</span>
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-variable-print"> Exercise 1.1</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-multiple-assignment">
 
-<span class="n">turtle</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+<p class="admonition-title"><span class="caption-number">Exercise 1.2 </span></p>
+<section id="exercise-content">
+<p>Which statement assigns the values <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, and <code class="docutils literal notranslate"><span class="pre">6</span></code> to <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>, respectively?</p>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">4,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">5,</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">6</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">(4,</span> <span class="pre">5)</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6</span> <span class="pre">=</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code></p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-multiple-assignment"> Exercise 1.2</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-valid-name">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.3 </span></p>
+<section id="exercise-content">
+<p>Which of the following is a valid Python variable name?</p>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">2name</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">student</span> <span class="pre">name</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">student_name</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">class</span></code></p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-valid-name"> Exercise 1.3</a></p>
+<section id="solution-content">
+<p>C</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-variable-swap">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.4 </span></p>
+<section id="exercise-content">
+<p>Which statement swaps the values of <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">second</span></code> without using a third variable?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span>
 </pre></div>
 </div>
 </section>
 </div>
-<div class="exercise admonition" id="define_variable">
+<p>A.   <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">=</span> <span class="pre">second;</span> <span class="pre">second</span> <span class="pre">=</span> <span class="pre">first</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">first,</span> <span class="pre">second</span> <span class="pre">=</span> <span class="pre">second,</span> <span class="pre">first</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">==</span> <span class="pre">second</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">first,</span> <span class="pre">second</span> <span class="pre">=</span> <span class="pre">first,</span> <span class="pre">first</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-7">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.2 </span></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-variable-swap"> Exercise 1.4</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-comparison">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.5 </span></p>
+<section id="exercise-content">
+<p>True or False: Python treats <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">Name</span></code> as two different variable names.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alex&quot;</span>
+<span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Sam&quot;</span>
+</pre></div>
+</div>
+</section>
+</div>
+<p>A.   True</p>
+<p>B.   False</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-comparison"> Exercise 1.5</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-membership">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.6 </span></p>
+<section id="exercise-content">
+<p>Given <code class="docutils literal notranslate"><span class="pre">numbers</span> <span class="pre">=</span> <span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30]</span></code>, what does the following code print?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">20</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">40</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">True</span></code> followed by <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">True</span></code> followed by <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">False</span></code> followed by <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">False</span></code> followed by <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-11">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-membership"> Exercise 1.6</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-input-conversion">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.7 </span></p>
+<section id="exercise-content">
+<p>Which line reads a person’s age and converts the input to an integer?</p>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">input(int(&quot;Enter</span> <span class="pre">your</span> <span class="pre">age:</span> <span class="pre">&quot;))</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">int(input(&quot;Enter</span> <span class="pre">your</span> <span class="pre">age:</span> <span class="pre">&quot;))</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">str(input(&quot;Enter</span> <span class="pre">your</span> <span class="pre">age:</span> <span class="pre">&quot;))</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">integer(input(&quot;Enter</span> <span class="pre">your</span> <span class="pre">age:</span> <span class="pre">&quot;))</span></code></p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-13">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-input-conversion"> Exercise 1.7</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-comments">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.8 </span></p>
+<section id="exercise-content">
+<p>True or False: In Python, the text after <code class="docutils literal notranslate"><span class="pre">#</span></code> on a line is a comment and is not executed as code.</p>
+<p>A.   True</p>
+<p>B.   False</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-15">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-comments"> Exercise 1.8</a></p>
+<section id="solution-content">
+<p>A</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-import-library">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.9 </span></p>
+<section id="exercise-content">
+<p>Which statement correctly imports Python’s built-in <code class="docutils literal notranslate"><span class="pre">math</span></code> library so its functions can be used with the <code class="docutils literal notranslate"><span class="pre">math.</span></code> prefix?</p>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">math</span></code></p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code></p>
+<p>C.   <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">math</span></code></p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">math</span></code></p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-17">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-import-library"> Exercise 1.9</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+<div class="exercise admonition" id="simple-delete-variable">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.10 </span></p>
+<section id="exercise-content">
+<p>What happens after this code runs?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">city</span> <span class="o">=</span> <span class="s2">&quot;London&quot;</span>
+<span class="k">del</span> <span class="n">city</span>
+</pre></div>
+</div>
+</section>
+</div>
+<p>A.   <code class="docutils literal notranslate"><span class="pre">city</span></code> is changed to an empty string.</p>
+<p>B.   <code class="docutils literal notranslate"><span class="pre">city</span></code> is deleted, so it can no longer be used unless assigned again.</p>
+<p>C.   The text <code class="docutils literal notranslate"><span class="pre">London</span></code> is printed.</p>
+<p>D.   <code class="docutils literal notranslate"><span class="pre">city</span></code> is renamed to <code class="docutils literal notranslate"><span class="pre">City</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-19">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#simple-delete-variable"> Exercise 1.10</a></p>
+<section id="solution-content">
+<p>B</p>
+</section>
+</div>
+</section>
+<section id="further-exercises">
+<h2><span class="section-number">1.9. </span>Further Exercises<a class="headerlink" href="#further-exercises" title="Link to this heading">#</a></h2>
+<hr><div class="exercise admonition" id="define_variable">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1.11 </span></p>
 <section id="exercise-content">
 <p>Define a variable in Python. Which of the following statement is correct?</p>
 <p>A.    int a = 5</p>
@@ -1514,16 +1722,16 @@ False
 <p>D.    $a = 5</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-2">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-21">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#define_variable"> Exercise 1.2</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#define_variable"> Exercise 1.11</a></p>
 <section id="solution-content">
 <p>C</p>
 </section>
 </div>
 <div class="exercise admonition" id="comment">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.12 </span></p>
 <section id="exercise-content">
 <p>What is the correct way to comment a single line in Python?</p>
 <p>A.    # This is a comment</p>
@@ -1532,16 +1740,16 @@ False
 <p>D.     // This is a comment</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-4">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-23">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#comment"> Exercise 1.3</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#comment"> Exercise 1.12</a></p>
 <section id="solution-content">
 <p>A</p>
 </section>
 </div>
 <div class="exercise admonition" id="variable_name">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.13 </span></p>
 <section id="exercise-content">
 <p>Which of the following is a valid variable name in Python?</p>
 <p>A.    1abc</p>
@@ -1550,16 +1758,16 @@ False
 <p>D.    global</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-6">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-25">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#variable_name"> Exercise 1.4</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#variable_name"> Exercise 1.13</a></p>
 <section id="solution-content">
 <p>B</p>
 </section>
 </div>
 <div class="exercise admonition" id="operator-basic">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.14 </span></p>
 <section id="exercise-content">
 <p>What is the output of the following code?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1573,16 +1781,16 @@ False
 <p>D.    2</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-8">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-27">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#operator-basic"> Exercise 1.5</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#operator-basic"> Exercise 1.14</a></p>
 <section id="solution-content">
 <p>B</p>
 </section>
 </div>
 <div class="exercise admonition" id="variable-swap">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.15 </span></p>
 <section id="exercise-content">
 <p>How do you swap the values of two variables in Python without using a third variable?</p>
 <p>A.    x + y; y = x; x = y</p>
@@ -1591,16 +1799,16 @@ False
 <p>D.    x, y = y, x</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-10">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-29">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#variable-swap"> Exercise 1.6</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#variable-swap"> Exercise 1.15</a></p>
 <section id="solution-content">
 <p>D</p>
 </section>
 </div>
 <div class="exercise admonition" id="operator">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.16 </span></p>
 <section id="exercise-content">
 <p>What is the output of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1616,16 +1824,16 @@ False
 <p>D.    12</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-12">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-31">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#operator"> Exercise 1.7</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#operator"> Exercise 1.16</a></p>
 <section id="solution-content">
 <p>D</p>
 </section>
 </div>
 <div class="exercise admonition" id="install-lib">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.17 </span></p>
 <section id="exercise-content">
 <p>which of the following statement is the correct way to install the library “pandas”?</p>
 <p>A.    pandas install</p>
@@ -1634,16 +1842,16 @@ False
 <p>D.    import pandas</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-14">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-33">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#install-lib"> Exercise 1.8</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#install-lib"> Exercise 1.17</a></p>
 <section id="solution-content">
 <p>B</p>
 </section>
 </div>
 <div class="exercise admonition" id="uninstall-lib">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.18 </span></p>
 <section id="exercise-content">
 <p>which of the following statement is the correct way to uninstall the library “seaborn”?</p>
 <p>A.    pip  uninstall seaborn</p>
@@ -1652,16 +1860,16 @@ False
 <p>D.    export seabron</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-16">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-35">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#uninstall-lib"> Exercise 1.9</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#uninstall-lib"> Exercise 1.18</a></p>
 <section id="solution-content">
 <p>A</p>
 </section>
 </div>
 <div class="exercise admonition" id="use-lib">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.10 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.19 </span></p>
 <section id="exercise-content">
 <p>If you want to use the library “pandas”, which of the following statement is wrong?</p>
 <p>A.    import pandas</p>
@@ -1670,16 +1878,16 @@ False
 <p>D.    use pandas</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-18">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-37">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#use-lib"> Exercise 1.10</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#use-lib"> Exercise 1.19</a></p>
 <section id="solution-content">
 <p>D</p>
 </section>
 </div>
 <div class="exercise admonition" id="file-name">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.11 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.20 </span></p>
 <section id="exercise-content">
 <p>What is the correct file extension for Python files?</p>
 <p>A.    .python</p>
@@ -1688,32 +1896,32 @@ False
 <p>D.    .doc</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-20">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-39">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#file-name"> Exercise 1.11</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#file-name"> Exercise 1.20</a></p>
 <section id="solution-content">
 <p>C</p>
 </section>
 </div>
 <div class="exercise admonition" id="variable-true">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.12 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.21 </span></p>
 <section id="exercise-content">
 <p>In Python, a = 5 is the same as A = 5?</p>
 <p>A.    True</p>
 <p>B.    False</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-22">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-41">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#variable-true"> Exercise 1.12</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#variable-true"> Exercise 1.21</a></p>
 <section id="solution-content">
 <p>B</p>
 </section>
 </div>
 <div class="exercise admonition" id="math-formula">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.13 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.22 </span></p>
 <section id="exercise-content">
 <p>Write the following math formulas in Python and get the results.</p>
 <ul class="simple">
@@ -1722,9 +1930,9 @@ False
 </ul>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-24">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-43">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#math-formula"> Exercise 1.13</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#math-formula"> Exercise 1.22</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1737,14 +1945,14 @@ False
 </div>
 <div class="exercise admonition" id="sum-input">
 
-<p class="admonition-title"><span class="caption-number">Exercise 1.14 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 1.23 </span></p>
 <section id="exercise-content">
 <p>Use <code class="docutils literal notranslate"><span class="pre">input</span></code> to get two values and compute the sum of the two values.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-26">
+<div class="solution dropdown admonition" id="A-first-look-of-Python-solution-45">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#sum-input"> Exercise 1.14</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#sum-input"> Exercise 1.23</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># user input</span>
 <span class="n">num1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;input the first value：&#39;</span><span class="p">)</span>
@@ -1865,9 +2073,10 @@ layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_transla
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-line-breaking">1.5.5. Comments and line breaking</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries">1.6. Install and use libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-use-libraries-packages">1.6. Install and use libraries (packages)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-library">1.7. <code class="docutils literal notranslate"><span class="pre">math</span></code> library</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-exercises">1.8. Simple Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">1.9. Further Exercises</a></li>
 </ul>
   </nav></div>
 
